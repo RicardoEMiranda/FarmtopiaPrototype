@@ -16398,7 +16398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &712118816
 GameObject:
@@ -24223,7 +24223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 987834538}
-  - component: {fileID: 987834540}
+  - component: {fileID: 987834539}
   m_Layer: 0
   m_Name: CameraManager
   m_TagString: Untagged
@@ -24245,9 +24245,9 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &987834540
+--- !u!114 &987834539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24256,11 +24256,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 987834537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23c3a7745c3b5c4fa36369c9ca2cce8, type: 3}
+  m_Script: {fileID: 11500000, guid: f389ca66e77a21a48bbee264926ebe17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camPosition: {x: 0, y: 0, z: 0}
-  camSpeed: 1
+  camSpeed: 0.5
 --- !u!1 &988298120
 GameObject:
   m_ObjectHideFlags: 0
@@ -26052,7 +26052,7 @@ Transform:
   - {fileID: 406874119}
   - {fileID: 220608511}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1054684721
 GameObject:
