@@ -5,12 +5,16 @@ using UnityEngine;
 public class SeedController : MonoBehaviour {
 
     public GameObject seedCorn;
-    public GameObject seedSquash;
+    public GameObject seedCarrot;
+    public GameObject seedMaze;
+    public GameObject carrotSeedlings;
 
     private void OnMouseDown() {
         Debug.Log(gameObject.name);
         seedCorn.SetActive(false);
-        seedSquash.SetActive(false);
+        seedCarrot.SetActive(false);
+        seedMaze.SetActive(false);
+        carrotSeedlings.SetActive(true);
     }
 
 }

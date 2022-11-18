@@ -5,13 +5,18 @@ using UnityEngine;
 public class FieldController : MonoBehaviour {
 
     public GameObject seedCorn;
-    public GameObject seedSquash;
+    public GameObject seedCarrot;
+    public GameObject seedMaze;
+    public GameObject carrotSeedlings;
+  
     
 
     private void OnMouseDown() {
         Debug.Log("Click");
         seedCorn.SetActive(true);
-        seedSquash.SetActive(true);
+        seedCarrot.SetActive(true);
+        seedMaze.SetActive(true);
+       
     }
 
 }
