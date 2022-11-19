@@ -8,15 +8,17 @@ public class FieldController : MonoBehaviour {
     public GameObject seedCarrot;
     public GameObject seedMaze;
     public GameObject carrotSeedlings;
-  
-    
+    private bool fieldSelected = false;
+
+    private void Update() {
+
+    }
 
     private void OnMouseDown() {
-        Debug.Log("Click");
+        //Debug.Log("Click");
         seedCorn.SetActive(true);
         seedCarrot.SetActive(true);
         seedMaze.SetActive(true);
-       
     }
 
 }
