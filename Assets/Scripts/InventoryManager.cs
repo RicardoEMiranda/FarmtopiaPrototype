@@ -28,4 +28,8 @@ public class InventoryManager : MonoBehaviour {
         panel.SetActive(false);
         click.Play();
     }
+
+    public void OnNFTButtonDown() {
+        Debug.Log("Bring up NFT Menu");
+    }
 }
