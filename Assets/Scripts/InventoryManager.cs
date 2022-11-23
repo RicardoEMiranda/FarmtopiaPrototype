@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void OnInventoryButtonDown() {
-        Debug.Log("Bring up Inventory.");
+        //Debug.Log("Bring up Inventory.");
         panel.SetActive(true);
         click.Play();
     }
