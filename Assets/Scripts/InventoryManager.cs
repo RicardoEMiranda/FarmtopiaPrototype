@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour {
 
-    public GameObject panel;
+    [SerializeField] public GameObject panelCropInventory;
+    [SerializeField] public GameObject panelNFTInventory;
     public AudioSource click;
 
     // Start is called before the first frame update
     void Start()  {
-        
+        panelCropInventory.SetActive(false);
     }
 
     // Update is called once per frame
@@ -18,18 +19,25 @@ public class InventoryManager : MonoBehaviour {
         
     }
 
-    public void OnInventoryButtonDown() {
+    public void OnCropInventoryButtonDown() {
         //Debug.Log("Bring up Inventory.");
-        panel.SetActive(true);
+        panelCropInventory.SetActive(true);
         click.Play();
     }
 
-    public void OnInventoryExitButtonDown() {
-        panel.SetActive(false);
+    public void OnCropInventoryExitButtonDown() {
+        panelCropInventory.SetActive(false);
         click.Play();
     }
 
     public void OnNFTButtonDown() {
-        Debug.Log("Bring up NFT Menu");
+        //Debug.Log("Bring up NFT Menu");
+        panelNFTInventory.SetActive(true);
+        click.Play();
+    }
+
+    public void OnNFTInventoryExitButtonDown() {
+        panelNFTInventory.SetActive(false);
+        click.Play();
     }
 }
