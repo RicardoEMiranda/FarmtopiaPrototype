@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour {
     public float textSpeed = .05f;
     private int index = 0;
     public AudioSource audioSource;
+    public GameObject dialogueBox;
     //public AudioClip typingAudio;
 
     // Start is called before the first frame update
@@ -30,6 +31,8 @@ public class DialogueManager : MonoBehaviour {
             else  {
                 StopAllCoroutines();
                 textComponent.text = dialogue[index];
+                audioSource.Stop();
+                dialogueBox.SetActive(false);
             }
         }
 
@@ -46,20 +49,21 @@ public class DialogueManager : MonoBehaviour {
             yield return new WaitForSeconds(textSpeed);   
         }
 
-        Debug.Log("Stopped Typing");
+        //Debug.Log("Stopped Typing");
         audioSource.Stop();
-        
     }
 
     void NextLine() {
         if(index <= dialogue.Length-1)  {
             audioSource.Play();
             index++;
+            //Debug.Log(index);
             textComponent.text = "";
             StartCoroutine(TypeDialogue());
         }
-        else  {
-            gameObject.SetActive(false);
+        if (index >=4)  {
+            dialogueBox.SetActive(false);
+            audioSource.Stop();
         }
     }
 }
