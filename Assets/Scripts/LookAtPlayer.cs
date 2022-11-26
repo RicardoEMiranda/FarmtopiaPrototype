@@ -10,12 +10,12 @@ public class LookAtPlayer : MonoBehaviour {
     void Start() {
         //transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
         transform.LookAt(camera);
-        transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
+        //transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
     }
 
     // Update is called once per frame
     void LateUpdate() {
         transform.LookAt(camera);
-        transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
+        //transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
     }
 }
