@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FarmerAI_Test : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class FarmerAI_Test : MonoBehaviour {
     [SerializeField] public Vector3 currentPos;
     [SerializeField] public Vector3 endPos;
     [SerializeField] public float speed = 2f;
+    [SerializeField] public GameObject speechBubble;
+    [SerializeField] public TextMeshProUGUI textComponent;
     public Vector3 navigationVector;
     public float delta;
 
@@ -40,10 +43,11 @@ public class FarmerAI_Test : MonoBehaviour {
 
 
         if (delta >= .6)  {
-            transform.Translate(new Vector3(navigationVector.x, 0f, -navigationVector.z) * Time.deltaTime * speed);
+            transform.Translate(new Vector3(-navigationVector.x, 0f, -navigationVector.z) * Time.deltaTime * speed);
             animator.SetInteger("AnimState", 1);
         }  else  {
             animator.SetInteger("AnimState", 0);
+            speechBubble.SetActive(true);
         }
         
     }
