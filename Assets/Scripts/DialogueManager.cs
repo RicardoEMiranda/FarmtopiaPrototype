@@ -12,10 +12,16 @@ public class DialogueManager : MonoBehaviour {
     private int index = 0;
     public AudioSource audioSource;
     public GameObject dialogueBox;
+    private int dialogueCount;
+
+    
     //public AudioClip typingAudio;
 
     // Start is called before the first frame update
     void Start()  {
+
+        dialogueCount = dialogue.Length; 
+        Debug.Log("Started");
         textComponent.text = "";
         StartDialogue();
     }
@@ -25,7 +31,7 @@ public class DialogueManager : MonoBehaviour {
        
         
         if(Input.GetMouseButtonDown(0))  {
-            if(index <= 3)   {
+            if(index <= dialogueCount-2)   {
                 NextLine();
             }
             else  {
