@@ -27902,7 +27902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9a638c0a48d55418c9a7da2e495c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1902759136}
 --- !u!1001 &450617454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34565,15 +34564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b4a153f338bb449ad85c1f995e0064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
-  dialogue: []
-  textSpeed: 0.05
-  index: 0
-  audioSource: {fileID: 0}
-  dialogueBox: {fileID: 0}
-  dialogueCount: 0
-  field: {fileID: 0}
-  fieldController: {fileID: 0}
 --- !u!1 &536512192
 GameObject:
   m_ObjectHideFlags: 0
@@ -66901,6 +66891,10 @@ PrefabInstance:
     - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7336915228994249766, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8686920083125780973, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
       propertyPath: m_Controller
