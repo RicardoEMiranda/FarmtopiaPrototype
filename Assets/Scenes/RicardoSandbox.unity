@@ -19765,7 +19765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487774844701372, guid: d48088796bfe2d04381a53b0f97f9d95, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4458860477529250, guid: d48088796bfe2d04381a53b0f97f9d95, type: 3}
       propertyPath: m_RootOrder
@@ -34312,7 +34312,6 @@ GameObject:
   - component: {fileID: 534280488}
   - component: {fileID: 534280487}
   - component: {fileID: 534280490}
-  - component: {fileID: 534280491}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -34553,27 +34552,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &534280491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534280485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b4a153f338bb449ad85c1f995e0064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
-  dialogue: []
-  textSpeed: 0.05
-  index: 0
-  audioSource: {fileID: 0}
-  dialogueBox: {fileID: 0}
-  dialogueCount: 0
-  field: {fileID: 0}
-  fieldController: {fileID: 0}
 --- !u!1 &536512192
 GameObject:
   m_ObjectHideFlags: 0
@@ -39174,6 +39152,10 @@ PrefabInstance:
     - target: {fileID: 1700950352984132, guid: 5c72273bb626309448d894165a04778a, type: 3}
       propertyPath: m_Name
       value: FX_Pollen_Wind_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700950352984132, guid: 5c72273bb626309448d894165a04778a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4863806053551400, guid: 5c72273bb626309448d894165a04778a, type: 3}
       propertyPath: m_RootOrder
