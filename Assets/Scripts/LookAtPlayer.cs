@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour {
 
-    private Transform _camera;
-    
+    public Transform camera;
+
+    // Start is called before the first frame update
     void Start() {
-        _camera = Camera.main.transform;
-        transform.LookAt(_camera);
+        //transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
+        transform.LookAt(camera);
+        transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
     }
+
+    // Update is called once per frame
     void LateUpdate() {
-        transform.LookAt(_camera);
+        transform.LookAt(camera);
+        transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
     }
 }
