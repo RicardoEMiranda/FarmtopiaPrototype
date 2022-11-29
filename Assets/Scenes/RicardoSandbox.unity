@@ -10209,7 +10209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169227025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: -2.72, y: -0.48, z: 4.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15159,8 +15159,8 @@ MeshFilter:
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &253890890 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 851889615, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-  m_PrefabInstance: {fileID: 1038408837}
+  m_CorrespondingSourceObject: {fileID: 92746425569849206, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+  m_PrefabInstance: {fileID: 92746425622150716}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &254329441
 GameObject:
@@ -27795,8 +27795,8 @@ MeshFilter:
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &450307672 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 657717981, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-  m_PrefabInstance: {fileID: 1038408837}
+  m_CorrespondingSourceObject: {fileID: 92746425258088548, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+  m_PrefabInstance: {fileID: 92746425622150716}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &450617454
 PrefabInstance:
@@ -29098,7 +29098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 41, y: -172}
+  m_AnchoredPosition: {x: 15, y: -172}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461797301
@@ -29121,7 +29121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scarecrow
+  m_text: Serius B Alien
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33084,8 +33084,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: -172}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 2, y: -172}
+  m_SizeDelta: {x: 209.3947, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514376460
 MonoBehaviour:
@@ -33107,7 +33107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Farmer Ted
+  m_text: General George
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -57029,8 +57029,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -160}
-  m_SizeDelta: {x: 237.6637, y: 49.9689}
+  m_AnchoredPosition: {x: 23.210815, y: -158.82568}
+  m_SizeDelta: {x: 275.242, y: 47.6203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &909837445
 MonoBehaviour:
@@ -57052,7 +57052,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Farmer Josh
+  m_text: Farm Hand Antonio
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -66749,71 +66749,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036695124}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1038408837
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 701757669, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: waypoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 169227026}
-    - target: {fileID: 701757669, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 190362471}
-    - target: {fileID: 2676791510433186093, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_Name
-      value: Farmer-YoungMan
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345628198323264407, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
 --- !u!1 &1041696023
 GameObject:
   m_ObjectHideFlags: 0
@@ -78937,8 +78872,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: -172}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 25, y: -166.1284}
+  m_SizeDelta: {x: 110.7513, y: 38.2568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1233233298
 MonoBehaviour:
@@ -78960,7 +78895,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Farmer Betty
+  m_text: Kim
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -113013,8 +112948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: -172}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 11, y: -172}
+  m_SizeDelta: {x: 263.4133, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767539132
 MonoBehaviour:
@@ -113036,7 +112971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Farmer Mindy
+  m_text: Little Miss Sunshine
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -135676,8 +135611,8 @@ MeshFilter:
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2080945010 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1106014199, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
-  m_PrefabInstance: {fileID: 1038408837}
+  m_CorrespondingSourceObject: {fileID: 92746423676538190, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+  m_PrefabInstance: {fileID: 92746425622150716}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2081447942
 GameObject:
@@ -142482,6 +142417,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147182184}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &92746425622150716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 92746425309153045, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: Hello, I'm Farm Hand Antonio!
+      objectReference: {fileID: 0}
+    - target: {fileID: 92746425419569756, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 169227026}
+    - target: {fileID: 92746425419569756, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 190362471}
+    - target: {fileID: 2624578045002326932, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_Name
+      value: Farmer-YoungMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.501
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397842219818252590, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3c0438b18ae64548a101696608b18f3, type: 3}
 --- !u!1 &1045538204571994825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5938298642829581590, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
