@@ -14,7 +14,7 @@ public class LookAtPlayer : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void LateUpdate() {
         transform.LookAt(camera);
         transform.Rotate(camera.transform.rotation.x, -180f, camera.transform.rotation.z, Space.World);
     }
