@@ -8,7 +8,7 @@ public class FarmerAI_Test : MonoBehaviour {
     [SerializeField] public Transform[] waypoints;
     [SerializeField] public Vector3 currentPos;
     [SerializeField] public Vector3 endPos;
-    [SerializeField] public float speed = 2f;
+    [SerializeField] public float speed = 1.75f;
     [SerializeField] public GameObject speechBubble;
     [SerializeField] public TextMeshProUGUI textComponent;
     public Vector3 navigationVector;
@@ -16,6 +16,7 @@ public class FarmerAI_Test : MonoBehaviour {
 
     public float theta;
     private float rotAngle;
+    private Vector3 dir = new Vector3(0f, 0f, -1f);
 
     private Animator animator;
 
@@ -41,9 +42,9 @@ public class FarmerAI_Test : MonoBehaviour {
         //Debug.Log(delta);
 
 
-
         if (delta >= .6)  {
             transform.Translate(new Vector3(-navigationVector.x, 0f, -navigationVector.z) * Time.deltaTime * speed);
+            //transform.Translate(-Vector3.forward * Time.deltaTime * speed);
             animator.SetInteger("AnimState", 1);
         }  else  {
             animator.SetInteger("AnimState", 0);
