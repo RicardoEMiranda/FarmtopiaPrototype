@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour {
 
-    public Transform _camera;
+    private Transform _camera;
 
     // Start is called before the first frame update
     void Start() {

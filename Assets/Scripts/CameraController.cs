@@ -24,16 +24,16 @@ public class CameraController : MonoBehaviour {
 
 
     private void GetInput() {
-        if (Input.GetKey(KeyCode.F)) {
+        if (Input.GetKey(KeyCode.A)) {
             camPosition = camPosition + new Vector3(-axisRotationNormal, 0, axisRotationNormal) * camSpeed;
             //Debug.Log(camPosition);
-        } else if (Input.GetKey(KeyCode.H)) {
+        } else if (Input.GetKey(KeyCode.D)) {
             //Debug.Log("Right");
             camPosition = camPosition + new Vector3(axisRotationNormal, 0, -axisRotationNormal) * camSpeed;
-        } else if (Input.GetKey(KeyCode.T)) {
+        } else if (Input.GetKey(KeyCode.W)) {
             //Debug.Log("Up");
             camPosition = camPosition + new Vector3(axisRotationNormal, 0, axisRotationNormal) * camSpeed;
-        } else if (Input.GetKey(KeyCode.G)) {
+        } else if (Input.GetKey(KeyCode.S)) {
             //Debug.Log("Down");
             camPosition = camPosition + new Vector3(-axisRotationNormal, 0, -axisRotationNormal) * camSpeed;
         } else  {
