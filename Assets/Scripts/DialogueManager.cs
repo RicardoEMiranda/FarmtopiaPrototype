@@ -11,13 +11,18 @@ public class DialogueManager : MonoBehaviour {
     public float textSpeed = .05f;
     private int index = 0;
     public AudioSource audioSource;
-    public GameObject dialogueBox;
     private int dialogueCount;
+    [Space]
+    public GameObject dialogueBox;
+    private SpriteRenderer spriteRenderer;
 
-    
     //public AudioClip typingAudio;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        spriteRenderer = dialogueBox.GetComponent<SpriteRenderer>();
+    }
     void Start()  {
 
         dialogueCount = dialogue.Length; 
@@ -49,6 +54,7 @@ public class DialogueManager : MonoBehaviour {
     }
 
     IEnumerator TypeDialogue()  {
+        SetBoarderSize();
         audioSource.Play();
         foreach (char c in dialogue[index].ToCharArray())  {
             textComponent.text = textComponent.text + c;
@@ -57,6 +63,11 @@ public class DialogueManager : MonoBehaviour {
 
         //Debug.Log("Stopped Typing");
         audioSource.Stop();
+    }
+    
+    private void SetBoarderSize()
+    {
+        spriteRenderer.size = new Vector2(textComponent.text.Length, spriteRenderer.size.y);
     }
 
     void NextLine() {
