@@ -1286,7 +1286,7 @@ GameObject:
   - component: {fileID: 6572232405525970894}
   - component: {fileID: 2828350956049528193}
   m_Layer: 5
-  m_Name: Next
+  m_Name: Button-Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5523,7 +5523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8256678087461480188, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: dialogue.Array.data[0]
