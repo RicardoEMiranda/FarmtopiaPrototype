@@ -5234,11 +5234,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8256678087461480188, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: dialogue.Array.data[0]
       value: Hello, I'm Farm Hand Antonio!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: "Great job! \nNow, we just wait until the field is ready to harvest. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: 'In the mean time, check out your crop and NFT inventories. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[4]
+      value: 'Just click on the Crop and NFT Inventory icons on the lower right of
+        the screen. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[5]
+      value: You're on a roll!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[6]
+      value: "You can collect or purchase NFTs and use them to trade for shop discounts
+        and for real CBD products!\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087512291725, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[7]
+      value: Your new crop should be ready soon. Go ahead and explore around the
+        farm and we'll catch up later.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087766413800, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8256678087766413806, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: m_IsActive
@@ -5260,6 +5295,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 8256678087966752574, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087966752574, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: "\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678087966752574, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678089062253808, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678089062253808, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678089062253808, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8256678089094542289, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -5278,6 +5337,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8256678089094542294, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256678089094542295, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
