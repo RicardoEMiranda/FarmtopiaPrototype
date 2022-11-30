@@ -8,10 +8,11 @@ public class FieldController : MonoBehaviour {
     public GameObject seedCarrot;
     public GameObject seedMaze;
     public GameObject carrotSeedlings;
-    private bool fieldSelected = false;
+    public bool fieldSelected = false;
 
     private void Update() {
 
+      
     }
 
     private void OnMouseDown() {
@@ -19,6 +20,11 @@ public class FieldController : MonoBehaviour {
         seedCorn.SetActive(true);
         seedCarrot.SetActive(true);
         seedMaze.SetActive(true);
+
+        if (gameObject.tag == "LastField")  {
+            //Debug.Log("Last field selected: " + gameObject.name);
+            fieldSelected = true;
+        }
     }
 
 }
