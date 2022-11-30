@@ -54,10 +54,10 @@ public class DialogueManager : MonoBehaviour {
     }
 
     IEnumerator TypeDialogue()  {
-        SetBoarderSize();
         audioSource.Play();
         foreach (char c in dialogue[index].ToCharArray())  {
             textComponent.text = textComponent.text + c;
+            SetBoarderSize();
             yield return new WaitForSeconds(textSpeed);   
         }
 
@@ -67,7 +67,10 @@ public class DialogueManager : MonoBehaviour {
     
     private void SetBoarderSize()
     {
-        spriteRenderer.size = new Vector2(textComponent.text.Length, spriteRenderer.size.y);
+        //textComponent.text = dialogue[index];
+        Vector2 background = textComponent.textInfo.meshInfo[0].mesh.bounds.size;
+        background *= transform.localScale;
+        spriteRenderer.size = new Vector2(background.x + 0.25f, background.y + 0.2f);
     }
 
     void NextLine() {
