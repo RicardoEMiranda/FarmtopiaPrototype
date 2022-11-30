@@ -69,8 +69,9 @@ public class DialogueManager : MonoBehaviour {
     {
         //textComponent.text = dialogue[index];
         Vector2 background = textComponent.textInfo.meshInfo[0].mesh.bounds.size;
-        background *= transform.localScale;
-        spriteRenderer.size = new Vector2(background.x + 0.25f, background.y + 0.2f);
+        Vector2 back = textComponent.bounds.size;
+        back *= transform.localScale;
+        spriteRenderer.size = new Vector2(back.x + 0.25f, back.y + 0.25f);
     }
 
     void NextLine() {
