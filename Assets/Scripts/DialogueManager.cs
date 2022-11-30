@@ -11,13 +11,23 @@ public class DialogueManager : MonoBehaviour {
     public float textSpeed = .05f;
     private int index = 0;
     public AudioSource audioSource;
-    public GameObject dialogueBox;
     private int dialogueCount;
+    [Space]
+    public GameObject dialogueBox;
+    private SpriteRenderer spriteRenderer;
 
-    
     //public AudioClip typingAudio;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if(dialogueBox.TryGetComponent(out SpriteRenderer dialogueBoxSpriteRenderer))
+        spriteRenderer = dialogueBox.GetComponent<SpriteRenderer>();
+        else
+        {
+            Debug.LogError("Dialogue Box does not have a Sprite Renderer");
+        }
+    }
     void Start()  {
 
         dialogueCount = dialogue.Length; 
@@ -52,11 +62,22 @@ public class DialogueManager : MonoBehaviour {
         audioSource.Play();
         foreach (char c in dialogue[index].ToCharArray())  {
             textComponent.text = textComponent.text + c;
+            SetBoarderSize();
             yield return new WaitForSeconds(textSpeed);   
         }
 
         //Debug.Log("Stopped Typing");
         audioSource.Stop();
+    }
+    
+    private void SetBoarderSize()
+    {
+        //textComponent.text = dialogue[index];
+        if (!spriteRenderer) return;
+        Vector2 background = textComponent.textInfo.meshInfo[0].mesh.bounds.size;
+        Vector2 back = textComponent.bounds.size;
+        back *= transform.localScale;
+        spriteRenderer.size = new Vector2(back.x + 0.25f, back.y + 0.25f);
     }
 
     void NextLine() {
