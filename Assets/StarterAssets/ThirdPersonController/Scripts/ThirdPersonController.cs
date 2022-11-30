@@ -369,6 +369,7 @@ namespace StarterAssets
                 GroundedRadius);
         }
 
+        //OnFootStep is being called threw animation
         private void OnFootstep(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
@@ -376,6 +377,7 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
+                    //Remove call from animation and call steps from here instead or make a note that this is called from animation
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }

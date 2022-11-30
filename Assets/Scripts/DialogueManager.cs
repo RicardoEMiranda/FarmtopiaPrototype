@@ -21,7 +21,12 @@ public class DialogueManager : MonoBehaviour {
     // Start is called before the first frame update
     private void Awake()
     {
+        if(dialogueBox.TryGetComponent(out SpriteRenderer dialogueBoxSpriteRenderer))
         spriteRenderer = dialogueBox.GetComponent<SpriteRenderer>();
+        else
+        {
+            Debug.LogError("Dialogue Box does not have a Sprite Renderer");
+        }
     }
     void Start()  {
 
@@ -68,6 +73,7 @@ public class DialogueManager : MonoBehaviour {
     private void SetBoarderSize()
     {
         //textComponent.text = dialogue[index];
+        if (!spriteRenderer) return;
         Vector2 background = textComponent.textInfo.meshInfo[0].mesh.bounds.size;
         Vector2 back = textComponent.bounds.size;
         back *= transform.localScale;
