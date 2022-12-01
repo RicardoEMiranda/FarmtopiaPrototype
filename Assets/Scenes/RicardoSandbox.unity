@@ -1360,30 +1360,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2562016527132506411, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527216207445, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527216207445, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527216207445, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527216207445, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527216207445, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2.23
-      objectReference: {fileID: 0}
     - target: {fileID: 2562016527369485075, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -1392,26 +1368,6 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 190362471}
-    - target: {fileID: 3213140399619728515, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213140399619728515, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213140399619728515, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -241
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213140399619728515, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3865425073190433070, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
 --- !u!1001 &2964265152747243065
