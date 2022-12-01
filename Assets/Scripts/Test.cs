@@ -5,7 +5,7 @@ using UnityEngine;
 public class Test : MonoBehaviour {
     //Todo: Delete this test script
 
-    //Ricardo's comment 
+    // Use this for initialization
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +16,10 @@ public class Test : MonoBehaviour {
     void Update()
     {
         //more changes bade by LAG 2020-04-08 1:50pm pst
+        //Delete this line
+    }
+    private void FixedUpdate()
+    {
+        //just here
     }
 }
