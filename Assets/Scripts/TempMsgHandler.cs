@@ -19,4 +19,8 @@ public class TempMsgHandler : MonoBehaviour {
         dialogueBox2.SetActive(true);
     }
 
+    public void OnDialogueNextButtonDown() {
+        Debug.Log("Next >");
+    }
+
 }
