@@ -9,6 +9,8 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] public GameObject panelNFTInventory;
     public AudioSource click;
 
+    public bool nextClicked;
+
     // Start is called before the first frame update
     void Start()  {
         panelCropInventory.SetActive(false);
@@ -39,5 +41,10 @@ public class InventoryManager : MonoBehaviour {
     public void OnNFTInventoryExitButtonDown() {
         panelNFTInventory.SetActive(false);
         click.Play();
+    }
+
+    public void OnDialogueNextButtonDown()  {
+        Debug.Log("Next >");
+        nextClicked = true;
     }
 }
