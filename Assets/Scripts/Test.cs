@@ -11,6 +11,7 @@ public class Test : MonoBehaviour {
     void Start()
     {
         //Changes made by LAG 2020-04-08 1:49pm pst
+        Debug.Log("Ed Test");
     }
     void Update()
     {
