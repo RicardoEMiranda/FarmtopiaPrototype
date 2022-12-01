@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2482749194736847728}
   - component: {fileID: 2482749194737813936}
   - component: {fileID: 5740845875144301271}
+  - component: {fileID: 5295468235435917614}
   m_Layer: 0
   m_Name: Field
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2482749194735884144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: -0.5, z: 0.5}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7917305971256971174}
@@ -55,6 +56,7 @@ MonoBehaviour:
   seedCarrot: {fileID: 5423862238548257007}
   seedMaze: {fileID: 5214303248050740517}
   carrotSeedlings: {fileID: 7917305971257267078}
+  fieldSelected: 0
 --- !u!33 &2482749194736847728
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -118,6 +120,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 0.29420337, z: 10}
   m_Center: {x: -5.000001, y: 0.14710169, z: -5}
+--- !u!65 &5295468235435917614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482749194735884144}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000002, y: 0.29420337, z: 10}
+  m_Center: {x: -5.000001, y: 0.14710169, z: -5}
 --- !u!1001 &667457579095784599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,6 +143,14 @@ PrefabInstance:
     - target: {fileID: 4692649711203007890, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692649711203007890, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692649711203007890, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4692649711203007890, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,14 +196,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeedMaze
       objectReference: {fileID: 0}
+    - target: {fileID: 4692649711203492274, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6085449276637159443, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
       propertyPath: seedCorn
       value: 
-      objectReference: {fileID: 5423862238548257007}
+      objectReference: {fileID: 7160042397808662956}
+    - target: {fileID: 6085449276637159443, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
+      propertyPath: seedMaze
+      value: 
+      objectReference: {fileID: 5214303248050740517}
     - target: {fileID: 6085449276637159443, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
       propertyPath: seedCarrot
       value: 
       objectReference: {fileID: 5423862238548257007}
+    - target: {fileID: 6085449276637159443, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
+      propertyPath: seedSquash
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6085449276637159443, guid: fcbaeb807ff6a8f499d38bac659e9371, type: 3}
       propertyPath: carrotSeedlings
       value: 
@@ -219,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 1444176423927579870, guid: bb787b66c1130024f8ad985cafa57dab, type: 3}
       propertyPath: seedSquash
       value: 
-      objectReference: {fileID: 5423862238548257007}
+      objectReference: {fileID: 0}
     - target: {fileID: 1444176423927579870, guid: bb787b66c1130024f8ad985cafa57dab, type: 3}
       propertyPath: carrotSeedlings
       value: 
@@ -318,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 5160609770078758072, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
       propertyPath: seedSquash
       value: 
-      objectReference: {fileID: 5423862238548257007}
+      objectReference: {fileID: 0}
     - target: {fileID: 5160609770078758072, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
       propertyPath: carrotSeedlings
       value: 
@@ -345,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5938298642829738294, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 5938298642829738294, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
       propertyPath: m_LocalPosition.y
@@ -353,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5938298642829738294, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.6000003
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5938298642829738294, guid: 23838fe2aef8d4841a5222c9fe64ea37, type: 3}
       propertyPath: m_LocalRotation.w
@@ -436,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5af58673dd95ef2488b28476b76ffa45, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5af58673dd95ef2488b28476b76ffa45, type: 3}
       propertyPath: m_LocalRotation.w
