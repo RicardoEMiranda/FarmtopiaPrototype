@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &45268459 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5332983439648488575, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
-  m_PrefabInstance: {fileID: 5332983438355515345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &169227026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3301678748044662420, guid: a5a55d20435d9714691eacf020267632, type: 3}
@@ -207,11 +202,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f951889d571d8d43a9afdc8caf44225, type: 3}
---- !u!1 &253890890 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2562016526951288377, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-  m_PrefabInstance: {fileID: 2562016527037407091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297800237
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +344,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5332983439648488545, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
   m_PrefabInstance: {fileID: 5332983438355515345}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45268459}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23b9e11f7cd7b6e489a47ae3c5a349fe, type: 3}
@@ -370,7 +360,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5332983439648488549, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
   m_PrefabInstance: {fileID: 5332983438355515345}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45268459}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011f94512bcf6304c83125f3b40b4d71, type: 3}
@@ -380,11 +370,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5656783156350296958, guid: cd8a029eec291304ea2d624c2cd5c0e6, type: 3}
   m_PrefabInstance: {fileID: 5656783155975199942}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2080945010 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2562016528848792577, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-  m_PrefabInstance: {fileID: 2562016527037407091}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &686414511201782944
 PrefabInstance:
@@ -825,6 +810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 480693046765978327, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 480693046765978331, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: m_Name
       value: Farmer-Antonio
@@ -874,41 +863,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1433484208}
-    - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnDialogueNextButtonDown
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: InventoryManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350201301117523586, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527132506411, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2562016527216207450, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 45268459}
     - target: {fileID: 2562016527369485075, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -917,6 +874,14 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 190362471}
+    - target: {fileID: 2647158650281796554, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1433484208}
+    - target: {fileID: 5520058946542831339, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
 --- !u!1001 &3301678747878335878
@@ -1103,11 +1068,11 @@ PrefabInstance:
     - target: {fileID: 5332983439648488549, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
       propertyPath: dialogueBox
       value: 
-      objectReference: {fileID: 253890890}
+      objectReference: {fileID: 0}
     - target: {fileID: 5332983439648488549, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
       propertyPath: dialogueBox2
       value: 
-      objectReference: {fileID: 2080945010}
+      objectReference: {fileID: 0}
     - target: {fileID: 5332983439648488549, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
       propertyPath: speechCanvas
       value: 
