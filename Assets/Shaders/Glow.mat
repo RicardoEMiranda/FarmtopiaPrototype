@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Glow
-  m_Shader: {fileID: -6465566751694194690, guid: 260b9f69c2062ce4fa8badba80ee8205, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4bacd868be6fd4c4dbd0b31b8174e8d1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -55,14 +55,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 0.253
+    - _BackCulling: 0
     - _PowerRange: 4.28
     - _PowerRangeMax: 10
     - _PowerRangeMin: 0
+    - _PulseSpeed: 10
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 0.23
+    - _Scale: 0.056
+    - _Thickness: 1.122
     m_Colors:
-    - _Color: {r: 0.46226418, g: 0.27186465, b: 0.1511807, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0.31760997, g: 1, b: 0.9999998, a: 0}
     - _Vector2: {r: 0.95, g: 0.95, b: 0, a: 0}
   m_BuildTextureStacks: []
