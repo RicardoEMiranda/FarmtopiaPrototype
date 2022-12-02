@@ -810,10 +810,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 480693046765978327, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 480693046765978331, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: m_Name
       value: Farmer-Antonio
@@ -878,10 +874,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1433484208}
-    - target: {fileID: 5520058946542831339, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2934414571010855817, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: level1Waypoints
+      value: 
+      objectReference: {fileID: 190362471}
+    - target: {fileID: 5164518995044052041, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: level1Waypoints
+      value: 
+      objectReference: {fileID: 190362471}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
 --- !u!1001 &3301678747878335878
