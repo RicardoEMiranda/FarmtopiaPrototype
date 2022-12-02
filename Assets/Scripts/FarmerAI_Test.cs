@@ -42,7 +42,7 @@ public class FarmerAI_Test : MonoBehaviour {
         //Debug.Log(delta);
 
 
-        if (delta >= .6)  {
+        if (delta >= .05)  {
             transform.Translate(new Vector3(-navigationVector.x, 0f, -navigationVector.z) * Time.deltaTime * speed);
             //transform.Translate(-Vector3.forward * Time.deltaTime * speed);
             animator.SetInteger("AnimState", 1);
