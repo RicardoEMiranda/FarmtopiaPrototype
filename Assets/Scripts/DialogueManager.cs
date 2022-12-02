@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour {
     void Start()  {
 
         dialogueCount = dialogue.Length; 
-        Debug.Log("Started");
+        //Debug.Log("Started");
         textComponent.text = "";
         StartDialogue();
     }
