@@ -1239,6 +1239,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2768674980748695097, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532279222979467310, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382644655671753689, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374964949465113287, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459175900635350015, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173097400476846285, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8623511466539252676, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
       propertyPath: m_Name
       value: FieldBin
