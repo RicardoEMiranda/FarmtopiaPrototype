@@ -14,6 +14,9 @@ public class DialogueManager_v2 : MonoBehaviour {
     [SerializeField] private GameObject farmHandAntonio;
     [SerializeField] private GameObject canvasSpeechBubble;
     [SerializeField] public float typingSpeed = .04f;
+    [SerializeField] public GameObject bubbleImage;
+    private List<string> dialogueText = new List<string>();
+
     private float delta;
     private int index = 0;
 
@@ -26,6 +29,11 @@ public class DialogueManager_v2 : MonoBehaviour {
     void Start() {        
 
         collisionDetector = waypoint.GetComponent<CollisionDetector>();
+
+        dialogueText.Add("Hello. I'm Farmhand Antonio!");
+        dialogueText.Add("You can click on the field next to me to select the hemp seed varietal to plant. Go ahead, give it a try!");
+        
+
     }
 
     // Update is called once per frame
@@ -46,7 +54,7 @@ public class DialogueManager_v2 : MonoBehaviour {
     }
 
     IEnumerator TypeText() {
-        foreach (char letter in level1Dialogue[index].ToCharArray()) {
+        foreach (char letter in dialogueText[index].ToCharArray()) {
             tmpDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
@@ -56,7 +64,7 @@ public class DialogueManager_v2 : MonoBehaviour {
     public void OnNextButtonDown() {
         //Debug.Log("Next");
 
-        if(index < level1Dialogue.Length -1)  {
+        if(index < dialogueText.Count -1)  {
             index++;
             tmpDisplay.text = ""; //reset the text before printing more
             StartCoroutine(TypeText());
@@ -64,7 +72,9 @@ public class DialogueManager_v2 : MonoBehaviour {
         }
         else  {
             tmpDisplay.text = "";
-            canvasSpeechBubble.SetActive(false);
+            //Debug.Log("else reached");
+            //canvasSpeechBubble.SetActive(false);
+            bubbleImage.SetActive(false);
         }
         
     }
