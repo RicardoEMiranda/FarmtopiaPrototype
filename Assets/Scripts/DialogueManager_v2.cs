@@ -15,7 +15,14 @@ public class DialogueManager_v2 : MonoBehaviour {
     [SerializeField] private GameObject canvasSpeechBubble;
     [SerializeField] public float typingSpeed = .04f;
     [SerializeField] public GameObject bubbleImage;
-    private List<string> dialogueText = new List<string>();
+    //private List<List<string>> dialogueText = new List<List<string>>();
+
+    private string[,] dialogueMatrix = new string[1, 3] {
+        {"Hello. I'm Farmhand Antonio!",
+         "You can click on the field next to me to select the hemp seed varietal to plant a new crop.",
+         "Go ahead, try it!",
+        }
+    };
 
     private float delta;
     private int index = 0;
@@ -30,8 +37,9 @@ public class DialogueManager_v2 : MonoBehaviour {
 
         collisionDetector = waypoint.GetComponent<CollisionDetector>();
 
-        dialogueText.Add("Hello. I'm Farmhand Antonio!");
-        dialogueText.Add("You can click on the field next to me to select the hemp seed varietal to plant. Go ahead, give it a try!");
+        //Debug.Log(dialogueMatrix[1][0]);
+        //dialogueText[0].Add("Hello. I'm Farmhand Antonio!");
+        //dialogueText[1].Add("You can click on the field next to me to select the hemp seed varietal to plant. Go ahead, give it a try!");
         
 
     }
@@ -54,7 +62,7 @@ public class DialogueManager_v2 : MonoBehaviour {
     }
 
     IEnumerator TypeText() {
-        foreach (char letter in dialogueText[index].ToCharArray()) {
+        foreach (char letter in dialogueMatrix[0, index].ToCharArray()) {
             tmpDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
@@ -64,7 +72,7 @@ public class DialogueManager_v2 : MonoBehaviour {
     public void OnNextButtonDown() {
         //Debug.Log("Next");
 
-        if(index < dialogueText.Count -1)  {
+        if(index < dialogueMatrix.Length -1)  {
             index++;
             tmpDisplay.text = ""; //reset the text before printing more
             StartCoroutine(TypeText());
@@ -78,4 +86,6 @@ public class DialogueManager_v2 : MonoBehaviour {
         }
         
     }
+
+
 }
