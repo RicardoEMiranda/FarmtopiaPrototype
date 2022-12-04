@@ -17,7 +17,13 @@ public class DialogueManager_v2 : MonoBehaviour {
     [SerializeField] public GameObject bubbleImage;
     //private List<List<string>> dialogueText = new List<List<string>>();
 
-    private string[,] dialogueMatrix = new string[1, 3] {
+    private string[,] dialogueMatrix = new string[1, 3] { 
+        //[1,3] is for 1 column, 3 rows
+        //when ready to implement level specific dialogue, can use the column dimension for each level and row dimension for the current mission#
+        //For example, if have 10 levels, would declare dialogueMatrix = new string[10, mission#]
+        //The level# and mission# can be public integers that come from MissionManager inside of the GameManager Object in hierarchy
+
+        //Sample Level 1 (index 0) dialogue.
         {"Hello. I'm Farmhand Antonio!",
          "You can click on the field next to me to select the hemp seed varietal to plant a new crop.",
          "Go ahead, try it!",
@@ -36,22 +42,11 @@ public class DialogueManager_v2 : MonoBehaviour {
     void Start() {        
 
         collisionDetector = waypoint.GetComponent<CollisionDetector>();
-
-        //Debug.Log(dialogueMatrix[1][0]);
-        //dialogueText[0].Add("Hello. I'm Farmhand Antonio!");
-        //dialogueText[1].Add("You can click on the field next to me to select the hemp seed varietal to plant. Go ahead, give it a try!");
         
-
     }
 
     // Update is called once per frame
     void Update()  {
-        //delta = (farmHandAntonio.transform.position - level1Waypoints.transform.position).magnitude;
-        //Debug.Log(delta);
-        //if(delta <= .1) {
-            //Debug.Log("At Waypoint");
-        //    canvasSpeechBubble.SetActive(true);
-        //}
 
         if(collisionDetector.hitFarmerAntonio) {
             ////Debug.Log("Farmer Antonio at Waypoint");
