@@ -8,11 +8,13 @@ public class MissionManager : MonoBehaviour {
     [SerializeField] public GameObject[] field;
     private FieldController[] fieldController = new FieldController[6];
     public int level = 0;
-    public int nextMission = 0;
+    public int currentMission = 1;
     public int dialogueQueue = 0;
     public bool playMissionDialogue;
+    public bool noFieldsSelected = true;
 
     private CollisionDetector collisionDetector;
+    [SerializeField] public GameObject dialogueBubble;
    
 
     // Start is called before the first frame update
@@ -28,26 +30,35 @@ public class MissionManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        DetectMission0();
         DetectMission1();
+        DetectMission2();
+        
     }
 
-    private void DetectMission0() {
+    private void DetectMission1() {
         if (collisionDetector.hitFarmerAntonio) {
-            Debug.Log("Hit Farmer Antonio (MissionManager");
+            //Debug.Log("Hit Farmer Antonio (MissionManager");
             collisionDetector.hitFarmerAntonio = false;
             playMissionDialogue = true;
             dialogueQueue = 0;
-        }
+            currentMission = 1;
+        }  
     }
 
-    private void DetectMission1()  {
+    private void DetectMission2()  {
 
         for(int i=0; i<fieldController.Length-1; i++)  {
-            if (fieldController[i].transform.GetChild(0).gameObject.activeSelf) {
-                //Debug.Log("Crop is active");
+            if (fieldController[i].transform.GetChild(0).gameObject.activeSelf && noFieldsSelected) {
+                dialogueBubble.SetActive(true);
+                //Debug.Log("Crop is active: " + fieldController[i].transform.GetChild(0).gameObject.name);
+                noFieldsSelected = false;
                 dialogueQueue = 1;
-            }
+                currentMission = 2;
+                playMissionDialogue = true;
+                //Debug.Log("Crop go is active: " + fieldController[i].transform.GetChild(0).gameObject.activeSelf);
+                //Debug.Log("Play mission 2 dialogue: " + playMissionDialogue);
+                //Debug.Log("Next Mission: " + nextMission);
+            } 
         }
     }
 }

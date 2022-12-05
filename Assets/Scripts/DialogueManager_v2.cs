@@ -18,20 +18,9 @@ public class DialogueManager_v2 : MonoBehaviour {
 
     [SerializeField] public GameObject MissionManager;
     private MissionManager missionManager;
-
-    private string[,] dialogueMatrix = new string[1, 3] { 
-        //[2,3] is for 2 columns , 3 rows
-        //when ready to implement level specific dialogue, can use the column dimension for each level and row dimension for the current mission#
-        //For example, if have 10 levels, would declare dialogueMatrix = new string[10, mission#]
-        //The level# and mission# can be public integers that come from MissionManager inside of the GameManager Object in hierarchy
-
-        //Sample Level 1 (index 0) dialogue.
-        {"Hello. I'm Farmhand Antonio!",
-         "You can click on the field next to me to select the hemp seed varietal to plant a new crop.",
-         "Go ahead, try it!",
-        },
-
-    };
+    private int mission;
+    private string[,] dialogueArray;
+    public bool stop;
 
     private float delta;
     private int index = 0;
@@ -46,35 +35,43 @@ public class DialogueManager_v2 : MonoBehaviour {
 
         collisionDetector = waypoint.GetComponent<CollisionDetector>();
         missionManager = MissionManager.GetComponent<MissionManager>();
+        //string[,] dialogueMatrix = new string[0,L0M1Dialogue.Length + L0M2Dialogue.Length];
+        //L0M1Dialogue.CopyTo(dialogueMatrix,0);
+        //L0M2Dialogue.CopyTo(dialogueMatrix, L0M1Dialogue.Length);
+        
     }
 
     // Update is called once per frame
     void Update()  {
 
-        if(missionManager.playMissionDialogue) {
+        if (missionManager.playMissionDialogue) {
+            mission = missionManager.currentMission;
+            Debug.Log("Play Mission Dialogue: " + missionManager.currentMission);
             
-            //Debug.Log("Play Mission Dialogue true");
-            missionManager.playMissionDialogue = false;
-            StartCoroutine(TypeText());
+            GetDialogue();
+            StartCoroutine(TypeText(dialogueArray[0, index]));
             audioSource.Play();
-        }
+            missionManager.playMissionDialogue = false;
+        } 
+   
     }
 
-    IEnumerator TypeText() {
-        foreach (char letter in dialogueMatrix[missionManager.dialogueQueue, index].ToCharArray()) {
+    IEnumerator TypeText(string array) {
+        foreach (char letter in dialogueArray[0, index].ToCharArray()) {
             tmpDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
         audioSource.Stop();
+        //StopCoroutine(TypeText(dialogueArray[0,index]));
     }
 
     public void OnNextButtonDown() {
         //Debug.Log("Next");
 
-        if(index < dialogueMatrix.Length -1)  {
+        if(index < dialogueArray.Length -1)  {
             index++;
             tmpDisplay.text = ""; //reset the text before printing more
-            StartCoroutine(TypeText());
+            StartCoroutine(TypeText(dialogueArray[0, index]));
             audioSource.Play();
         }
         else  {
@@ -82,9 +79,38 @@ public class DialogueManager_v2 : MonoBehaviour {
             //Debug.Log("else reached");
             //canvasSpeechBubble.SetActive(false);
             bubbleImage.SetActive(false);
-          
+            dialogueArray = null;
+            index = 0;
         }
         
+    }
+
+    private void GetDialogue()  {
+
+        if (missionManager.level==0 && missionManager.currentMission==1)  {
+            //Debug.Log("Level: " + missionManager.level + "  Mission: " + missionManager.nextMission);
+            dialogueArray = new string[1, 3] { 
+                {"Hello. I'm Farmhand Antonio!",
+                "You can click on the field next to me to select the hemp seed varietal to plant a new crop.",
+                "Go ahead, try it!",
+                },
+             };
+        } else if (missionManager.level == 0 && missionManager.currentMission == 2)  {
+            dialogueArray = null;
+            Debug.Log("Level: " + missionManager.level + "  Mission: " + missionManager.currentMission);
+            dialogueArray = new string[1, 5]   {
+                {"Great job! You've planted your first batch of hemp seed.",
+                "Now, we just wait until the crop is ready to harvest.",
+                "In the mean time, check out your crop and NFT inventories.",
+                "You can click on the inventory icons on the lower right to check them.",
+                "You can purchase NFTs and trade them in for discounts and free CBD products in our store.",
+                },
+            };
+        }
+        else {
+            Debug.Log("Exception.");
+        }
+
     }
 
 
