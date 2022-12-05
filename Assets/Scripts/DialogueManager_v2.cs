@@ -20,7 +20,7 @@ public class DialogueManager_v2 : MonoBehaviour {
     private MissionManager missionManager;
 
     private string[,] dialogueMatrix = new string[1, 3] { 
-        //[1,3] is for 1 column, 3 rows
+        //[2,3] is for 2 columns , 3 rows
         //when ready to implement level specific dialogue, can use the column dimension for each level and row dimension for the current mission#
         //For example, if have 10 levels, would declare dialogueMatrix = new string[10, mission#]
         //The level# and mission# can be public integers that come from MissionManager inside of the GameManager Object in hierarchy
@@ -29,7 +29,8 @@ public class DialogueManager_v2 : MonoBehaviour {
         {"Hello. I'm Farmhand Antonio!",
          "You can click on the field next to me to select the hemp seed varietal to plant a new crop.",
          "Go ahead, try it!",
-        }
+        },
+
     };
 
     private float delta;
@@ -51,10 +52,8 @@ public class DialogueManager_v2 : MonoBehaviour {
     void Update()  {
 
         if(missionManager.playMissionDialogue) {
-            //if(collisionDetector.hitFarmerAntonio) {
-            //Debug.Log("Farmer Antonio at Waypoint");
-            //collisionDetector.hitFarmerAntonio = false;
-            Debug.Log("Play Mission Dialogue true");
+            
+            //Debug.Log("Play Mission Dialogue true");
             missionManager.playMissionDialogue = false;
             StartCoroutine(TypeText());
             audioSource.Play();
@@ -62,7 +61,7 @@ public class DialogueManager_v2 : MonoBehaviour {
     }
 
     IEnumerator TypeText() {
-        foreach (char letter in dialogueMatrix[0, index].ToCharArray()) {
+        foreach (char letter in dialogueMatrix[missionManager.dialogueQueue, index].ToCharArray()) {
             tmpDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
@@ -83,6 +82,7 @@ public class DialogueManager_v2 : MonoBehaviour {
             //Debug.Log("else reached");
             //canvasSpeechBubble.SetActive(false);
             bubbleImage.SetActive(false);
+          
         }
         
     }
