@@ -167,7 +167,6 @@ Transform:
   m_Children:
   - {fileID: 2765329871359683442}
   - {fileID: 2562016527132506415}
-  - {fileID: 788802988065788231}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -4424,37 +4423,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000029802322, y: -0.09214255, z: 0.026248664}
     m_Extent: {x: 0.52818465, y: 0.88092995, z: 0.22050178}
   m_DirtyAABB: 0
---- !u!1 &5627203490665786343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 788802988065788231}
-  m_Layer: 8
-  m_Name: LevelObjectives
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &788802988065788231
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5627203490665786343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 999820471330199649}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5782839508808928313
 GameObject:
   m_ObjectHideFlags: 0
@@ -5503,6 +5471,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2749617143660626479}
     - target: {fileID: 1636933280694973342, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
+      propertyPath: bubbleImage
+      value: 
+      objectReference: {fileID: 3865425073190433070}
+    - target: {fileID: 1636933280694973342, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: tmpDropText
       value: 
       objectReference: {fileID: 2562016527216207444}
@@ -5516,7 +5488,7 @@ PrefabInstance:
       objectReference: {fileID: 2562016527132506411}
     - target: {fileID: 1636933280694973342, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: level1Dialogue.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1636933280694973342, guid: 631a21d382f7cca49a1fa469c5213c4a, type: 3}
       propertyPath: level1Dialogue.Array.data[0]
