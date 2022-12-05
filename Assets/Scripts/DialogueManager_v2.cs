@@ -15,7 +15,9 @@ public class DialogueManager_v2 : MonoBehaviour {
     [SerializeField] private GameObject canvasSpeechBubble;
     [SerializeField] public float typingSpeed = .04f;
     [SerializeField] public GameObject bubbleImage;
-    //private List<List<string>> dialogueText = new List<List<string>>();
+
+    [SerializeField] public GameObject MissionManager;
+    private MissionManager missionManager;
 
     private string[,] dialogueMatrix = new string[1, 3] { 
         //[1,3] is for 1 column, 3 rows
@@ -42,15 +44,18 @@ public class DialogueManager_v2 : MonoBehaviour {
     void Start() {        
 
         collisionDetector = waypoint.GetComponent<CollisionDetector>();
-        
+        missionManager = MissionManager.GetComponent<MissionManager>();
     }
 
     // Update is called once per frame
     void Update()  {
 
-        if(collisionDetector.hitFarmerAntonio) {
-            ////Debug.Log("Farmer Antonio at Waypoint");
-            collisionDetector.hitFarmerAntonio = false;
+        if(missionManager.playMissionDialogue) {
+            //if(collisionDetector.hitFarmerAntonio) {
+            //Debug.Log("Farmer Antonio at Waypoint");
+            //collisionDetector.hitFarmerAntonio = false;
+            Debug.Log("Play Mission Dialogue true");
+            missionManager.playMissionDialogue = false;
             StartCoroutine(TypeText());
             audioSource.Play();
         }
