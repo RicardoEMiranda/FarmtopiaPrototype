@@ -16,10 +16,10 @@ public class GlowIntensityController : MonoBehaviour {
     private float freq = .1f;
     private float val;
 
-
-    // Start is called before the first frame update
-    void Start() {
-        volume = gameObject.GetComponent<Volume>();
+    private void Start()  {
+        
+    //Start is called before the first frame update
+    volume = gameObject.GetComponent<Volume>();
         volume.profile.TryGet<Bloom>(out bloom);
         bloom.intensity.value = minVal;
         
@@ -27,8 +27,6 @@ public class GlowIntensityController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-
         bloom.intensity.value = Mathf.Sin(20f*Time.time)+15f;
         val = bloom.intensity.value = Mathf.Sin(3.14159f*.75f*Time.time)*25f + 30f;
         Debug.Log(val);
