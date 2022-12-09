@@ -90,7 +90,7 @@ public class Buttons : MonoBehaviour
 	{
 		_camera.transform.position = new Vector3(71.94f, 21.5f, -12.9f);
 		RenderSettings.skybox = sky01;
-		pine.transform.rotation = Quaternion.identity;
+		fir.transform.rotation = Quaternion.identity;
 		ash.SetActive(false);
 		aspen.SetActive(false);
 		fir.SetActive(false);
@@ -158,7 +158,7 @@ public class Buttons : MonoBehaviour
 	{
 		_camera.transform.position = new Vector3(75.95f, 16.03f, 0f);
 		RenderSettings.skybox = sky02;
-		winter_fir.transform.rotation = Quaternion.identity;
+		pine.transform.rotation = Quaternion.identity;
 		ash.SetActive(false);
 		aspen.SetActive(false);
 		fir.SetActive(false);

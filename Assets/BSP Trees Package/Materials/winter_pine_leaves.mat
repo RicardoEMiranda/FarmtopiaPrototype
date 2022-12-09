@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: winter_pine_leaves
-  m_Shader: {fileID: 4800000, guid: 4fdd873b8cd8f4e48bc23fbcef56a043, type: 3}
+  m_Shader: {fileID: 4800000, guid: e80a1e91e51638b47b825fa1c86cbb65, type: 3}
   m_ValidKeywords:
   - _WIND
   m_InvalidKeywords:
@@ -268,6 +268,7 @@ Material:
     - _TransNormalDistortion: 0.145
     - _TransScattering: 1
     - _TransShadow: 0
+    - _TransStrength: 1
     - _Translucency: 0
     - _TranslucencySaturation: 0
     - _TranslucencyViewDependency: 0

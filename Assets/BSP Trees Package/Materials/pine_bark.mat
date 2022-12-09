@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: pine_bark
-  m_Shader: {fileID: 4800000, guid: 4fdd873b8cd8f4e48bc23fbcef56a043, type: 3}
+  m_Shader: {fileID: 4800000, guid: e80a1e91e51638b47b825fa1c86cbb65, type: 3}
   m_ValidKeywords:
   - _WIND
   m_InvalidKeywords:
@@ -126,6 +126,7 @@ Material:
     - WindTurbulenceFloat2: 0.1
     - _AO_power: 0.733
     - _Adjust: -1.21
+    - _AlphaCutoff: 0.5
     - _AmbientPower: 0.349
     - _AmbientStrength: 0
     - _Amplitude: 0
