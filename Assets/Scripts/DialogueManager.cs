@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour {
         if(dialogueBox.TryGetComponent(out SpriteRenderer dialogueBoxSpriteRenderer))
         spriteRenderer = dialogueBox.GetComponent<SpriteRenderer>();
         else  {
-            Debug.LogError("Dialogue Box does not have a Sprite Renderer");
+            //Debug.LogError("Dialogue Box does not have a Sprite Renderer");
         }
     }
     void Start()  {
