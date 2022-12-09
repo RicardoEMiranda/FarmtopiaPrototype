@@ -29,6 +29,6 @@ public class GlowIntensityController : MonoBehaviour {
     void Update() {
         bloom.intensity.value = Mathf.Sin(20f*Time.time)+15f;
         val = bloom.intensity.value = Mathf.Sin(3.14159f*.75f*Time.time)*25f + 30f;
-        Debug.Log(val);
+        
     }
 }
