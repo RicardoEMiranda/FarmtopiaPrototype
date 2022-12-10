@@ -10,7 +10,7 @@ public class SeedController : MonoBehaviour {
     public GameObject carrotSeedlings;
 
     private void OnMouseDown() {
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         seedCorn.SetActive(false);
         seedCarrot.SetActive(false);
         seedMaze.SetActive(false);
