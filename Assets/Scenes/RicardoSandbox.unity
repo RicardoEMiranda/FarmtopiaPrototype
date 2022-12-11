@@ -497,10 +497,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 952275865013756077, guid: e7834828b3df0db418e4b29ac0a935df, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 952275865697644641, guid: e7834828b3df0db418e4b29ac0a935df, type: 3}
       propertyPath: m_Name
       value: UI-Canvas
@@ -876,6 +872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farmer-Antonio
       objectReference: {fileID: 0}
+    - target: {fileID: 480693046765978331, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 999820471330199649, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -992,10 +992,6 @@ PrefabInstance:
     - target: {fileID: 3301678749280209075, guid: a5a55d20435d9714691eacf020267632, type: 3}
       propertyPath: m_Name
       value: Waypoints
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978038323205926362, guid: a5a55d20435d9714691eacf020267632, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a55d20435d9714691eacf020267632, type: 3}
@@ -1172,6 +1168,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243835699655672901, guid: 01d11866d02becb409227b0ea78c921d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7735402035441281932, guid: 01d11866d02becb409227b0ea78c921d, type: 3}
       propertyPath: m_Name
       value: Environment
