@@ -14,6 +14,7 @@ public class Level1Manager : MonoBehaviour {
     private TextMeshProUGUI farmerNPCText;
     private GameObject mainCamera;
     private HostDialogueLevel1 hostDialogue;
+    private DissolveOnActivate dissolveOnActivate;
     //End Copy
     //Don't forget to declare using TMPro;
 
@@ -31,10 +32,12 @@ public class Level1Manager : MonoBehaviour {
         farmerNPCText = commonReferences.farmerNPCText;
         mainCamera = GameObject.Find("MainCamera");
         hostDialogue = commonReferences.dialogueBin.GetComponent<HostDialogueLevel1>();
+        dissolveOnActivate = commonReferences.functions.GetComponent<DissolveOnActivate>();
         //End Copy
         //Don't forget to declare using TMPro;
 
         currentMission = 1;
+       
     }
 
     // Update is called once per frame
@@ -45,8 +48,10 @@ public class Level1Manager : MonoBehaviour {
     public void HandleNarrativeEvent(string eventName) {
         if(eventName == "start_Level1_Intro")  {
             farmerHost.SetActive(true);
-            farmerHostDialogueBubble.SetActive(true);
-            Debug.Log("Farmer host Level 1 Intro");
+            dissolveOnActivate.OnActivate();
+            //farmerHostDialogueBubble.SetActive(true);
+
+            //Debug.Log("Farmer host Level 1 Intro");
         }
     }
 
