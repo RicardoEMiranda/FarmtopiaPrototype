@@ -22,6 +22,9 @@ public class DissolveOnActivate : MonoBehaviour {
         audioSource = dialogueBubble.GetComponent<AudioSource>();
     }
 
+    private void Update() {
+        
+    }
 
     public void OnActivate() {
         rawImage.CrossFadeAlpha(1, fadeTime, false);
@@ -40,8 +43,18 @@ public class DissolveOnActivate : MonoBehaviour {
     private void PlayClip() {
         if(!playedClip)  {
             audioSource.PlayOneShot(audioClip);
-            playedClip = true;
+            playedClip = true; 
         }
+    }
+
+    public bool ReadyToType() {
+
+        if(playedClip)  {
+            return true;
+        } else  {
+            return false;
+        }
+       
     }
 
 }

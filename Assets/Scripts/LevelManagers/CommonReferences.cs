@@ -13,5 +13,6 @@ public class CommonReferences : MonoBehaviour {
     [SerializeField] public TextMeshProUGUI farmerNPCText;
     [SerializeField] public GameObject dialogueBin;
     [SerializeField] public GameObject functions;
+    [SerializeField] public GameObject gameManager;
 
 }

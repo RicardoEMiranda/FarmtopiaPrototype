@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject levelContainer;
     private Level1Manager level1Manager;
     private Level2Manager level2Manager;
-    private int currentLevel; 
+    private int currentLevel;
+    private CommonReferences commonReferences;
+    private HostDialogueLevel1 hostDialogue;
+    private DissolveOnActivate dissolveOnActivate;
+    private TypeDialogue typeDialogue;
 
     private 
 
@@ -18,6 +22,12 @@ public class GameManager : MonoBehaviour {
         currentLevel = GetLevel();
         level1Manager = levelContainer.GetComponent<Level1Manager>();
         level2Manager = levelContainer.GetComponent<Level2Manager>();
+        commonReferences = levelContainer.GetComponent<CommonReferences>();
+        hostDialogue = commonReferences.dialogueBin.GetComponent<HostDialogueLevel1>();
+        typeDialogue = commonReferences.dialogueBin.GetComponent<TypeDialogue>();
+        dissolveOnActivate = commonReferences.functions.GetComponent<DissolveOnActivate>();
+        
+        
     }
 
     // Update is called once per frame
@@ -28,7 +38,7 @@ public class GameManager : MonoBehaviour {
         RunLevelManager(currentLevel);
     }
 
-    int GetLevel() {
+    public int GetLevel() {
         //need to get the player's current level in the game from Firebase
         //For now using a TMP input field for testing
         string inputText = levelInput.text; 
@@ -56,6 +66,14 @@ public class GameManager : MonoBehaviour {
             //use Level1Manager
             //Debug.Log(level1Manager.GetLevelMessage());
             level1Manager.HandleNarrativeEvent("start_Level1_Intro");
+
+            //Check if Host Farmer's Dialogue bubble is ready DissolveOnActivate.ReadyToType()
+            //If ReadyToType, type first line of text
+            //Debug.Log(dissolveOnActivate.ReadyToType());
+            if(dissolveOnActivate.ReadyToType())  {
+                //Debug.Log("Ready to Type");
+                Debug.Log(typeDialogue.Type(hostDialogue.ReturnString()));
+            }
 
         }
 

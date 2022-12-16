@@ -49,9 +49,8 @@ public class Level1Manager : MonoBehaviour {
         if(eventName == "start_Level1_Intro")  {
             farmerHost.SetActive(true);
             dissolveOnActivate.OnActivate();
-            //farmerHostDialogueBubble.SetActive(true);
-
             //Debug.Log("Farmer host Level 1 Intro");
+
         }
     }
 
