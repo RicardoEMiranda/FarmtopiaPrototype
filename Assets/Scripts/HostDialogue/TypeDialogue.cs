@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class TypeDialogue : MonoBehaviour {
+public class TypeDialogue : MonoBehaviour
+{
     //Purpose: TypeDialogue will take in the integer level from GameManager (field input for testing) and the corresponding dialogue line
     //from HostDialogueLevelx and type it out onto the HostFarmer's text mesh pro text field.
 
@@ -11,27 +13,41 @@ public class TypeDialogue : MonoBehaviour {
     [SerializeField] public GameObject gameManagerGO;
     private GameManager gameManager;
     private int level;
+    private bool startedTyping;
 
     //HostDialogueLevelx Reference: Need a refernce to the HostDialogueLevelx script to access the appropriate Dialogue array
 
 
-    private void Start()  {
+    private void Start()
+    {
         gameManager = gameManagerGO.GetComponent<GameManager>();
     }
 
-    private void Update() {
+    private void Update()
+    {
         gameManager = gameManagerGO.GetComponent<GameManager>();
         int level = gameManager.GetLevel();
         Debug.Log(level);
     }
 
-    public string Type(string dialogue)  {
+    public string Type(string dialogue, TextMeshProUGUI txt)  {
 
-        return dialogue;
-        //return "Test string";
+         //StartCoroutine(TypeText(dialogue, txt));
+         //audioSource.Play();
+         return dialogue;
+         //return dialogue;
+         //return "Test string";
+      
     }
 
-    
+    IEnumerator TypeText(string line, TextMeshProUGUI txt)  {
+        foreach (char letter in line.ToCharArray())  {
+            txt.text +=  letter;
+            yield return new WaitForSeconds(.2f);
+        }
+        //audioSource.Stop();
+
+    }
 }
 
 /*

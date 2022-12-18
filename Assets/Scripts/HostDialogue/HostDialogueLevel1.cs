@@ -27,9 +27,9 @@ public class HostDialogueLevel1 : MonoBehaviour {
         
     }
 
-    public string ReturnString()  {
-        return "We're glad you're here.";
-        //return line[0, 0];
+    public string ReturnString(int dialogueLine)  {
+        //return "We're glad you're here.";
+        return line[0, dialogueLine];
         //return line[0, row];
     }
 }

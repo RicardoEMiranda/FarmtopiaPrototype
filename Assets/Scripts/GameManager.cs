@@ -15,7 +15,11 @@ public class GameManager : MonoBehaviour {
     private DissolveOnActivate dissolveOnActivate;
     private TypeDialogue typeDialogue;
 
-    private 
+    private TextMeshProUGUI hostText;
+    private TextMeshProUGUI npcText;
+    public bool type;
+    private OnClickEvents hostOnClick;
+    int dialogueLine = 0;
 
     // Start is called before the first frame update
     void Start()  {
@@ -26,8 +30,9 @@ public class GameManager : MonoBehaviour {
         hostDialogue = commonReferences.dialogueBin.GetComponent<HostDialogueLevel1>();
         typeDialogue = commonReferences.dialogueBin.GetComponent<TypeDialogue>();
         dissolveOnActivate = commonReferences.functions.GetComponent<DissolveOnActivate>();
-        
-        
+        hostText = commonReferences.farmerHostDialogueText;
+        npcText = commonReferences.farmerNPCText;
+        hostOnClick = commonReferences.functions.GetComponent<OnClickEvents>();
     }
 
     // Update is called once per frame
@@ -63,6 +68,7 @@ public class GameManager : MonoBehaviour {
         //Debug.Log("Running Level: " + level);
 
         if(level == 1)  {
+           
             //use Level1Manager
             //Debug.Log(level1Manager.GetLevelMessage());
             level1Manager.HandleNarrativeEvent("start_Level1_Intro");
@@ -70,9 +76,26 @@ public class GameManager : MonoBehaviour {
             //Check if Host Farmer's Dialogue bubble is ready DissolveOnActivate.ReadyToType()
             //If ReadyToType, type first line of text
             //Debug.Log(dissolveOnActivate.ReadyToType());
-            if(dissolveOnActivate.ReadyToType())  {
+            if(dissolveOnActivate.ReadyToType() && dialogueLine == 0)  {
                 //Debug.Log("Ready to Type");
-                Debug.Log(typeDialogue.Type(hostDialogue.ReturnString()));
+                //Debug.Log(typeDialogue.Type(hostDialogue.ReturnString(0)));
+                //hostText.text = typeDialogue.Type(hostDialogue.ReturnString(0));
+                string d = hostDialogue.ReturnString(dialogueLine);
+                hostText.text = "";
+                type = true;
+                hostText.text = typeDialogue.Type(d, hostText);
+                //dialogueLine = 1;
+            }
+
+            if (hostOnClick.hostNextClicked)  {
+                //Debug.Log("Host Clicked");
+                hostOnClick.hostNextClicked = false;
+
+                if (dialogueLine <= hostDialogue.line.Length - 1)  {
+                    Debug.Log(dialogueLine);
+                    hostText.text = typeDialogue.Type(hostDialogue.ReturnString(dialogueLine), hostText);
+                    dialogueLine += 1;
+                }
             }
 
         }
