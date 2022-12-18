@@ -988,6 +988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farmer-Antonio
       objectReference: {fileID: 0}
+    - target: {fileID: 480693046765978331, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 999820471330199649, guid: 00e9416428d3fc2469be15bb64016bed, type: 3}
       propertyPath: m_RootOrder
       value: 5
