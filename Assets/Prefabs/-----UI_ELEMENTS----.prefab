@@ -701,6 +701,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 952275866209169177, guid: e7834828b3df0db418e4b29ac0a935df, type: 3}
+      propertyPath: m_Name
+      value: Button-BarnInventory
+      objectReference: {fileID: 0}
     - target: {fileID: 952275866209169179, guid: e7834828b3df0db418e4b29ac0a935df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

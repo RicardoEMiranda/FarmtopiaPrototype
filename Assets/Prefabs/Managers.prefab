@@ -289,6 +289,9 @@ MonoBehaviour:
   npcDialogueTMP: {fileID: 0}
   barnWaypoint: {fileID: 0}
   NPCManagersGO: {fileID: 0}
+  barnIsClickable: 0
+  barn: {fileID: 0}
+  barnInventoryButton: {fileID: 0}
 --- !u!1001 &6928535180508365774
 PrefabInstance:
   m_ObjectHideFlags: 0

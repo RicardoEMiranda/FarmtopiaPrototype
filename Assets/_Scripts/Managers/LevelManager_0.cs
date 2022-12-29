@@ -43,6 +43,7 @@ public class LevelManager_0 : MonoBehaviour {
     public bool barnIsClickable;
     [SerializeField] private GameObject barn;
     private DetectBarnClicked detectBarnClicked;
+    [SerializeField] private GameObject barnInventoryButton;
 
 
 
@@ -136,6 +137,7 @@ public class LevelManager_0 : MonoBehaviour {
         npcDialogueManager = NPCManagersGO.GetComponent<NPCDialogueManager>();
         npcDialogueTMP.text = "";
         detectBarnClicked = barn.GetComponent<DetectBarnClicked>();
+        barnInventoryButton.SetActive(false);
     }
 
     private void Update() {
@@ -160,8 +162,12 @@ public class LevelManager_0 : MonoBehaviour {
 
             case Step.Step2:
                 //reset number of OnClickEvents.numberOfClicks
-
                 RunStep2();
+                break;
+
+            case Step.Step3:
+                //Debug.Log("Step 3");
+                RunStep3();
                 break;
 
         }
@@ -226,6 +232,10 @@ public class LevelManager_0 : MonoBehaviour {
             //Debug.Log("Arrived at barn waypoint");
         }
         
+    }
+
+    private void RunStep3()  {
+        barnInventoryButton.SetActive(true);
     }
 
     private void CheckHostSelected()  {
@@ -322,8 +332,10 @@ public class LevelManager_0 : MonoBehaviour {
 
     private void CheckBarnClickedStatus()  {
         if(detectBarnClicked.barnClicked) {
-            Debug.Log("Barn Clicked");
+            //Debug.Log("Barn Clicked");
             barnIsClickable = false;
+            SetStep(Step.Step3);
+            IncrementStep();
         }
     }
 
