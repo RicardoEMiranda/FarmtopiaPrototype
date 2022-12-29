@@ -10,26 +10,34 @@ public class DetectBarnClicked : MonoBehaviour {
     [SerializeField] private AudioClip clipMagicWand;
     [SerializeField] private AudioClip clipPoof;
     [SerializeField] private GameObject vfxGO;
+    [SerializeField] private GameObject managersGO;
+    private LevelManager_0 levelManager0;
     private GameObject fireworks;
+    public bool barnClicked;
+
 
     private void Start()  {
         //audioMagicWand = GetComponent<AudioSource>();
         //audioPoof = GetComponent<AudioSource>();
         audioSource = GetComponent<AudioSource>();
         fireworks = vfxGO.transform.GetChild(0).gameObject;
-           
+        levelManager0 = managersGO.GetComponent<LevelManager_0>();
 
     }
 
-    private void OnMouseDown()  {
-        Debug.Log("Barn Clicked");
-        //audioMagicWand.Play();
-        //audioPoof.Play();
+    private void OnMouseDown() {
+
+        if (levelManager0.barnIsClickable) { 
+        //Debug.Log("Barn Clicked");
+
         audioSource.PlayOneShot(clipMagicWand);
         audioSource.PlayOneShot(clipPoof);
         fireworks.SetActive(true);
 
         StartCoroutine(StopFireworks());
+        barnClicked = true;
+        }
+
     }
 
     IEnumerator StopFireworks()  {

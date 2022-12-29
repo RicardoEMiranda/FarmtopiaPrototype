@@ -312,6 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &629363939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7522623287938580171, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+  m_PrefabInstance: {fileID: 3361924230767648520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &691003906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9013442138294809291, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
@@ -358,6 +363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1299603013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7736263832455770184, guid: 01d11866d02becb409227b0ea78c921d, type: 3}
+  m_PrefabInstance: {fileID: 7735402035830088433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1419560285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3579170269534854489, guid: 799ec9f94edeed6439461e4b00603190, type: 3}
@@ -728,6 +738,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: barn
+      value: 
+      objectReference: {fileID: 1299603013}
+    - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: managers
       value: 
       objectReference: {fileID: 1519446508}
@@ -1015,6 +1029,10 @@ PrefabInstance:
       propertyPath: vfxGO
       value: 
       objectReference: {fileID: 1419560285}
+    - target: {fileID: 6866175627359414888, guid: 01d11866d02becb409227b0ea78c921d, type: 3}
+      propertyPath: managersGO
+      value: 
+      objectReference: {fileID: 629363939}
     - target: {fileID: 7735402035441281932, guid: 01d11866d02becb409227b0ea78c921d, type: 3}
       propertyPath: m_Name
       value: ------ENVIRONMENT------

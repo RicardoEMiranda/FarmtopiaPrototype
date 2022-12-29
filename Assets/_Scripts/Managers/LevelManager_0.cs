@@ -40,7 +40,9 @@ public class LevelManager_0 : MonoBehaviour {
 
     [SerializeField] private GameObject NPCManagersGO;
     private NPCDialogueManager npcDialogueManager;
-    
+    public bool barnIsClickable;
+    [SerializeField] private GameObject barn;
+    private DetectBarnClicked detectBarnClicked;
 
 
 
@@ -133,7 +135,7 @@ public class LevelManager_0 : MonoBehaviour {
         npcCanvasGO.SetActive(false);
         npcDialogueManager = NPCManagersGO.GetComponent<NPCDialogueManager>();
         npcDialogueTMP.text = "";
-        
+        detectBarnClicked = barn.GetComponent<DetectBarnClicked>();
     }
 
     private void Update() {
@@ -142,12 +144,12 @@ public class LevelManager_0 : MonoBehaviour {
         CheckDialogueSequenceFinished();
 
         if (dialogueLevel1.barnIntroComplete)  {
-            Debug.Log("Barn Intro Complete");
+            //Debug.Log("Barn Intro Complete");
         }
 
         CheckNPCHostAtBarn();
         CheckNPCDialogueSequenceFinished();
-
+        CheckBarnClickedStatus();
     }
 
     private void SetStep(Step currentStep) {
@@ -158,6 +160,7 @@ public class LevelManager_0 : MonoBehaviour {
 
             case Step.Step2:
                 //reset number of OnClickEvents.numberOfClicks
+
                 RunStep2();
                 break;
 
@@ -220,14 +223,14 @@ public class LevelManager_0 : MonoBehaviour {
         //activate the dialogue box (NPCDialogueBuble.SetActive(true))
         Vector3 difference = farmerNPC.transform.position - barnWaypoint.transform.position;
         if(difference.magnitude <=.5)  {
-            Debug.Log("Arrived at barn waypoint");
+            //Debug.Log("Arrived at barn waypoint");
         }
         
     }
 
     private void CheckHostSelected()  {
         if (onClickEvents.hostNextClicked)  {
-            Debug.Log("Host selected: " + onClickEvents.hostClickedString);
+            //Debug.Log("Host selected: " + onClickEvents.hostClickedString);
             hostSelected = onClickEvents.hostClickedString;
             onClickEvents.hostNextClicked = false;
             selectFarmerHostPanel.SetActive(false);
@@ -270,7 +273,7 @@ public class LevelManager_0 : MonoBehaviour {
         farmerNPC.SetActive(true);
         
         if(hostSelected == "LittleMissSunshine")  {
-            Debug.Log("if entered");
+            //Debug.Log("if entered");
             farmerNPCGirl.SetActive(true);
             farmerNPCBoy.SetActive(false);
         }
@@ -295,8 +298,9 @@ public class LevelManager_0 : MonoBehaviour {
 
     private void CheckNPCDialogueSequenceFinished() {
         if(npcDialogueManager.dialogueSequenceFinished)   {
-            Debug.Log("Sequence Finished");
+            //Debug.Log("Sequence Finished");
             npcCanvasGO.SetActive(false);
+            barnIsClickable = true;
         }
     }
 
@@ -311,9 +315,15 @@ public class LevelManager_0 : MonoBehaviour {
                 arrivedAtBarn = true;
                 npcCanvasGO.SetActive(true);
                 npcDialogueManager.StartDialogue();
-                
-
+ 
             }
+        }
+    }
+
+    private void CheckBarnClickedStatus()  {
+        if(detectBarnClicked.barnClicked) {
+            Debug.Log("Barn Clicked");
+            barnIsClickable = false;
         }
     }
 
