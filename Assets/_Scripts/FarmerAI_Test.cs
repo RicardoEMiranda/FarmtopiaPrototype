@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Cinemachine;
 
 public class FarmerAI_Test : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class FarmerAI_Test : MonoBehaviour {
     [SerializeField] public float speed = 1.75f;
     [SerializeField] public GameObject speechBubble;
     [SerializeField] public TextMeshProUGUI textComponent;
+    [SerializeField] private CinemachineVirtualCamera overWorldCam;
+    [SerializeField] private CinemachineVirtualCamera NPCCam;
     public Vector3 navigationVector;
     public float delta;
 
@@ -30,6 +33,8 @@ public class FarmerAI_Test : MonoBehaviour {
         //theta = (Mathf.Atan2(navigationVector.z, navigationVector.x) * Mathf.Rad2Deg - 90)*-1;
 
         animator = GetComponent<Animator>();
+
+        NPCCam = NPCCam.GetComponent<CinemachineVirtualCamera>();
     }
 
     // Update is called once per frame
@@ -43,13 +48,29 @@ public class FarmerAI_Test : MonoBehaviour {
 
 
         if (delta >= .05)  {
-            transform.Translate(new Vector3(-navigationVector.x, 0f, -navigationVector.z) * Time.deltaTime * speed);
+            transform.forward = new Vector3(-navigationVector.x, 0f, -navigationVector.z)*-1;
+            transform.Translate(new Vector3(navigationVector.x, 0f, navigationVector.z) * Time.deltaTime * speed);
             //transform.Translate(-Vector3.forward * Time.deltaTime * speed);
             animator.SetInteger("AnimState", 1);
         }  else  {
             animator.SetInteger("AnimState", 0);
-            speechBubble.SetActive(true);
+
+            // Get the position of the object
+            Vector3 objectPosition = transform.position;
+    
+            // Get the camera's position
+            Vector3 cameraPosition = NPCCam.transform.position;
+  
+            // Calculate the direction from the object to the camera
+            Vector3 direction = cameraPosition - objectPosition;
+     
+
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            // Apply the rotation to the object
+            transform.rotation = rotation;
+
+            //speechBubble.SetActive(true);
         }
-        
+
     }
 }

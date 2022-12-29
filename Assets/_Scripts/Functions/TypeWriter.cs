@@ -13,7 +13,7 @@ public class TypeWriter : MonoBehaviour {
     private int characterIndex;
 
     private Coroutine typeCoroutine;
-    private float typeDelay = .1f;
+    private float typeDelay = .05f;
     public bool finishedTyping;
 
 
@@ -43,6 +43,7 @@ public class TypeWriter : MonoBehaviour {
         if (characterIndex == line.Length) {
             //Debug.Log("Finished typing!");
             finishedTyping = true;
+            audioSource.Stop();
         }
     }
 

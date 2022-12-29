@@ -587,7 +587,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.068
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -682,6 +682,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostNextClicked: 0
+  hostClickedString: 
+  audioPanelPop: {fileID: 0}
 --- !u!1 &5479328383215570010
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 62, y: -242}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5479328383310515684

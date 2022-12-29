@@ -10,7 +10,7 @@ public class HostDialogueLevel1 : MonoBehaviour {
     //Initially, will only be one host for Level 1
     //index j is for the number of lines that will be delivered by host i in level 1
 
-    [SerializeField] public TextMeshProUGUI textArea; 
+    [SerializeField] public TextMeshProUGUI textArea;
 
 
     // Start is called before the first frame update

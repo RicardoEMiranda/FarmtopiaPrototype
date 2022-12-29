@@ -25,9 +25,9 @@ public class TypeDialogue : MonoBehaviour
 
     private void Update()
     {
-        gameManager = gameManagerGO.GetComponent<GameManager>();
-        int level = gameManager.GetLevel();
-        Debug.Log(level);
+        //gameManager = gameManagerGO.GetComponent<GameManager>();
+        //int level = gameManager.GetLevel();
+        //Debug.Log(level);
     }
 
     public string Type(string dialogue, TextMeshProUGUI txt)  {

@@ -16,7 +16,6 @@ public class DialogueManager_v2 : MonoBehaviour {
     [SerializeField] public float typingSpeed = .04f;
     [SerializeField] public GameObject bubbleImage;
 
-    [SerializeField] public GameObject MissionManager;
     private MissionManager missionManager;
     private int mission;
     private string[,] dialogueArray;
@@ -34,7 +33,6 @@ public class DialogueManager_v2 : MonoBehaviour {
     void Start() {        
 
         collisionDetector = waypoint.GetComponent<CollisionDetector>();
-        missionManager = MissionManager.GetComponent<MissionManager>();
         //string[,] dialogueMatrix = new string[0,L0M1Dialogue.Length + L0M2Dialogue.Length];
         //L0M1Dialogue.CopyTo(dialogueMatrix,0);
         //L0M2Dialogue.CopyTo(dialogueMatrix, L0M1Dialogue.Length);
