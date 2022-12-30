@@ -139,6 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &160584616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4823178514687499097, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+  m_PrefabInstance: {fileID: 6355690048718597987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &190362471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3301678748031915745, guid: a5a55d20435d9714691eacf020267632, type: 3}
@@ -213,6 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f951889d571d8d43a9afdc8caf44225, type: 3}
+--- !u!1 &296982779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1738669234491326920, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+  m_PrefabInstance: {fileID: 1738669233983974144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297800237
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc06145ad5eeed54dbc09f32d8e84814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1491744986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4449583484030604746, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+  m_PrefabInstance: {fileID: 6355690048718597987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1511946929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3301678748031915744, guid: a5a55d20435d9714691eacf020267632, type: 3}
@@ -754,6 +769,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691003906}
     - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: sacagawea
+      value: 
+      objectReference: {fileID: 160584616}
+    - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: dialogueGO
       value: 
       objectReference: {fileID: 871729548}
@@ -801,6 +820,14 @@ PrefabInstance:
       propertyPath: farmerHostOverlay
       value: 
       objectReference: {fileID: 1130161673}
+    - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: hostDialogueGroup
+      value: 
+      objectReference: {fileID: 1491744986}
+    - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: barnInventoryButton
+      value: 
+      objectReference: {fileID: 296982779}
     - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: selectFarmerHostPanel
       value: 
@@ -983,6 +1010,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4821204751081895709, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6355690049055247107, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: NPCCam
       value: 
@@ -995,6 +1026,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 190362471}
+    - target: {fileID: 9013442138294809291, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
 --- !u!114 &6739119580548461519 stripped

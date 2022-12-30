@@ -23,6 +23,7 @@ public class LevelManager_0 : MonoBehaviour {
     [SerializeField] private GameObject farmerHostOverlay;
     [SerializeField] private GameObject farmerHostBoy;
     [SerializeField] private GameObject farmerHostGirl;
+    [SerializeField] private GameObject sacagawea;
     [SerializeField] private GameObject farmerNPC;
     [SerializeField] private GameObject farmerNPCBoy;
     [SerializeField] private GameObject farmerNPCGirl;
@@ -36,6 +37,7 @@ public class LevelManager_0 : MonoBehaviour {
     [SerializeField] private GameObject npcCanvasGO;
     [SerializeField] private TextMeshProUGUI npcDialogueTMP;
     [SerializeField] private GameObject barnWaypoint;
+    [SerializeField] private GameObject hostDialogueGroup;
     private bool arrivedAtBarn;
 
     [SerializeField] private GameObject NPCManagersGO;
@@ -143,7 +145,13 @@ public class LevelManager_0 : MonoBehaviour {
     private void Update() {
         CheckHostSelected();
 
-        CheckDialogueSequenceFinished();
+        if(step == 1)  {
+            bool finished = CheckDialogueSequenceFinished();
+            if(finished)  {
+                ActivateNPCandCam();
+            }
+        }
+        //CheckDialogueSequenceFinished();
 
         if (dialogueLevel1.barnIntroComplete)  {
             //Debug.Log("Barn Intro Complete");
@@ -166,8 +174,13 @@ public class LevelManager_0 : MonoBehaviour {
                 break;
 
             case Step.Step3:
-                //Debug.Log("Step 3");
+                //Debug.Log("Step: " + step +" should be 3");
                 RunStep3();
+                break;
+
+            case Step.Step4:
+                Debug.Log(currentStep);
+                RunStep4();
                 break;
 
         }
@@ -193,8 +206,12 @@ public class LevelManager_0 : MonoBehaviour {
         if(panelObject == hostOverlay) {
             hostOverlay.SetActive(true);
         }
+    }
 
-    
+    IEnumerator TurnOnBigHost(GameObject panelObject, GameObject host)  {
+        yield return new WaitForSeconds(2f);
+        hostOverlay.SetActive(true);
+        host.SetActive(true);
     }
 
     void IncrementStep()  {
@@ -235,7 +252,43 @@ public class LevelManager_0 : MonoBehaviour {
     }
 
     private void RunStep3()  {
+        //Debug.Log("Step 3");
         barnInventoryButton.SetActive(true);
+        SetStep(Step.Step4);
+        IncrementStep();
+    }
+
+    private void RunStep4()  {
+        //Debug.Log("Step 4");
+        if(npcDialogueManager.dialogueSequenceFinished)  {
+            Debug.Log("Sequence Finished");
+            dialogueManager.dialogueSequenceFinished = false;
+            //hostOverlay.SetActive(true);
+        }
+
+
+        //turn off NPC host after a delay
+        StartCoroutine(TurnOffNPCHost());
+
+        //Switch from NPC cam to OverWorld Cam before bringing up Sacagawea
+        //cinemachineManager.ActivateWorldCam();
+        //StartCoroutine(SwitchCamera("worldCam", 2f));
+
+        //bring up Sacagawea Overlay host
+        StartCoroutine(TurnOnSacagaweaOverlay(1.5f));
+        hostDialogueGroup.SetActive(true);
+        StartCoroutine(StartSacagaweaDialogue());
+        //dialogueManager.StartDialogue();
+        //Start dialogue and tell player they're getting 100 female hemp seed
+        //propmt player to check the inventory
+        //increment hemp seed inventory to 100
+
+
+    }
+
+    IEnumerator StartSacagaweaDialogue() {
+        yield return new WaitForSeconds(2f);
+        dialogueManager.StartDialogue();
     }
 
     private void CheckHostSelected()  {
@@ -295,15 +348,24 @@ public class LevelManager_0 : MonoBehaviour {
         
     }
 
-    private void CheckDialogueSequenceFinished()  {
+    private bool CheckDialogueSequenceFinished()  {
         if(dialogueManager.dialogueSequenceFinished) {
             //Debug.Log("Dialogue Sequence Finished");
+            //Debug.Log("Step: " + step);
             dialogueManager.dialogueSequenceFinished = false;
             hostOverlay.SetActive(false);
-            cinemachineManager.ActivateNPCCam();
-
-            ActivateNPC(); 
+            //cinemachineManager.ActivateNPCCam();
+            //ActivateNPC(); 
+            return true;
+        } else
+        {
+            return false;
         }
+    }
+
+    private void ActivateNPCandCam()  {
+        cinemachineManager.ActivateNPCCam();
+        ActivateNPC();
     }
 
     private void CheckNPCDialogueSequenceFinished() {
@@ -321,7 +383,7 @@ public class LevelManager_0 : MonoBehaviour {
             //activate the dialogue box (NPCDialogueBuble.SetActive(true))
             Vector3 difference = farmerNPC.transform.position - barnWaypoint.transform.position;
             if (difference.magnitude <= .1)   {
-                Debug.Log("Arrived at barn waypoint");
+                //Debug.Log("Arrived at barn waypoint");
                 arrivedAtBarn = true;
                 npcCanvasGO.SetActive(true);
                 npcDialogueManager.StartDialogue();
@@ -331,13 +393,45 @@ public class LevelManager_0 : MonoBehaviour {
     }
 
     private void CheckBarnClickedStatus()  {
-        if(detectBarnClicked.barnClicked) {
+        if(detectBarnClicked.barnClicked && barnIsClickable) {
             //Debug.Log("Barn Clicked");
             barnIsClickable = false;
             SetStep(Step.Step3);
             IncrementStep();
+            detectBarnClicked.barnClicked = false;
         }
     }
+
+    IEnumerator SwitchCamera(string cam,float delay)  {
+        yield return new WaitForSeconds(delay);
+        if(cam == "worldCam")  {
+            cinemachineManager.ActivateWorldCam();
+        }
+        if(cam == "npcCam")  {
+            cinemachineManager.ActivateNPCCam();
+        }
+    }
+
+    IEnumerator TurnOffNPCHost()  {
+        yield return new WaitForSeconds(1.5f);
+        farmerNPC.SetActive(false);
+    }
+
+    IEnumerator TurnOnSacagaweaOverlay(float delay)  {
+        yield return new WaitForSeconds(delay);
+        farmerHostOverlay.SetActive(true);
+
+        sacagawea.SetActive(true);
+        farmerHostBoy.SetActive(false);
+        farmerHostGirl.SetActive(false);
+        hostOverlayText.text = "";
+    }
+
+    //private void TurnOnSacagaweaOverlay() {
+    //Set overlay host
+    //farmerHostOverlay.SetActive(true);
+    //sacagawea.SetActive(true);
+    //}
 
 
 

@@ -15,16 +15,19 @@ public class HostDialogueManager : MonoBehaviour {
     private int line = 0;
     private bool messagePrinted;
     public bool dialogueSequenceFinished;
+
+    private DialogueLevel1_Sacagawea dialogueSacagawea;
     
     // Start is called before the first frame update
     void Start()  {
+        functionsGO.SetActive(true);
         onClickEvents = functionsGO.GetComponent<OnClickEvents>();
         line = onClickEvents.noOfClicks;
         typeWriter = functionsGO.GetComponent<TypeWriter>();
         hostDialogueL1 = dialogueGO.GetComponent<DialogueLevel1>();
         //Debug.Log("Inside Dummy Manager, string returned is: " + returnDialogue);
         onClickEvents = functionsGO.GetComponent<OnClickEvents>();
-
+        dialogueSacagawea = dialogueGO.GetComponent<DialogueLevel1_Sacagawea>();
 
         string returnDialogue = hostDialogueL1.ReturnString(line);
         //Debug.Log(returnDialogue);
@@ -57,4 +60,12 @@ public class HostDialogueManager : MonoBehaviour {
 
 
     }
+
+    public void StartDialogue()  {
+        string returnDialogue = dialogueSacagawea.ReturnString(line);
+        Debug.Log(returnDialogue);
+        typeWriter.Type(returnDialogue, textArea);
+    }
+
+
 }

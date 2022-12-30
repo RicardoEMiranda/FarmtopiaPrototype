@@ -58,7 +58,7 @@ public class NPCDialogueManager : MonoBehaviour {
 
     public void StartDialogue() {
         string returnDialogue = NPCDialogueL1.ReturnString(line);
-        Debug.Log(returnDialogue);
+        //Debug.Log(returnDialogue);
         typeWriter.Type(returnDialogue, textArea);
     }
 

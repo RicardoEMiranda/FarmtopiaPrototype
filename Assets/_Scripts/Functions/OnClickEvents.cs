@@ -13,17 +13,18 @@ public class OnClickEvents : MonoBehaviour {
     private void Start()  {
         hostClickedString = "";
         noOfClicks = 0;
+        Debug.Log(noOfClicks);
     }
 
     public void OnPickLittleMissHost() {
-        Debug.Log("LMS");
+        //Debug.Log("LMS");
         hostNextClicked = true;
         hostClickedString = "LittleMissSunshine";
         audioPanelPop.Play();
     }
 
     public void OnPickYoungManHost()  {
-        Debug.Log("Young Man Host");
+        //Debug.Log("Young Man Host");
         hostNextClicked = true;
         hostClickedString = "YoungMan";
         audioPanelPop.Play();
