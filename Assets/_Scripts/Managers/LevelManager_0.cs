@@ -70,7 +70,7 @@ public class LevelManager_0 : MonoBehaviour {
 
     /*Step 2: Activate Barn on lot
      * This step prompts the player to activate the inactive barn, which is already on the lot, but inactive
-     * 1. The Farmer Host (selected from step 1) comes up with the dialogue system and dialogue prompting player to click on the barn to 
+     * 1. The Farmer NPC Host (selected from step 1) comes up with the dialogue system and dialogue prompting player to click on the barn to 
      *    repair it. 
      *    a. Barn becomes clickable at this point
      * 2. The barn needs to be clickable, when clicked triggers particle and SFX to indicate barn is active and ready
@@ -179,7 +179,7 @@ public class LevelManager_0 : MonoBehaviour {
                 break;
 
             case Step.Step4:
-                Debug.Log(currentStep);
+                //Debug.Log(currentStep);
                 RunStep4();
                 break;
 
@@ -261,7 +261,7 @@ public class LevelManager_0 : MonoBehaviour {
     private void RunStep4()  {
         //Debug.Log("Step 4");
         if(npcDialogueManager.dialogueSequenceFinished)  {
-            Debug.Log("Sequence Finished");
+            //Debug.Log("Sequence Finished");
             dialogueManager.dialogueSequenceFinished = false;
             //hostOverlay.SetActive(true);
         }
@@ -275,6 +275,7 @@ public class LevelManager_0 : MonoBehaviour {
         //StartCoroutine(SwitchCamera("worldCam", 2f));
 
         //bring up Sacagawea Overlay host
+        
         StartCoroutine(TurnOnSacagaweaOverlay(1.5f));
         hostDialogueGroup.SetActive(true);
         StartCoroutine(StartSacagaweaDialogue());
@@ -415,6 +416,8 @@ public class LevelManager_0 : MonoBehaviour {
     IEnumerator TurnOffNPCHost()  {
         yield return new WaitForSeconds(1.5f);
         farmerNPC.SetActive(false);
+        onClickEvents.resetClicks = true;
+        
     }
 
     IEnumerator TurnOnSacagaweaOverlay(float delay)  {

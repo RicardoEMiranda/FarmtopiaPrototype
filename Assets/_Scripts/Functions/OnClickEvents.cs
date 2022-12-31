@@ -9,6 +9,7 @@ public class OnClickEvents : MonoBehaviour {
     public string hostClickedString;
     public bool dialogueNextButtonClicked;
     [SerializeField] private AudioSource audioPanelPop;
+    public bool resetClicks;
 
     private void Start()  {
         hostClickedString = "";

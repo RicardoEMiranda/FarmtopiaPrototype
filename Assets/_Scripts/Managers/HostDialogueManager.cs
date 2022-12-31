@@ -58,12 +58,19 @@ public class HostDialogueManager : MonoBehaviour {
             dialogueSequenceFinished = true;
         }
 
+        if(onClickEvents.noOfClicks == hostDialogueL1.NPCDialogue.Length)  {
+
+            onClickEvents.dialogueNextButtonClicked = false;
+            //onClickEvents.noOfClicks = 0;
+            dialogueSequenceFinished = true;
+            Debug.Log("NPC Dialogue Sequence Finished.");
+        }
 
     }
 
     public void StartDialogue()  {
         string returnDialogue = dialogueSacagawea.ReturnString(line);
-        Debug.Log(returnDialogue);
+        //Debug.Log(returnDialogue);
         typeWriter.Type(returnDialogue, textArea);
     }
 
