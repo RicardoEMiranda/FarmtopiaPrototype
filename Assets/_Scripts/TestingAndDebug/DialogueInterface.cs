@@ -5,15 +5,18 @@ using UnityEngine;
 
 
 public interface IDialogueL1 {
-    string[,] dialogue { get; }
-    string ReturnDialogue(string[,] hostDialogue, int line);
-
+    string[,] BigHost { get; }
+    string[,] NPC { get; }
+    //string ReturnDialogue(string[,] hostDialogue, int line);
+    string[,] Sacagawea { get; }
+    string ReturnDialogue(string[,] character, int line);
 }
 
-public class DialogueL1 : MonoBehaviour{
-    public virtual string ReturnDialogue(string[,] hostDialogue, int line)  {
-        return hostDialogue[0, line];
+//public class DialogueL1 : MonoBehaviour{
+ //   public virtual string ReturnDialogue(string[,] hostDialogue, int line)  {
+ //       return hostDialogue[0, line];
 
-    }
-}
+ //   }
+    
+//}
 

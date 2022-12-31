@@ -6,12 +6,7 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour {
 
-    [SerializeField] private GameObject dialogueBinBigHost;
-    [SerializeField] private GameObject dialogueBinNPC;
-    [SerializeField] private GameObject dialogueBinSacagawea;
-    private Dialogue_Level1_BigHost dialogueLevel1_BigHost;
-    private Dialogue_Level1_NPC dialogueLevel1_NPC;
-    private Dialogue_Level1_Sacagawea dialogueLevel1_Sacagawea;
+    [SerializeField] private GameObject dialogueBinGO;
 
     private int count;
 
@@ -20,101 +15,129 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private GameObject onClickManagersGO;
     private OnNextClicked onNextClicked;
     private HostDialogueL1 hostDialogueL1;
+    private string testCase;
 
     // Start is called before the first frame update
     void Start() {
-        dialogueLevel1_BigHost = dialogueBinBigHost.GetComponent<Dialogue_Level1_BigHost>();
-        dialogueLevel1_NPC = dialogueBinNPC.GetComponent<Dialogue_Level1_NPC>();
-        dialogueLevel1_Sacagawea = dialogueBinSacagawea.GetComponent<Dialogue_Level1_Sacagawea>();
+        //Debug.Log("Start running");
+        hostDialogueL1 = dialogueBinGO.GetComponent<HostDialogueL1>();
 
         int count = 0;
         dialogueTMP.fontSize = fontSize;
         dialogueTMP.text = "";
         onNextClicked = onClickManagersGO.GetComponent<OnNextClicked>();
 
-        //Start dialogue output for line 1 from the start
-        string returnString = dialogueLevel1_BigHost.ReturnDialogue(dialogueLevel1_BigHost.dialogue, 0);
-        dialogueTMP.text = returnString;
-        hostDialogueL1 = dialogueBinBigHost.GetComponent<HostDialogueL1>();
-       
-        //string str = BigHost.ReturnDialogue(BigHost.dialogue, 0);
+        //Activate BigHost Dialogue Bin Start dialogue output for line 1 from the start
+        //string returnString = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, 0);
+        //dialogueTMP.text = returnString;
 
     }
 
     // Update is called once per frame
     void Update() {
 
-        //Start the dialogue bubble before running the check for Next Button Clicked
-        //Start sequence goes here......
-
-        //Then check if onNextClick.clicked
-        if(onNextClicked.clicked) {
-            if (onNextClicked.count < hostDialogueL1.dialogue.Length)  {
-                //Debug.Log("Clicked : " + onNextClicked.clicked + " Count: " + onNextClicked.count);
-                string returnString = hostDialogueL1.ReturnDialogue(dialogueLevel1_BigHost.dialogue, onNextClicked.count);
-                dialogueTMP.text = returnString;
-                onNextClicked.clicked = false;
-            } else   {
-                //this means that the dialogue for this character has run out and need to turn off the caption bubble at this point
-            }
-           
+        if (Input.GetKeyDown(KeyCode.A)) { //Initialize Big Host Dialogue event
+            Debug.Log("A");
+            testCase = "A";
+            //Initialize shared dialogue parameters
+            //Initialize hostDialogueL1.BigHost, return first string in hostDialogueL1.BigHost to TMP
+            dialogueBinGO.SetActive(true);
+            InitializeDialogueParameters(hostDialogueL1.BigHost);
         }
-
-        //select A, S or D keys
-        //A for Big Host dialogue, S for NPC and D for Sacagawea
-        if(Input.GetKeyDown(KeyCode.A))  {
-            //Debug.Log("A");
-            //count = 0;
-            //if (count < dialogueLevel1_BigHost.dialogueBigHost.Length)  {
-            //string returnString = dialogueLevel1.dialogueNPC[0, count]; //make sure the reference matches the one in the if statement
-            //    string returnString = dialogueLevel1_BigHost.ReturnDialogue(dialogueLevel1_BigHost.dialogueBigHost, count);
-            //    dialogueTMP.text = returnString;
-            //Debug.Log(returnString);
-            //}
-
-            //string returnString = dialogueLevel1_BigHost.ReturnDialogue(dialogueLevel1_BigHost.dialogueBigHost, 0);
-            //dialogueTMP.text = returnString;
-
-            string output = CheckNextButtonClicked(onNextClicked.clicked, onNextClicked.count, hostDialogueL1);
-            dialogueTMP.text = output;
+        if(onNextClicked.clicked && testCase == "A")  {
             onNextClicked.clicked = false;
-
-        } 
-
-        string CheckNextButtonClicked(bool nextClicked, int clickCount, IDialogueL1 characterDialogue)  { 
-
-            if (nextClicked)  {
-                if (clickCount < characterDialogue.dialogue.Length)  {
-                    //Debug.Log("Clicked : " + onNextClicked.clicked + " Count: " + onNextClicked.count);
-                    string returnString = characterDialogue.ReturnDialogue(characterDialogue.dialogue, onNextClicked.count);
-                    //dialogueTMP.text = returnString;
-                    //onNextClicked.clicked = false;
-                    return returnString;
-                }
-                else {
-                    //this means that the dialogue for this character has run out and need to turn off the caption bubble at this point
-                    return "";
-                }
+            count += 1;
+            //Continue Big Host Dialogue
+            if (count >= hostDialogueL1.BigHost.Length)  {
+                count = 0;
+                dialogueBinGO.SetActive(false);
             } else  {
-                return "";
+                string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
+                dialogueTMP.text = output;
             }
-
         }
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+            Debug.Log("S");
+            testCase = "B";
+            //Initialize shared dialogue parameters
+            //Initialize hostDialogueL1.NPC, return first string in hostDialogueL1.NPC to TMP
+            dialogueBinGO.SetActive(true);
+            InitializeDialogueParameters(hostDialogueL1.NPC);
+        }
+        if (onNextClicked.clicked && testCase == "B")  {
+            onNextClicked.clicked = false;
+            count += 1;
+            //Continue Big Host Dialogue
+            if (count >= hostDialogueL1.NPC.Length)  {
+                count = 0;
+                dialogueBinGO.SetActive(false);
+            } else {
+                string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC, count);
+                dialogueTMP.text = output;
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.D)) {
+            Debug.Log("D");
+            testCase = "D";
+            //Initialize hostDialogueL1.Sacagawea
+            //Initialize hostDialogueL1.Sacagawea, return first string in hostDialogueL1.Sacagawea to TMP
+            dialogueBinGO.SetActive(true);
+            InitializeDialogueParameters(hostDialogueL1.Sacagawea);  
+        }
+        if (onNextClicked.clicked && testCase == "D") {
+            onNextClicked.clicked = false;
+            count += 1;
+            //Continue Big Host Dialogue
+            if (count >= hostDialogueL1.Sacagawea.Length) {
+                count = 0;
+                dialogueBinGO.SetActive(false);
+            }  else   {
+                string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.Sacagawea, count);
+                dialogueTMP.text = output;
+            }
+        }
+
+
+        //Debug.Log(count);
+        /*if (Input.GetKeyDown(KeyCode.DownArrow) || onNextClicked.clicked)  {
+            onNextClicked.clicked = false;
+            Debug.Log("Clicked: " + onNextClicked.clicked);
+            //Debug.Log("Key Down");
+            count += 1;
+            if(count >= hostDialogueL1.BigHost.Length)  {
+                //Debug.Log("No more text, reset Count.");
+                count = 0;
+                dialogueBinGO.SetActive(false);
+            } else  {
+                string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
+                dialogueTMP.text = output;
+            } 
+        }*/
 
     }
+
+    private void InitializeDialogueParameters(string[,] character) {
+        //hostDialogueL1 = dialogueBinGO.GetComponent<HostDialogueL1>();
+        int count = 0;
+        dialogueTMP.fontSize = fontSize;
+        dialogueTMP.text = "";
+        //onNextClicked = onClickManagersGO.GetComponent<OnNextClicked>();
+        string returnString = hostDialogueL1.ReturnDialogue(character, 0);
+        dialogueTMP.text = returnString;
+    }
+
+    private void PrintNextLine(string[,] character) {
+        onNextClicked.clicked = false;
+        //Debug.Log("Clicked: " + onNextClicked.clicked);
+        //Debug.Log("Key Down");
+        count += 1;
+        string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
+        dialogueTMP.text = output;
+    }
+  
 
 }
 
-/*public void CheckNextButtonClicked(object obj)
-{
-    if (obj is MyNamespace.Dialogue_BigHost)
-    {
-        MyNamespace.Dialogue_BigHost bigHost = (MyNamespace.Dialogue_BigHost)obj;
-        // Do something with the bigHost object
-    }
-    else if (obj is MyNamespace.Dialogue_NPC)
-    {
-        MyNamespace.Dialogue_NPC npc = (MyNamespace.Dialogue_NPC)obj;
-        // Do something with the npc object
-    }
-}*/
