@@ -7,17 +7,23 @@ using TMPro;
 public class LevelManager : MonoBehaviour {
 
     [SerializeField] private GameObject dialogueBinGO;
+    private AudioSource audioSource;
 
     private int count;
 
     [SerializeField] private TextMeshProUGUI dialogueTMP;
     [SerializeField] public int fontSize = 28;
     [SerializeField] private GameObject onClickManagersGO;
+    private TypeWriter typeWriter;
     private OnNextClicked onNextClicked;
     private HostDialogueL1 hostDialogueL1;
 
     //Test Case variables
     private string testCase;
+
+    private int characterIndex;
+    private float typeDelay = .05f;
+    private bool finishedTyping;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,7 +34,7 @@ public class LevelManager : MonoBehaviour {
         dialogueTMP.fontSize = fontSize;
         dialogueTMP.text = "";
         onNextClicked = onClickManagersGO.GetComponent<OnNextClicked>();
-
+        audioSource = dialogueBinGO.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,7 +57,10 @@ public class LevelManager : MonoBehaviour {
                 dialogueBinGO.SetActive(false);
             } else  {
                 string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
-                dialogueTMP.text = output;
+                //dialogueTMP.text = output;
+                characterIndex = 0;
+                StartCoroutine(Type(output, dialogueTMP));
+                audioSource.Play();
             }
         }
 
@@ -72,7 +81,10 @@ public class LevelManager : MonoBehaviour {
                 dialogueBinGO.SetActive(false);
             } else {
                 string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC, count);
-                dialogueTMP.text = output;
+                characterIndex = 0;
+                StartCoroutine(Type(output, dialogueTMP));
+                audioSource.Play();
+                //dialogueTMP.text = output;
             }
         }
 
@@ -94,7 +106,10 @@ public class LevelManager : MonoBehaviour {
                 dialogueBinGO.SetActive(false);
             }  else   {
                 string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.Sacagawea, count);
-                dialogueTMP.text = output;
+                //dialogueTMP.text = output;
+                characterIndex = 0;
+                StartCoroutine(Type(output, dialogueTMP));
+                audioSource.Play();
             }
         }
 
@@ -107,16 +122,41 @@ public class LevelManager : MonoBehaviour {
         dialogueTMP.text = "";
         //onNextClicked = onClickManagersGO.GetComponent<OnNextClicked>();
         string returnString = hostDialogueL1.ReturnDialogue(character, 0);
-        dialogueTMP.text = returnString;
+        //dialogueTMP.text = returnString;
+
+        //dialogueTMP.text = StartCoroutine(Type(returnString));
+        characterIndex = 0;
+        StartCoroutine(Type(returnString, dialogueTMP));
+        audioSource.Play();
     }
 
-    private void PrintNextLine(string[,] character) {
+    /*private void PrintNextLine(string[,] character) {
         onNextClicked.clicked = false;
         //Debug.Log("Clicked: " + onNextClicked.clicked);
         //Debug.Log("Key Down");
         count += 1;
         string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
-        dialogueTMP.text = output;
+        //dialogueTMP.text = output;
+
+        StartCoroutine(Type(output, dialogueTMP));
+        audioSource.Play();
+    }*/
+
+    IEnumerator Type(string str, TextMeshProUGUI TMP)  {
+        TMP.text = "";
+        foreach (char c in str) {
+            TMP.text += c;
+            //textArea.text += c;
+            characterIndex++;
+            yield return new WaitForSeconds(typeDelay);
+        }
+        audioSource.Stop();
+
+        if (characterIndex == str.Length)  {
+            //Debug.Log("Finished typing!");
+            finishedTyping = true;
+            audioSource.Stop();
+        }
     }
   
 
