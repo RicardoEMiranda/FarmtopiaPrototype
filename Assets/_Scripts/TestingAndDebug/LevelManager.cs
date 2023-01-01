@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private GameObject onClickManagersGO;
     private OnNextClicked onNextClicked;
     private HostDialogueL1 hostDialogueL1;
+
+    //Test Case variables
     private string testCase;
 
     // Start is called before the first frame update
@@ -27,17 +29,13 @@ public class LevelManager : MonoBehaviour {
         dialogueTMP.text = "";
         onNextClicked = onClickManagersGO.GetComponent<OnNextClicked>();
 
-        //Activate BigHost Dialogue Bin Start dialogue output for line 1 from the start
-        //string returnString = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, 0);
-        //dialogueTMP.text = returnString;
-
     }
 
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.A)) { //Initialize Big Host Dialogue event
-            Debug.Log("A");
+        if (Input.GetKeyDown(KeyCode.A)) { //Test Case A is for when activating BigHost Dialogue 
+            //Debug.Log("A");
             testCase = "A";
             //Initialize shared dialogue parameters
             //Initialize hostDialogueL1.BigHost, return first string in hostDialogueL1.BigHost to TMP
@@ -57,8 +55,8 @@ public class LevelManager : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.S)) {
-            Debug.Log("S");
+        if (Input.GetKeyDown(KeyCode.S)) { //Test Case S is for when activating NPC Dialogue
+            //Debug.Log("S");
             testCase = "B";
             //Initialize shared dialogue parameters
             //Initialize hostDialogueL1.NPC, return first string in hostDialogueL1.NPC to TMP
@@ -79,8 +77,8 @@ public class LevelManager : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.D)) {
-            Debug.Log("D");
+        if (Input.GetKeyDown(KeyCode.D)) { //Test Case D is for when activating Sacagawea Dialogue
+            //Debug.Log("D");
             testCase = "D";
             //Initialize hostDialogueL1.Sacagawea
             //Initialize hostDialogueL1.Sacagawea, return first string in hostDialogueL1.Sacagawea to TMP
@@ -99,23 +97,6 @@ public class LevelManager : MonoBehaviour {
                 dialogueTMP.text = output;
             }
         }
-
-
-        //Debug.Log(count);
-        /*if (Input.GetKeyDown(KeyCode.DownArrow) || onNextClicked.clicked)  {
-            onNextClicked.clicked = false;
-            Debug.Log("Clicked: " + onNextClicked.clicked);
-            //Debug.Log("Key Down");
-            count += 1;
-            if(count >= hostDialogueL1.BigHost.Length)  {
-                //Debug.Log("No more text, reset Count.");
-                count = 0;
-                dialogueBinGO.SetActive(false);
-            } else  {
-                string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
-                dialogueTMP.text = output;
-            } 
-        }*/
 
     }
 
