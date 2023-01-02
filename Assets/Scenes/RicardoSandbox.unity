@@ -365,6 +365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf44291009e3454c9bd5fa91b6b1408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueBinGO: {fileID: 310052374}
+  dialogueTMP: {fileID: 586255691}
+  fontSize: 28
   selectFarmerHostPanel: {fileID: 345706076}
   manFarmerButton: {fileID: 484346199}
   girlFarmerButton: {fileID: 1808321712}
@@ -490,6 +493,14 @@ PrefabInstance:
     - target: {fileID: 7403457579069314423, guid: 99c8aeac19ad5e74e85c7461a1730ce2, type: 3}
       propertyPath: m_Name
       value: DialogueBin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985102766845946367, guid: 99c8aeac19ad5e74e85c7461a1730ce2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -205
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985102768038151268, guid: 99c8aeac19ad5e74e85c7461a1730ce2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99c8aeac19ad5e74e85c7461a1730ce2, type: 3}
@@ -1164,7 +1175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4449583484030604746, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4509021067694217531, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: m_RootOrder
@@ -1221,6 +1232,10 @@ PrefabInstance:
     - target: {fileID: 4822818442671873459, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077314639958756812, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -154
       objectReference: {fileID: 0}
     - target: {fileID: 6355690049055247107, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: NPCCam

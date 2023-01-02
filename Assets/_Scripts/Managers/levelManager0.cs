@@ -6,6 +6,16 @@ using Cinemachine;
 
 public class levelManager0 : MonoBehaviour {
 
+    [Header("Dialogue Bin Properties")]
+    [SerializeField] private GameObject dialogueBinGO;
+    [SerializeField] private GameObject clickManagerGO;
+    [SerializeField] private TextMeshProUGUI dialogueTMP;
+    [SerializeField] public int fontSize = 28;
+    private HostDialogueL1 hostDialogueL1;
+    private AudioSource audioSource;
+    private OnNextClicked onNextClicked;
+
+    
     [Header ("Select Host Panel Properties")]
     [SerializeField] private GameObject selectFarmerHostPanel;
     [SerializeField] private GameObject manFarmerButton;
@@ -29,6 +39,12 @@ public class levelManager0 : MonoBehaviour {
     private OnClickEvents onClickEvents;
 
     private int Step = 1;
+    private int characterIndex;
+    private float typeDelay = .05f;
+    private int count;
+
+    private bool introDialogueStarted;
+    private bool introDialogueComplete;
 
     // Start is called before the first frame update
     void Start()  {
@@ -36,6 +52,10 @@ public class levelManager0 : MonoBehaviour {
         farmerHostSelected = false;
         onClickEvents = functionsGO.GetComponent<OnClickEvents>();
         hostPreferencesSet = false;
+
+        hostDialogueL1 = dialogueBinGO.GetComponent<HostDialogueL1>();
+        audioSource = dialogueBinGO.GetComponent<AudioSource>();
+        onNextClicked = clickManagerGO.GetComponent<OnNextClicked>();
     }
 
     // Update is called once per frame
@@ -66,9 +86,36 @@ public class levelManager0 : MonoBehaviour {
                 hostPreferencesSet = true;
             }
 
-
             //Start Big Host intro Dialogue: Welcome to the farm and let's check out the barn
+            //Activate Big Host Canvas & Dialogue
+            if(hostPreferencesSet && !introDialogueStarted)  {
+                introDialogueStarted = true;
+                
+                StartCoroutine(ActivateWithDelay(bigHostCanvas, 1.25f));
+                dialogueTMP.text = "";
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.BigHost, 1.5f));
+            }
+
+            if(onNextClicked.clicked && activeHost == bigHostCanvas.activeInHierarchy)  {
+                onNextClicked.clicked = false;
+                count += 1;
+                //Debug.Log("On Next Clicked");
+
+                if(count >= hostDialogueL1.BigHost.Length)  {
+                    count = 0;
+                    dialogueBinGO.SetActive(false);
+                    bigHostCanvas.SetActive(false);
+                }
+                else  {
+                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
+                    characterIndex = 0;
+                    StartCoroutine(Type(output, dialogueTMP));
+                    audioSource.Play();
+                }
+
+            }
             
+
             //Once finished with the intro, turn off panel and set Step = 2;
         }
 
@@ -114,6 +161,32 @@ public class levelManager0 : MonoBehaviour {
         }
     }
 
+    IEnumerator InitializeDialogueParameters(string[,] character, float delay)  {
+        yield return new WaitForSeconds(delay);
+        int count = 0;
+        dialogueTMP.fontSize = fontSize;
+        dialogueTMP.text = "";
+        string returnString = hostDialogueL1.ReturnDialogue(character, 0);
+
+        characterIndex = 0;
+        StartCoroutine(Type(returnString, dialogueTMP));
+        audioSource.Play();
+       
+    }
+
+    IEnumerator Type (string str, TextMeshProUGUI TMP) {
+        TMP.text = "";
+        foreach(char c in str)  {
+            TMP.text += c;
+            characterIndex++;
+            yield return new WaitForSeconds(typeDelay);
+        }
+        audioSource.Stop();
+
+        if(characterIndex == str.Length) {
+            audioSource.Stop();
+        }
+    }
     
 }
 
