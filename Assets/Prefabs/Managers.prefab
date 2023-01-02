@@ -131,6 +131,7 @@ MonoBehaviour:
   hostClickedString: 
   dialogueNextButtonClicked: 0
   audioPanelPop: {fileID: 8718164824637643584}
+  resetClicks: 0
 --- !u!82 &8718164824637643584
 AudioSource:
   m_ObjectHideFlags: 0
@@ -279,6 +280,7 @@ MonoBehaviour:
   farmerHostOverlay: {fileID: 0}
   farmerHostBoy: {fileID: 0}
   farmerHostGirl: {fileID: 0}
+  sacagawea: {fileID: 0}
   farmerNPC: {fileID: 0}
   farmerNPCBoy: {fileID: 0}
   farmerNPCGirl: {fileID: 0}
@@ -288,10 +290,15 @@ MonoBehaviour:
   npcCanvasGO: {fileID: 0}
   npcDialogueTMP: {fileID: 0}
   barnWaypoint: {fileID: 0}
+  hostDialogueGroup: {fileID: 0}
   NPCManagersGO: {fileID: 0}
   barnIsClickable: 0
   barn: {fileID: 0}
   barnInventoryButton: {fileID: 0}
+  dialogueCanvasGO: {fileID: 0}
+  onClickManagerGO: {fileID: 0}
+  dialogueTMP: {fileID: 0}
+  fontSize: 28
 --- !u!1001 &6928535180508365774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,6 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1605536226470609473, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
+    - {fileID: 1181825830055971720, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
 --- !u!1 &3361924231659922598 stripped
 GameObject:

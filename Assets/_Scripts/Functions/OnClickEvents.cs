@@ -14,6 +14,7 @@ public class OnClickEvents : MonoBehaviour {
     private void Start()  {
         hostClickedString = "";
         noOfClicks = 0;
+        hostNextClicked = false;
         Debug.Log(noOfClicks);
     }
 

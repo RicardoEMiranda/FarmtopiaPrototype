@@ -47,8 +47,20 @@ public class LevelManager_0 : MonoBehaviour {
     private DetectBarnClicked detectBarnClicked;
     [SerializeField] private GameObject barnInventoryButton;
 
-
-
+    [Header ("Dialogue Bubble Properties")]
+    //New Dialogue Group Properties
+    [SerializeField] private GameObject dialogueCanvasGO;
+    [SerializeField] private GameObject onClickManagerGO;
+    [SerializeField] private TextMeshProUGUI dialogueTMP;
+    [SerializeField] public int fontSize = 28;
+    private OnNextClicked onNextClicked;
+    private HostDialogueL1 hostDialogueL1;
+    private AudioSource audioSource;
+    private int count;
+    private int characterIndex;
+    private float typeDelay = .05f;
+ 
+    
     // Start is called before the first frame update
     /*Initial States: 
     * Farmer Host Game Object inactive
@@ -140,16 +152,29 @@ public class LevelManager_0 : MonoBehaviour {
         npcDialogueTMP.text = "";
         detectBarnClicked = barn.GetComponent<DetectBarnClicked>();
         barnInventoryButton.SetActive(false);
+
+        //Start New Dialogue Group properties
+        hostDialogueL1 = dialogueCanvasGO.GetComponent<HostDialogueL1>();
+        onNextClicked = onClickManagerGO.GetComponent<OnNextClicked>();
+        audioSource = dialogueCanvasGO.GetComponent<AudioSource>();
+        int count = 0;
+        dialogueTMP.fontSize = fontSize;
+        dialogueTMP.text = "";
+
     }
 
     private void Update() {
         CheckHostSelected();
 
         if(step == 1)  {
-            bool finished = CheckDialogueSequenceFinished();
-            if(finished)  {
-                ActivateNPCandCam();
-            }
+            //bool finished = CheckDialogueSequenceFinished();
+            //if(finished)  {
+            //ActivateNPCandCam();
+            //}
+
+            //hostOverlay.SetActive(true);
+            //dialogueCanvasGO.SetActive(true);
+
         }
         //CheckDialogueSequenceFinished();
 
@@ -182,9 +207,7 @@ public class LevelManager_0 : MonoBehaviour {
                 //Debug.Log(currentStep);
                 RunStep4();
                 break;
-
-        }
-        
+        } 
     }
 
     
@@ -235,7 +258,6 @@ public class LevelManager_0 : MonoBehaviour {
     private void RunStep1() {
         //Debug.Log("Step 1 case");
         StartCoroutine(OverlayDelay(selectFarmerHostPanel, 2f));
-   
     }
 
     private void RunStep2()  {
