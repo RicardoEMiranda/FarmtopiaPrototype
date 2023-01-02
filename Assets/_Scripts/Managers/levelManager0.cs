@@ -6,7 +6,7 @@ using Cinemachine;
 
 public class levelManager0 : MonoBehaviour {
 
-    [Header("Dialogue Bin Properties")]
+    [Header("Big Host Dialogue Bin Properties")]
     [SerializeField] private GameObject dialogueBinGO;
     [SerializeField] private GameObject clickManagerGO;
     [SerializeField] private TextMeshProUGUI dialogueTMP;
@@ -14,8 +14,21 @@ public class levelManager0 : MonoBehaviour {
     private HostDialogueL1 hostDialogueL1;
     private AudioSource audioSource;
     private OnNextClicked onNextClicked;
+    private OnNextClicked npcOnNextClicked;
 
-    
+    [Header("NPC Character Properties")]
+    [SerializeField] private GameObject npcCanvas;
+    [SerializeField] private GameObject npcMan;
+    [SerializeField] private GameObject npcGirl;
+    [SerializeField] private GameObject npcDialogueBinGO;
+    [SerializeField] private GameObject npcDialogueCanvasGO;
+    [SerializeField] private GameObject npcClickManagerGO;
+    private AudioSource npcAudioSource;
+    [SerializeField] private TextMeshProUGUI npcDialogueTMP;
+    [SerializeField] private Transform waypoint1;
+    private FarmerAI farmerAI;
+
+
     [Header ("Select Host Panel Properties")]
     [SerializeField] private GameObject selectFarmerHostPanel;
     [SerializeField] private GameObject manFarmerButton;
@@ -30,10 +43,11 @@ public class levelManager0 : MonoBehaviour {
     private bool hostSelected;
     private bool hostPreferencesSet;
 
-    [Header ("NPC Character Properties")]
-    [SerializeField] private GameObject npcCanvas;
-    [SerializeField] private GameObject npcMan;
-    [SerializeField] private GameObject npcGirl;
+    [Header("Cameras")]
+    [SerializeField] private GameObject CameraRig;
+    private CinemachineManager cinemachineManager;
+ 
+
 
     [SerializeField] private GameObject functionsGO;
     private OnClickEvents onClickEvents;
@@ -42,9 +56,10 @@ public class levelManager0 : MonoBehaviour {
     private int characterIndex;
     private float typeDelay = .05f;
     private int count;
+    private bool npcActivated;
 
     private bool introDialogueStarted;
-    private bool introDialogueComplete;
+    private bool npcIntroDialogueStarted;
 
     // Start is called before the first frame update
     void Start()  {
@@ -55,7 +70,11 @@ public class levelManager0 : MonoBehaviour {
 
         hostDialogueL1 = dialogueBinGO.GetComponent<HostDialogueL1>();
         audioSource = dialogueBinGO.GetComponent<AudioSource>();
+        npcAudioSource = npcDialogueCanvasGO.GetComponent<AudioSource>();
         onNextClicked = clickManagerGO.GetComponent<OnNextClicked>();
+        npcOnNextClicked = npcClickManagerGO.GetComponent<OnNextClicked>();
+        farmerAI = npcCanvas.GetComponent<FarmerAI>();
+        cinemachineManager = CameraRig.GetComponent<CinemachineManager>();
     }
 
     // Update is called once per frame
@@ -93,7 +112,7 @@ public class levelManager0 : MonoBehaviour {
                 
                 StartCoroutine(ActivateWithDelay(bigHostCanvas, 1.25f));
                 dialogueTMP.text = "";
-                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.BigHost, 1.5f));
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.BigHost, 1.5f, dialogueTMP));
             }
 
             if(onNextClicked.clicked && activeHost == bigHostCanvas.activeInHierarchy)  {
@@ -102,9 +121,11 @@ public class levelManager0 : MonoBehaviour {
                 //Debug.Log("On Next Clicked");
 
                 if(count >= hostDialogueL1.BigHost.Length)  {
+                    //Once finished with the intro, turn off panel and set Step = 2;
                     count = 0;
                     dialogueBinGO.SetActive(false);
                     bigHostCanvas.SetActive(false);
+                    Step = 2;
                 }
                 else  {
                     string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.BigHost, count);
@@ -116,12 +137,57 @@ public class levelManager0 : MonoBehaviour {
             }
             
 
-            //Once finished with the intro, turn off panel and set Step = 2;
         }
 
         if(Step == 2)  {
             //Step 2 begins after Big Host gives his intro dialogue: Welcome to the farm and let's check out the barn
-            Debug.Log("Step 2");
+            //Debug.Log("Step 2");
+
+            //Activate NPC character and NPC camera
+            if (!npcActivated)  {
+                npcCanvas.SetActive(true);
+                npcActivated = true;
+                cinemachineManager.ActivateNPCCam();
+                farmerAI.start = true;
+                farmerAI.GoToWaypoint(waypoint1);
+                npcActivated = true;
+            }
+
+            //Check NPC is at waypoint, once at waypoint, activate dialogue
+            Vector3 delta = npcCanvas.transform.position - waypoint1.position;
+            float deltaMagnitude = delta.magnitude;
+           
+            if(deltaMagnitude <= .05 && !npcIntroDialogueStarted)  {
+                //npcIntroDialogueStarted = true;
+                npcDialogueBinGO.SetActive(true);
+                npcDialogueTMP.text = "";
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC, .5f, npcDialogueTMP));
+                npcIntroDialogueStarted = true;
+            }
+         
+            if (npcOnNextClicked.clicked && npcCanvas.activeInHierarchy)  {
+                npcOnNextClicked.clicked = false;
+                count += 1;
+
+                if (count >= hostDialogueL1.NPC.Length)  {
+                    //Once finished with the intro, turn off panel and set Step = 2;
+                    count = 0;
+                    npcDialogueCanvasGO.SetActive(false);
+                    npcCanvas.SetActive(false);
+                }
+                else  {
+                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC, count);
+                    characterIndex = 0;
+                    StartCoroutine(Type(output, npcDialogueTMP));
+                    npcAudioSource.Play();
+                    //string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC, count);
+                    //characterIndex = 0;
+                    //StartCoroutine(Type(output, npcDialogueTMP));
+                    //npcAudioSource.Play();
+                }
+            }
+
+
         }
     }
 
@@ -161,7 +227,8 @@ public class levelManager0 : MonoBehaviour {
         }
     }
 
-    IEnumerator InitializeDialogueParameters(string[,] character, float delay)  {
+    IEnumerator InitializeDialogueParameters(string[,] character, float delay, TextMeshProUGUI tmp)  {
+
         yield return new WaitForSeconds(delay);
         int count = 0;
         dialogueTMP.fontSize = fontSize;
@@ -169,8 +236,14 @@ public class levelManager0 : MonoBehaviour {
         string returnString = hostDialogueL1.ReturnDialogue(character, 0);
 
         characterIndex = 0;
-        StartCoroutine(Type(returnString, dialogueTMP));
-        audioSource.Play();
+        StartCoroutine(Type(returnString, tmp));
+        if(tmp == npcDialogueTMP) {
+            npcAudioSource.Play();
+        }
+        else  {
+            audioSource.Play();
+        }
+        //audioSource.Play();
        
     }
 
@@ -187,7 +260,9 @@ public class levelManager0 : MonoBehaviour {
             audioSource.Stop();
         }
     }
+
     
+
 }
 
 /*
