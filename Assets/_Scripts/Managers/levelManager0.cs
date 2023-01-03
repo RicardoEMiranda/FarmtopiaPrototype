@@ -46,7 +46,13 @@ public class levelManager0 : MonoBehaviour {
     [Header("Cameras")]
     [SerializeField] private GameObject CameraRig;
     private CinemachineManager cinemachineManager;
- 
+
+    [Header ("Barn Properties")]
+    [SerializeField] private GameObject barn;
+    [SerializeField] private GameObject barnInventoryButton;
+    private DetectBarnClicked detectBarnClicked;
+    public bool barnIsClickable;
+    private bool barnRepaired;
 
 
     [SerializeField] private GameObject functionsGO;
@@ -75,6 +81,13 @@ public class levelManager0 : MonoBehaviour {
         npcOnNextClicked = npcClickManagerGO.GetComponent<OnNextClicked>();
         farmerAI = npcCanvas.GetComponent<FarmerAI>();
         cinemachineManager = CameraRig.GetComponent<CinemachineManager>();
+
+        //Script attached to the Barn Transform. DetectBarnClicked uses the 
+        //box collider attached to the Barn Transform to detect when the collider is clicked on
+        detectBarnClicked = barn.GetComponent<DetectBarnClicked>();
+        //Set Barn Inventory to inactive. This will activate later after the barn has been repaired
+        barnInventoryButton.SetActive(false);
+        barnRepaired = false;
     }
 
     // Update is called once per frame
@@ -174,19 +187,32 @@ public class levelManager0 : MonoBehaviour {
                     count = 0;
                     npcDialogueCanvasGO.SetActive(false);
                     npcCanvas.SetActive(false);
+
+                    barnIsClickable = true;
                 }
                 else  {
                     string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC, count);
                     characterIndex = 0;
                     StartCoroutine(Type(output, npcDialogueTMP));
                     npcAudioSource.Play();
-                    //string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC, count);
-                    //characterIndex = 0;
-                    //StartCoroutine(Type(output, npcDialogueTMP));
-                    //npcAudioSource.Play();
+                    
                 }
             }
 
+            CheckBarnClicked();
+            if(barnRepaired)  {
+                Step = 3;
+            }
+        }
+
+        if(Step == 3) {
+            //The barn fixed VFX needs a couple of seconds to play. After a couple of seconds,
+            //Switch to Main Camera and Activate Sacagawea BigHost
+            StartCoroutine(SwitchCamAfterDelay(cinemachineManager, "ActivateWorldCam", 2f));
+
+            //Start Sacagawea Big Host Dialogue: You have earned 100 seed and check the Barn Inventory
+            //Activate Big Host Canvas & Dialogue
+            
 
         }
     }
@@ -261,7 +287,26 @@ public class levelManager0 : MonoBehaviour {
         }
     }
 
-    
+    private void CheckBarnClicked()  {
+        if(detectBarnClicked.barnClicked && barnIsClickable && !barnRepaired)  {
+            //Debug.Log("Barn Clicked & Not Repaired");
+            barnIsClickable = false;
+            detectBarnClicked.barnClicked = false;
+            barnRepaired = true;
+            barnInventoryButton.SetActive(true);
+        }
+
+    }
+
+    IEnumerator SwitchCamAfterDelay(CinemachineManager cinemachineManager, string method, float delay) {
+        yield return new WaitForSeconds(delay);
+        if(method == "ActivateWorldCam") {
+            cinemachineManager.ActivateWorldCam();
+        } 
+        if(method == "ActivateNPCCam")  {
+            cinemachineManager.ActivateNPCCam();
+        }
+    }
 
 }
 

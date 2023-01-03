@@ -11,7 +11,7 @@ public class DetectBarnClicked : MonoBehaviour {
     [SerializeField] private AudioClip clipPoof;
     [SerializeField] private GameObject vfxGO;
     [SerializeField] private GameObject managersGO;
-    private LevelManager_0 levelManager0;
+    private levelManager0 levelManager0;
     private GameObject fireworks;
     public bool barnClicked;
 
@@ -21,7 +21,7 @@ public class DetectBarnClicked : MonoBehaviour {
         //audioPoof = GetComponent<AudioSource>();
         audioSource = GetComponent<AudioSource>();
         fireworks = vfxGO.transform.GetChild(0).gameObject;
-        levelManager0 = managersGO.GetComponent<LevelManager_0>();
+        levelManager0 = managersGO.GetComponent<levelManager0>();
 
     }
 

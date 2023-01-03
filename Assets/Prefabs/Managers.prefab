@@ -331,6 +331,9 @@ MonoBehaviour:
   bigHostMan: {fileID: 0}
   bigHostGirl: {fileID: 0}
   CameraRig: {fileID: 0}
+  barn: {fileID: 0}
+  barnInventoryButton: {fileID: 0}
+  barnIsClickable: 0
   functionsGO: {fileID: 4052629135361157799}
 --- !u!1001 &6928535180508365774
 PrefabInstance:

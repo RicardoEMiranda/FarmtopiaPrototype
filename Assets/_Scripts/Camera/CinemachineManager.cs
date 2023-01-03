@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using Cinemachine;
 
-public class CinemachineManager : MonoBehaviour {
+public class CinemachineManager : MonoBehaviour, ICinemachineManager {
 
    [SerializeField] private GameObject overWorldCam;
    [SerializeField] private GameObject NPCCam;
