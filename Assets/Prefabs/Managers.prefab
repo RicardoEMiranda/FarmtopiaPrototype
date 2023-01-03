@@ -319,6 +319,7 @@ MonoBehaviour:
   npcCanvas: {fileID: 0}
   npcMan: {fileID: 0}
   npcGirl: {fileID: 0}
+  npcSacagawea: {fileID: 0}
   npcDialogueBinGO: {fileID: 0}
   npcDialogueCanvasGO: {fileID: 0}
   npcClickManagerGO: {fileID: 0}
@@ -330,6 +331,7 @@ MonoBehaviour:
   bigHostCanvas: {fileID: 0}
   bigHostMan: {fileID: 0}
   bigHostGirl: {fileID: 0}
+  bigHostSacagawea: {fileID: 0}
   CameraRig: {fileID: 0}
   barn: {fileID: 0}
   barnInventoryButton: {fileID: 0}

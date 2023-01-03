@@ -15,7 +15,7 @@ public class OnClickEvents : MonoBehaviour {
         hostClickedString = "";
         noOfClicks = 0;
         hostNextClicked = false;
-        Debug.Log(noOfClicks);
+        //Debug.Log(noOfClicks);
     }
 
     public void OnPickLittleMissHost() {

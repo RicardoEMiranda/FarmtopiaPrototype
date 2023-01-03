@@ -20,6 +20,7 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject npcCanvas;
     [SerializeField] private GameObject npcMan;
     [SerializeField] private GameObject npcGirl;
+    [SerializeField] private GameObject npcSacagawea;
     [SerializeField] private GameObject npcDialogueBinGO;
     [SerializeField] private GameObject npcDialogueCanvasGO;
     [SerializeField] private GameObject npcClickManagerGO;
@@ -39,6 +40,7 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject bigHostCanvas;
     [SerializeField] private GameObject bigHostMan;
     [SerializeField] private GameObject bigHostGirl;
+    [SerializeField] private GameObject bigHostSacagawea;
     private GameObject activeHost;
     private bool hostSelected;
     private bool hostPreferencesSet;
@@ -54,6 +56,10 @@ public class levelManager0 : MonoBehaviour {
     public bool barnIsClickable;
     private bool barnRepaired;
 
+    [Header("Barn Inventory Properties")]
+    [SerializeField] private TextMeshProUGUI hempSeedTMP;
+    private int hempSeedCount;
+
 
     [SerializeField] private GameObject functionsGO;
     private OnClickEvents onClickEvents;
@@ -66,6 +72,8 @@ public class levelManager0 : MonoBehaviour {
 
     private bool introDialogueStarted;
     private bool npcIntroDialogueStarted;
+    private bool hostStarted;
+    private bool hostFinished;
 
     // Start is called before the first frame update
     void Start()  {
@@ -136,7 +144,7 @@ public class levelManager0 : MonoBehaviour {
                 if(count >= hostDialogueL1.BigHost.Length)  {
                     //Once finished with the intro, turn off panel and set Step = 2;
                     count = 0;
-                    dialogueBinGO.SetActive(false);
+                    //dialogueBinGO.SetActive(false);
                     bigHostCanvas.SetActive(false);
                     Step = 2;
                 }
@@ -202,18 +210,73 @@ public class levelManager0 : MonoBehaviour {
             CheckBarnClicked();
             if(barnRepaired)  {
                 Step = 3;
+                //Reset host selection bools for step 3
+                hostPreferencesSet = false;
+                bool hostStarted = false;
+                introDialogueStarted = false;
             }
         }
 
         if(Step == 3) {
+
             //The barn fixed VFX needs a couple of seconds to play. After a couple of seconds,
             //Switch to Main Camera and Activate Sacagawea BigHost
             StartCoroutine(SwitchCamAfterDelay(cinemachineManager, "ActivateWorldCam", 2f));
 
-            //Start Sacagawea Big Host Dialogue: You have earned 100 seed and check the Barn Inventory
-            //Activate Big Host Canvas & Dialogue
-            
+            //Set Sacagawea character as the active host, this is the parameter that needs to be
+            //passed to SetHostPreferences
+            activeHost = bigHostSacagawea;
 
+            if(!hostPreferencesSet)  {
+                SetHostPreferences(activeHost);
+                //Debug.Log("Setting Host Preferences");
+                hostPreferencesSet = true;
+
+            }
+
+            if (hostPreferencesSet && !hostStarted)  {
+                hostStarted = true;
+
+                //Activate big host Canvas (assumes that Dialogue Bubble (bigHostCanvas) is also active bydefault)
+                StartCoroutine(ActivateWithDelay(bigHostCanvas, 4f));
+                StartCoroutine(ActivateWithDelay(dialogueBinGO, 4f));
+                dialogueTMP.text = "";
+                //Start Sacagawea Big Host Dialogue: You have earned 100 seed and check the Barn Inventory
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.Sacagawea, 4.05f, dialogueTMP));
+            }
+
+            if (onNextClicked.clicked && activeHost == bigHostCanvas.activeInHierarchy)  {
+                onNextClicked.clicked = false;
+                count += 1;
+                //Debug.Log("On Next Clicked");
+
+                if (count >= hostDialogueL1.Sacagawea.Length)  {
+                    //Once finished with the intro, turn off panel and set Step = 2;
+                    count = 0;
+                    //dialogueBinGO.SetActive(false);
+                    bigHostCanvas.SetActive(false);
+                    hostFinished = true;
+                    
+                }
+                else   {
+                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.Sacagawea, count);
+                    characterIndex = 0;
+                    StartCoroutine(Type(output, dialogueTMP));
+                    audioSource.Play();
+                }
+
+            }
+
+            if(hostFinished)  {
+                hempSeedTMP.text = "100";
+                hempSeedCount = 100;
+                Step = 4;
+            }
+
+        }
+
+        if(Step == 4)  {
+            
         }
     }
 
@@ -229,7 +292,7 @@ public class levelManager0 : MonoBehaviour {
 
     private void SetHostPreferences(GameObject hostSelected) {
 
-        if(activeHost == bigHostGirl)  {
+        if(hostSelected == bigHostGirl)  {
             bigHostCanvas.SetActive(true);
             bigHostGirl.SetActive(true);
             bigHostMan.SetActive(false);
@@ -240,7 +303,7 @@ public class levelManager0 : MonoBehaviour {
             npcMan.SetActive(false);
             npcCanvas.SetActive(false);
         } 
-        if(activeHost == bigHostMan) {
+        if(hostSelected == bigHostMan) {
             bigHostCanvas.SetActive(true);
             bigHostGirl.SetActive(false);
             bigHostMan.SetActive(true);
@@ -251,6 +314,21 @@ public class levelManager0 : MonoBehaviour {
             npcMan.SetActive(true);
             npcCanvas.SetActive(false);
         }
+
+        if (hostSelected == bigHostSacagawea)  {
+            bigHostCanvas.SetActive(true);
+            bigHostGirl.SetActive(false);
+            bigHostMan.SetActive(false);
+            bigHostSacagawea.SetActive(true);
+            bigHostCanvas.SetActive(false);
+
+            npcCanvas.SetActive(true);
+            npcGirl.SetActive(false);
+            npcMan.SetActive(false);
+            npcSacagawea.SetActive(true);
+            npcCanvas.SetActive(false);
+        }
+
     }
 
     IEnumerator InitializeDialogueParameters(string[,] character, float delay, TextMeshProUGUI tmp)  {
@@ -311,63 +389,6 @@ public class levelManager0 : MonoBehaviour {
 }
 
 /*
- 
-public class LevelManager_0 : MonoBehaviour {
-
-    private int step;
-
-    //Select Farmer Host Variables
-    [SerializeField] private GameObject selectFarmerHostPanel;
-    private bool farmerHostSelected;
-
-    [SerializeField] private GameObject hostOverlay;
-    [SerializeField] private TextMeshProUGUI hostOverlayText;
-    [SerializeField] private GameObject functionsGO;
-    private OnClickEvents onClickEvents;
-    public string hostSelected;
-
-    private Step currentStep;
-
-    [SerializeField] private GameObject farmerHostOverlay;
-    [SerializeField] private GameObject farmerHostBoy;
-    [SerializeField] private GameObject farmerHostGirl;
-    [SerializeField] private GameObject sacagawea;
-    [SerializeField] private GameObject farmerNPC;
-    [SerializeField] private GameObject farmerNPCBoy;
-    [SerializeField] private GameObject farmerNPCGirl;
-
-    [SerializeField] private GameObject managers;
-    [SerializeField] private GameObject dialogueGO;
-    private HostDialogueManager dialogueManager;
-    private DialogueLevel1 dialogueLevel1;
-    [SerializeField] private GameObject CameraRig;
-    private CinemachineManager cinemachineManager;
-    [SerializeField] private GameObject npcCanvasGO;
-    [SerializeField] private TextMeshProUGUI npcDialogueTMP;
-    [SerializeField] private GameObject barnWaypoint;
-    [SerializeField] private GameObject hostDialogueGroup;
-    private bool arrivedAtBarn;
-
-    [SerializeField] private GameObject NPCManagersGO;
-    private NPCDialogueManager npcDialogueManager;
-    public bool barnIsClickable;
-    [SerializeField] private GameObject barn;
-    private DetectBarnClicked detectBarnClicked;
-    [SerializeField] private GameObject barnInventoryButton;
-
-    [Header ("Dialogue Bubble Properties")]
-    //New Dialogue Group Properties
-    [SerializeField] private GameObject dialogueCanvasGO;
-    [SerializeField] private GameObject onClickManagerGO;
-    [SerializeField] private TextMeshProUGUI dialogueTMP;
-    [SerializeField] public int fontSize = 28;
-    private OnNextClicked onNextClicked;
-    private HostDialogueL1 hostDialogueL1;
-    private AudioSource audioSource;
-    private int count;
-    private int characterIndex;
-    private float typeDelay = .05f;
- 
     
     // Start is called before the first frame update
     /*Initial States: 

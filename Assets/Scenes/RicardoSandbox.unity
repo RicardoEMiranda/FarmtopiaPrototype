@@ -510,6 +510,11 @@ Light:
   m_CorrespondingSourceObject: {fileID: 8634712084576203465, guid: 343b22eea2411704db1a2b9cbd4fb4dd, type: 3}
   m_PrefabInstance: {fileID: 8634712083870695507}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &716794986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4638186040889331374, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+  m_PrefabInstance: {fileID: 6355690048718597987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &788162729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4636879295435635802, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
@@ -778,6 +783,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 952964003}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1932811720 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1738669233682880220, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+  m_PrefabInstance: {fileID: 1738669233983974144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1981963484 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4822818442671873459, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
@@ -847,10 +863,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1738669232569892366, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738669233568632237, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1738669233596255296, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1433484212}
+    - target: {fileID: 1738669233719787405, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738669233719787406, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738669233842594787, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738669234197985287, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738669234316841822, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738669234491326920, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1738669234491326922, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1136,6 +1184,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 586255691}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: hempSeedTMP
+      value: 
+      objectReference: {fileID: 1932811720}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: npcSacagawea
+      value: 
+      objectReference: {fileID: 716794986}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: bigHostCanvas
       value: 
       objectReference: {fileID: 1130161673}
@@ -1155,6 +1211,10 @@ PrefabInstance:
       propertyPath: manFarmerButton
       value: 
       objectReference: {fileID: 484346199}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: bigHostSacagawea
+      value: 
+      objectReference: {fileID: 160584616}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: girlFarmerButton
       value: 
