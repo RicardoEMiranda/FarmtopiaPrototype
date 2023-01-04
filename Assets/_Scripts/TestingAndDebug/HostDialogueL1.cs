@@ -17,12 +17,20 @@ public class HostDialogueL1 : MonoBehaviour, IDialogueL1 {
             }
     };
 
-    public string[,] Sacagawea { get; } = new string[1, 3]  {
-        {"Hello. I'm Sacagawea. You just earned 100 hemp seed! You can start planting the field with the new seed.",
-          "Once fully grown, you can harvest the plant stalks and use it make fiber and other products.",
-          "Click on the Barn Inventory incon on the lower right to check your inventory. Try it out!"
+    public string[,] NPC2 { get; } = new string[1, 3]  {
+        {"Now that you have the hemp seed, let's plant our first hemp crop.",
+         "Click on the field to select the plot you want to plant in.",
+         "Once you select the plot, you can pick from the seed varieties available."
         }
     };
+
+    public string[,] Sacagawea { get; } = new string[1, 3]  {
+        {"Hello. I'm Sacagawea. You just earned 100 hemp seed! You can start planting the field with the new seed.",
+          "Once fully grown, you can harvest the plant stalks and use them to make fiber and other products.",
+          "Click on the Barn Inventory icon on the lower right to check your inventory. Try it out!"
+        }
+    };
+
 
     public string ReturnDialogue(string[,] character, int line)  {
         if(character == BigHost)  {
@@ -31,6 +39,8 @@ public class HostDialogueL1 : MonoBehaviour, IDialogueL1 {
             return NPC[0, line];
         } else if(character == Sacagawea) {
             return Sacagawea[0, line];
+        } else if (character == NPC2)  {
+            return NPC2[0, line];
         }
         else  {
             return null;

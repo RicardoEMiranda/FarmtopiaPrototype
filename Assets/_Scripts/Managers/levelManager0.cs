@@ -26,8 +26,8 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject npcClickManagerGO;
     private AudioSource npcAudioSource;
     [SerializeField] private TextMeshProUGUI npcDialogueTMP;
-    [SerializeField] private Transform waypoint1;
     private FarmerAI farmerAI;
+    private farmerAI_ farmerAI_;
 
 
     [Header ("Select Host Panel Properties")]
@@ -42,6 +42,7 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject bigHostGirl;
     [SerializeField] private GameObject bigHostSacagawea;
     private GameObject activeHost;
+    private GameObject tempHost;
     private bool hostSelected;
     private bool hostPreferencesSet;
 
@@ -58,11 +59,17 @@ public class levelManager0 : MonoBehaviour {
 
     [Header("Barn Inventory Properties")]
     [SerializeField] private TextMeshProUGUI hempSeedTMP;
+    [SerializeField] private GameObject inventoryManagerGO;
     private int hempSeedCount;
 
 
     [SerializeField] private GameObject functionsGO;
     private OnClickEvents onClickEvents;
+
+    [Header ("Waypoints")]
+    [SerializeField] private Transform waypoint1;
+    [SerializeField] private Transform waypoint2;
+    [SerializeField] private Transform waypointStart;
 
     private int Step = 1;
     private int characterIndex;
@@ -88,6 +95,7 @@ public class levelManager0 : MonoBehaviour {
         onNextClicked = clickManagerGO.GetComponent<OnNextClicked>();
         npcOnNextClicked = npcClickManagerGO.GetComponent<OnNextClicked>();
         farmerAI = npcCanvas.GetComponent<FarmerAI>();
+        farmerAI_ = npcCanvas.GetComponent<farmerAI_>();
         cinemachineManager = CameraRig.GetComponent<CinemachineManager>();
 
         //Script attached to the Barn Transform. DetectBarnClicked uses the 
@@ -100,9 +108,23 @@ public class levelManager0 : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        //Step Overrides for testing
+        if(Input.GetKeyDown(KeyCode.Space))  {
+            selectFarmerHostPanel.SetActive(false);
+            activeHost = bigHostMan;
+            hostSelected = true;
+
+            Step = 6;
+        }
+
         if(Step==1)  {
+            //FarmerAI needs refactoring. Use FarmerAI for Steps 1 through 5 but for Step 6, start using farmerAI_. 
+            //Deactivate FarmerAI and activate farmerAI_
+            npcCanvas.GetComponent<FarmerAI>().enabled = true;
+            npcCanvas.GetComponent<farmerAI_>().enabled = false;
+
             //turn on Select Farmer Host Panel. Do it once and condition out of Update loop
-            if(!hostSelected)  {
+            if (!hostSelected)  {
                 selectFarmerHostPanel.SetActive(true);
                 //make sure hostSelected = true; in next step when host is selected
             }
@@ -195,7 +217,7 @@ public class levelManager0 : MonoBehaviour {
                     count = 0;
                     npcDialogueCanvasGO.SetActive(false);
                     npcCanvas.SetActive(false);
-
+                    npcActivated = false;
                     barnIsClickable = true;
                 }
                 else  {
@@ -225,13 +247,12 @@ public class levelManager0 : MonoBehaviour {
 
             //Set Sacagawea character as the active host, this is the parameter that needs to be
             //passed to SetHostPreferences
-            activeHost = bigHostSacagawea;
+            tempHost = bigHostSacagawea;
 
             if(!hostPreferencesSet)  {
-                SetHostPreferences(activeHost);
+                SetHostPreferences(tempHost);
                 //Debug.Log("Setting Host Preferences");
                 hostPreferencesSet = true;
-
             }
 
             if (hostPreferencesSet && !hostStarted)  {
@@ -270,14 +291,63 @@ public class levelManager0 : MonoBehaviour {
             if(hostFinished)  {
                 hempSeedTMP.text = "100";
                 hempSeedCount = 100;
-                Step = 4;
+                hostPreferencesSet = false;
+
+                //Need to make sure that Barn Inventory button is clicked before initiating NPC character
+                //in Step 6, otherwise if they decide to click on the button after the NPC starts walking, they player will likely
+                //miss the NPC character walking into position. Also the NPC will start dialogue when in position and want to avoid
+                //missing dialogue
+                if(inventoryManagerGO.GetComponent<InventoryManager>().inventoryChecked)  {
+                    Debug.Log("InventoryChecked");
+                    //NOTE: Steps 3, 4 and 5 include Sacagawea gifting 100 hemp seed AND activating Barn Inventory Icon
+                    //The next line of code will set Step = 6. Later, we can consolidate these. Keeping both 
+                    //Steps here just so we remember to update the external script document
+                    Step = 6;
+                    npcIntroDialogueStarted = false;
+                }
+                
             }
 
         }
 
-        if(Step == 4)  {
+        if(Step == 6)  {
+            //See note above
+
+            //FarmerAI needs refactoring. Use FarmerAI for Steps 1 through 5 but for Step 6, start using farmerAI_. 
+            //Deactivate FarmerAI and activate farmerAI_
+            npcCanvas.GetComponent<FarmerAI>().enabled = false;
+            npcCanvas.GetComponent<farmerAI_>().enabled = true;
+            //npcCanvas.SetActive(true);
+            //npcDialogueBinGO.SetActive(true);
             
+            
+            //set activeHost to NPC. Note that Step 3 uses a tempHost for Sacagawea
+            if (!hostPreferencesSet) {
+                SetHostPreferences(activeHost);
+                npcCanvas.transform.position = waypointStart.position;
+                npcCanvas.SetActive(true);
+                farmerAI_.start = true;
+                hostPreferencesSet = true;
+
+                farmerAI_.SetStartPosition(waypointStart);
+                farmerAI_.SetDestination(waypoint2);
+            }
+
+            //Check NPC character is in position
+            if(((npcCanvas.transform.position - waypoint2.position).magnitude <= .05f) && !npcIntroDialogueStarted)  {
+                //activate npcDialogue bubble and initiate dialogue text
+                npcDialogueBinGO.SetActive(true);
+                npcDialogueTMP.text = "";
+                //string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, 0);
+                //npcDialogueTMP.text = output;
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC2, .5f, npcDialogueTMP));
+                npcIntroDialogueStarted = true;
+            }
+
+
         }
+
+        
     }
 
     IEnumerator ActivateWithDelay(GameObject obj, float delay) {
@@ -288,6 +358,10 @@ public class levelManager0 : MonoBehaviour {
     IEnumerator DeactivateWithDelay(GameObject obj, float delay)  {
         yield return new WaitForSeconds(delay);
         obj.SetActive(false);
+        if(obj = npcCanvas)  {
+            npcActivated = false;
+        }
+
     }
 
     private void SetHostPreferences(GameObject hostSelected) {
@@ -296,22 +370,26 @@ public class levelManager0 : MonoBehaviour {
             bigHostCanvas.SetActive(true);
             bigHostGirl.SetActive(true);
             bigHostMan.SetActive(false);
+            bigHostSacagawea.SetActive(false);
             bigHostCanvas.SetActive(false);
 
             npcCanvas.SetActive(true);
             npcGirl.SetActive(true);
             npcMan.SetActive(false);
+            npcSacagawea.SetActive(false);
             npcCanvas.SetActive(false);
         } 
         if(hostSelected == bigHostMan) {
             bigHostCanvas.SetActive(true);
             bigHostGirl.SetActive(false);
             bigHostMan.SetActive(true);
+            bigHostSacagawea.SetActive(false);
             bigHostCanvas.SetActive(false);
 
             npcCanvas.SetActive(true);
             npcGirl.SetActive(false);
             npcMan.SetActive(true);
+            npcSacagawea.SetActive(false);
             npcCanvas.SetActive(false);
         }
 

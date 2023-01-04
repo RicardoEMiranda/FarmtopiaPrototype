@@ -8,6 +8,7 @@ TagManager:
   - tractor
   - LastField
   - FarmerAntonio
+  - OverWorldCam
   layers:
   - Default
   - TransparentFX

@@ -79,6 +79,8 @@ public class FarmerAI : MonoBehaviour {
 
     }
 
+  
+
     public void GoToWaypoint(Transform waypoint) {
         currentPos = gameObject.transform.position;
         endPos = waypoint.position;

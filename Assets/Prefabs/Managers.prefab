@@ -324,7 +324,6 @@ MonoBehaviour:
   npcDialogueCanvasGO: {fileID: 0}
   npcClickManagerGO: {fileID: 0}
   npcDialogueTMP: {fileID: 0}
-  waypoint1: {fileID: 0}
   selectFarmerHostPanel: {fileID: 0}
   manFarmerButton: {fileID: 0}
   girlFarmerButton: {fileID: 0}
@@ -336,7 +335,12 @@ MonoBehaviour:
   barn: {fileID: 0}
   barnInventoryButton: {fileID: 0}
   barnIsClickable: 0
+  hempSeedTMP: {fileID: 0}
+  inventoryManagerGO: {fileID: 3361924231659922598}
   functionsGO: {fileID: 4052629135361157799}
+  waypoint1: {fileID: 0}
+  waypoint2: {fileID: 0}
+  waypointStart: {fileID: 0}
 --- !u!1001 &6928535180508365774
 PrefabInstance:
   m_ObjectHideFlags: 0

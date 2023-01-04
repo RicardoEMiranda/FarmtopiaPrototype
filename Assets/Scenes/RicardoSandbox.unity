@@ -631,6 +631,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4821204751081895709, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
   m_PrefabInstance: {fileID: 6355690048718597987}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1145223100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7148639697295560699, guid: a5a55d20435d9714691eacf020267632, type: 3}
+  m_PrefabInstance: {fileID: 3301678747878335878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1158564522 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4449583483931400503, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
@@ -651,6 +656,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7736263832455770184, guid: 01d11866d02becb409227b0ea78c921d, type: 3}
   m_PrefabInstance: {fileID: 7735402035830088433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1395863814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2787380559731296965, guid: a5a55d20435d9714691eacf020267632, type: 3}
+  m_PrefabInstance: {fileID: 3301678747878335878}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1419560285 stripped
 GameObject:
@@ -863,42 +873,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1738669232569892366, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738669233568632237, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1738669233596255296, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1433484212}
-    - target: {fileID: 1738669233719787405, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738669233719787406, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738669233842594787, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738669234197985287, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738669234316841822, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738669234491326920, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1738669234491326922, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1023,6 +1001,10 @@ PrefabInstance:
     - target: {fileID: 1868754933469188757, guid: fa049aa84b598fa4a856d569cf3bbf42, type: 3}
       propertyPath: m_Name
       value: ------CAMERA_RIG-------
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690241547369983402, guid: fa049aa84b598fa4a856d569cf3bbf42, type: 3}
+      propertyPath: m_TagString
+      value: OverWorldCam
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa049aa84b598fa4a856d569cf3bbf42, type: 3}
@@ -1172,6 +1154,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 190362471}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: waypoint2
+      value: 
+      objectReference: {fileID: 1395863814}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: bigHostMan
       value: 
       objectReference: {fileID: 428452518}
@@ -1199,6 +1185,10 @@ PrefabInstance:
       propertyPath: dialogueBinGO
       value: 
       objectReference: {fileID: 310052374}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: waypointStart
+      value: 
+      objectReference: {fileID: 1145223100}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: clickManagerGO
       value: 
@@ -1449,6 +1439,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2087610702563214463, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087610702873179147, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2227298677109821777, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: m_Name
       value: -----FARMER_HOSTS-----
@@ -1497,6 +1495,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6170769902303296162, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: NPCCam
+      value: 
+      objectReference: {fileID: 108121728}
+    - target: {fileID: 6170769902303296162, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: overWorldCam
+      value: 
+      objectReference: {fileID: 451187934}
     - target: {fileID: 6355690049055247107, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: NPCCam
       value: 

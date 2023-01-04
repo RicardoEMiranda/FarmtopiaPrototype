@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour {
     public AudioSource click;
 
     public bool nextClicked;
+    public bool inventoryChecked;
 
     // Start is called before the first frame update
     void Start()  {
@@ -29,6 +30,7 @@ public class InventoryManager : MonoBehaviour {
 
     public void OnCropInventoryExitButtonDown() {
         panelCropInventory.SetActive(false);
+        inventoryChecked = true;
         click.Play();
     }
 
