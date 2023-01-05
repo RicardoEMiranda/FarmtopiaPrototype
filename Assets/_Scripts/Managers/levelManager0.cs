@@ -15,8 +15,9 @@ public class levelManager0 : MonoBehaviour {
     private AudioSource audioSource;
     private OnNextClicked onNextClicked;
     private OnNextClicked npcOnNextClicked;
+    private OnNextClicked npc2OnNextClicked;
 
-    [Header("NPC Character Properties")]
+    [Header("NPC1 Character Properties")]
     [SerializeField] private GameObject npcCanvas;
     [SerializeField] private GameObject npcMan;
     [SerializeField] private GameObject npcGirl;
@@ -25,10 +26,20 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject npcDialogueCanvasGO;
     [SerializeField] private GameObject npcClickManagerGO;
     private AudioSource npcAudioSource;
+    private AudioSource npc2AudioSource;
     [SerializeField] private TextMeshProUGUI npcDialogueTMP;
     private FarmerAI farmerAI;
     private farmerAI_ farmerAI_;
 
+    [Header ("NPC2 Character Properties")]
+    [SerializeField] private GameObject npc2Canvas;
+    [SerializeField] private GameObject npc2Man;
+    [SerializeField] private GameObject npc2Girl;
+    [SerializeField] private GameObject npc2Sacagawea;
+    [SerializeField] private GameObject npc2DialogueBinGO;
+    [SerializeField] private GameObject npc2DialogueCanvasGO;
+    [SerializeField] private GameObject npc2ClickManagerGO;
+    [SerializeField] private TextMeshProUGUI npc2DialogueTMP;
 
     [Header ("Select Host Panel Properties")]
     [SerializeField] private GameObject selectFarmerHostPanel;
@@ -41,7 +52,11 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject bigHostMan;
     [SerializeField] private GameObject bigHostGirl;
     [SerializeField] private GameObject bigHostSacagawea;
+    [SerializeField] private GameObject bigHostMan2;
+    [SerializeField] private GameObject bigHostGirl2;
+    [SerializeField] private GameObject bigHostSacagawea2;
     private GameObject activeHost;
+    private GameObject activeHost2;
     private GameObject tempHost;
     private bool hostSelected;
     private bool hostPreferencesSet;
@@ -92,10 +107,12 @@ public class levelManager0 : MonoBehaviour {
         hostDialogueL1 = dialogueBinGO.GetComponent<HostDialogueL1>();
         audioSource = dialogueBinGO.GetComponent<AudioSource>();
         npcAudioSource = npcDialogueCanvasGO.GetComponent<AudioSource>();
+        npc2AudioSource = npc2DialogueCanvasGO.GetComponent<AudioSource>();
         onNextClicked = clickManagerGO.GetComponent<OnNextClicked>();
         npcOnNextClicked = npcClickManagerGO.GetComponent<OnNextClicked>();
+        npc2OnNextClicked = npc2ClickManagerGO.GetComponent<OnNextClicked>();
         farmerAI = npcCanvas.GetComponent<FarmerAI>();
-        farmerAI_ = npcCanvas.GetComponent<farmerAI_>();
+        farmerAI_ = npc2Canvas.GetComponent<farmerAI_>();
         cinemachineManager = CameraRig.GetComponent<CinemachineManager>();
 
         //Script attached to the Barn Transform. DetectBarnClicked uses the 
@@ -111,9 +128,9 @@ public class levelManager0 : MonoBehaviour {
         //Step Overrides for testing
         if(Input.GetKeyDown(KeyCode.Space))  {
             selectFarmerHostPanel.SetActive(false);
-            activeHost = bigHostMan;
+            activeHost2 = bigHostMan2;
             hostSelected = true;
-
+            npcAudioSource = npc2AudioSource;
             Step = 6;
         }
 
@@ -134,9 +151,11 @@ public class levelManager0 : MonoBehaviour {
                 //Debug.Log("Button clicked");
                 if (onClickEvents.hostClickedString == "LittleMissSunshine")  {
                     activeHost = bigHostGirl;
+                    activeHost2 = bigHostGirl2;
                 }
                 if (onClickEvents.hostClickedString == "YoungMan")  {
                     activeHost = bigHostMan;
+                    activeHost2 = bigHostMan2;
                 }
                 hostSelected = true;
                 StartCoroutine(DeactivateWithDelay(selectFarmerHostPanel, 0));
@@ -304,6 +323,7 @@ public class levelManager0 : MonoBehaviour {
                     //Steps here just so we remember to update the external script document
                     Step = 6;
                     npcIntroDialogueStarted = false;
+                    npc2AudioSource = npc2DialogueCanvasGO.GetComponent<AudioSource>();
                 }
                 
             }
@@ -315,33 +335,57 @@ public class levelManager0 : MonoBehaviour {
 
             //FarmerAI needs refactoring. Use FarmerAI for Steps 1 through 5 but for Step 6, start using farmerAI_. 
             //Deactivate FarmerAI and activate farmerAI_
-            npcCanvas.GetComponent<FarmerAI>().enabled = false;
-            npcCanvas.GetComponent<farmerAI_>().enabled = true;
+            npc2Canvas.GetComponent<FarmerAI>().enabled = false;
+            npc2Canvas.GetComponent<farmerAI_>().enabled = true;
             //npcCanvas.SetActive(true);
             //npcDialogueBinGO.SetActive(true);
             
             
             //set activeHost to NPC. Note that Step 3 uses a tempHost for Sacagawea
             if (!hostPreferencesSet) {
-                SetHostPreferences(activeHost);
-                npcCanvas.transform.position = waypointStart.position;
-                npcCanvas.SetActive(true);
+                SetHostPreferences(activeHost2);
+                //npcCanvas.transform.position = waypointStart.position;
+                npc2Canvas.SetActive(true);
                 farmerAI_.start = true;
                 hostPreferencesSet = true;
 
-                farmerAI_.SetStartPosition(waypointStart);
+                //farmerAI_.SetStartPosition(waypointStart);
                 farmerAI_.SetDestination(waypoint2);
             }
 
-            //Check NPC character is in position
-            if(((npcCanvas.transform.position - waypoint2.position).magnitude <= .05f) && !npcIntroDialogueStarted)  {
+            //Check NPC character is in position then start dialogue
+            if(((npc2Canvas.transform.position - waypoint2.position).magnitude <= .05f) && !npcIntroDialogueStarted)  {
                 //activate npcDialogue bubble and initiate dialogue text
-                npcDialogueBinGO.SetActive(true);
-                npcDialogueTMP.text = "";
+                npc2DialogueBinGO.SetActive(true);
+                npc2DialogueTMP.text = "";
                 //string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, 0);
                 //npcDialogueTMP.text = output;
-                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC2, .5f, npcDialogueTMP));
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC2, .5f, npc2DialogueTMP));
                 npcIntroDialogueStarted = true;
+            }
+
+            //Continue Dialogue through next button clicks
+            if (npc2OnNextClicked.clicked && npc2Canvas.activeInHierarchy)  {
+                npc2OnNextClicked.clicked = false;
+                count += 1;
+              
+                if (count >= hostDialogueL1.NPC2.Length)  {
+                    //Once finished with the intro, turn off panel and set Step = 2;
+                    
+                    count = 0;
+                    npc2DialogueCanvasGO.SetActive(false);
+                    npc2Canvas.SetActive(false);
+                    npcActivated = false;
+                    barnIsClickable = true;
+                }
+                else  {
+             
+                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, count);
+                    characterIndex = 0;
+                    StartCoroutine(Type(output, npc2DialogueTMP));
+                    npc2AudioSource.Play();
+
+                }
             }
 
 
@@ -407,6 +451,24 @@ public class levelManager0 : MonoBehaviour {
             npcCanvas.SetActive(false);
         }
 
+        if(hostSelected == bigHostMan && Step >= 6) {
+            npc2Canvas.SetActive(true);
+            npc2Girl.SetActive(false);
+            npc2Man.SetActive(false);
+            npc2Man.SetActive(true);
+            npc2Sacagawea.SetActive(false);
+            npc2Canvas.SetActive(false);
+        } 
+
+        if (hostSelected == bigHostGirl && Step >= 6) {
+            npc2Canvas.SetActive(true);
+            npc2Girl.SetActive(true);
+            npc2Man.SetActive(false);
+            npc2Man.SetActive(false);
+            npc2Sacagawea.SetActive(false);
+            npc2Canvas.SetActive(false);
+        }
+
     }
 
     IEnumerator InitializeDialogueParameters(string[,] character, float delay, TextMeshProUGUI tmp)  {
@@ -426,7 +488,14 @@ public class levelManager0 : MonoBehaviour {
             audioSource.Play();
         }
         //audioSource.Play();
-       
+
+        if (tmp == npc2DialogueTMP) {
+            npc2AudioSource.Play();
+        }
+        else {
+            audioSource.Play();
+        }
+
     }
 
     IEnumerator Type (string str, TextMeshProUGUI TMP) {

@@ -324,6 +324,14 @@ MonoBehaviour:
   npcDialogueCanvasGO: {fileID: 0}
   npcClickManagerGO: {fileID: 0}
   npcDialogueTMP: {fileID: 0}
+  npc2Canvas: {fileID: 0}
+  npc2Man: {fileID: 0}
+  npc2Girl: {fileID: 0}
+  npc2Sacagawea: {fileID: 0}
+  npc2DialogueBinGO: {fileID: 0}
+  npc2DialogueCanvasGO: {fileID: 0}
+  npc2ClickManagerGO: {fileID: 0}
+  npc2DialogueTMP: {fileID: 0}
   selectFarmerHostPanel: {fileID: 0}
   manFarmerButton: {fileID: 0}
   girlFarmerButton: {fileID: 0}
@@ -331,6 +339,9 @@ MonoBehaviour:
   bigHostMan: {fileID: 0}
   bigHostGirl: {fileID: 0}
   bigHostSacagawea: {fileID: 0}
+  bigHostMan2: {fileID: 0}
+  bigHostGirl2: {fileID: 0}
+  bigHostSacagawea2: {fileID: 0}
   CameraRig: {fileID: 0}
   barn: {fileID: 0}
   barnInventoryButton: {fileID: 0}

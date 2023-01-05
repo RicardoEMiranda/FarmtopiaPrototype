@@ -12,6 +12,7 @@ public class OnNextClicked : MonoBehaviour {
 
     public void Clicked()  {
         clicked = true;
+     
     }
    
 }
