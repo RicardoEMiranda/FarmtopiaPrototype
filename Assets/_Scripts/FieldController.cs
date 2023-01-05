@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class FieldController : MonoBehaviour {
 
-    public GameObject seedCorn;
-    public GameObject seedCarrot;
-    public GameObject seedMaze;
-    public GameObject carrotSeedlings;
+    public GameObject seed;
+    public GameObject seedling;
+    public GameObject medium;
+    public GameObject large;
+    [SerializeField] public float cycleTimer = 60f;
+
     public bool fieldSelected = false;
+
 
     private void Update() {
 
@@ -16,15 +19,9 @@ public class FieldController : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        //Debug.Log("Click");
-        seedCorn.SetActive(true);
-        seedCarrot.SetActive(true);
-        seedMaze.SetActive(true);
-
-        if (gameObject.tag == "LastField")  {
-            //Debug.Log("Last field selected: " + gameObject.name);
-            fieldSelected = true;
-        }
+      
+        fieldSelected = true;
+        
     }
 
 }
