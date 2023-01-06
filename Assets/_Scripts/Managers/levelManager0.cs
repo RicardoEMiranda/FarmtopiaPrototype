@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
@@ -77,6 +78,11 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject inventoryManagerGO;
     private int hempSeedCount;
 
+    [Header("Field & Crop Properties")]
+    [SerializeField] private GameObject fieldGO;
+    private FieldController fieldController;
+    public List<GameObject> fieldObjects;
+
 
     [SerializeField] private GameObject functionsGO;
     private OnClickEvents onClickEvents;
@@ -114,13 +120,16 @@ public class levelManager0 : MonoBehaviour {
         farmerAI = npcCanvas.GetComponent<FarmerAI>();
         farmerAI_ = npc2Canvas.GetComponent<farmerAI_>();
         cinemachineManager = CameraRig.GetComponent<CinemachineManager>();
-
+        fieldController = fieldGO.GetComponent<FieldController>();
+        fieldController.canPlant = false;
         //Script attached to the Barn Transform. DetectBarnClicked uses the 
         //box collider attached to the Barn Transform to detect when the collider is clicked on
         detectBarnClicked = barn.GetComponent<DetectBarnClicked>();
         //Set Barn Inventory to inactive. This will activate later after the barn has been repaired
         barnInventoryButton.SetActive(false);
         barnRepaired = false;
+
+        fieldObjects = FindObjectsOfType<FieldController>().Select(f => f.gameObject).ToList();
     }
 
     // Update is called once per frame
@@ -132,6 +141,12 @@ public class levelManager0 : MonoBehaviour {
             hostSelected = true;
             npcAudioSource = npc2AudioSource;
             Step = 6;
+            fieldController.canPlant = false;
+
+            foreach (GameObject field in fieldObjects) {
+                FieldController fieldController = field.GetComponent<FieldController>();
+                fieldController.canPlant = false;
+            }
         }
 
         if(Step==1)  {
@@ -377,6 +392,11 @@ public class levelManager0 : MonoBehaviour {
                     npc2Canvas.SetActive(false);
                     npcActivated = false;
                     barnIsClickable = true;
+                    //fieldController.canPlant = true;
+                    foreach (GameObject field in fieldObjects)   {
+                        FieldController fieldController = field.GetComponent<FieldController>();
+                        fieldController.canPlant = true;
+                    }
                 }
                 else  {
              

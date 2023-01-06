@@ -348,6 +348,8 @@ MonoBehaviour:
   barnIsClickable: 0
   hempSeedTMP: {fileID: 0}
   inventoryManagerGO: {fileID: 3361924231659922598}
+  fieldGO: {fileID: 0}
+  fieldObjects: []
   functionsGO: {fileID: 4052629135361157799}
   waypoint1: {fileID: 0}
   waypoint2: {fileID: 0}
