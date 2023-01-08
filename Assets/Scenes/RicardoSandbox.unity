@@ -1084,10 +1084,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ------CAMERA_RIG-------
       objectReference: {fileID: 0}
-    - target: {fileID: 6690241547369983402, guid: fa049aa84b598fa4a856d569cf3bbf42, type: 3}
-      propertyPath: m_TagString
-      value: OverWorldCam
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa049aa84b598fa4a856d569cf3bbf42, type: 3}
 --- !u!1001 &2374951075829803895
@@ -1735,78 +1731,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 242854582594417993, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_Volume
-      value: 0.506
-      objectReference: {fileID: 0}
-    - target: {fileID: 242854582594417993, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 785155e2897ca2245a00cddd3257dfe3, type: 3}
-    - target: {fileID: 242854582594417993, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 518495122144661821, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_Volume
-      value: 0.523
-      objectReference: {fileID: 0}
-    - target: {fileID: 2457230517654001876, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_Volume
-      value: 0.506
-      objectReference: {fileID: 0}
-    - target: {fileID: 2457230517654001876, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 785155e2897ca2245a00cddd3257dfe3, type: 3}
-    - target: {fileID: 2457230517654001876, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3673731971678696920, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_Volume
-      value: 0.506
-      objectReference: {fileID: 0}
-    - target: {fileID: 4164802313491693393, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: dd75539e468009b4faf46c873246e6bb, type: 3}
-    - target: {fileID: 4164802313491693393, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413468208797980734, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_Volume
-      value: 0.517
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043365841280166699, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_Volume
-      value: 0.506
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043365841280166699, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 785155e2897ca2245a00cddd3257dfe3, type: 3}
-    - target: {fileID: 6043365841280166699, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933088051202835515, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: dd75539e468009b4faf46c873246e6bb, type: 3}
-    - target: {fileID: 8102481239987215997, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: dd75539e468009b4faf46c873246e6bb, type: 3}
-    - target: {fileID: 8102481239987215997, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8105825864364347343, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: dd75539e468009b4faf46c873246e6bb, type: 3}
     - target: {fileID: 8623511466539252676, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
       propertyPath: m_Name
       value: --------FIELD_BIN-------
@@ -1855,10 +1779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9092881716185042289, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: dd75539e468009b4faf46c873246e6bb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 536df3986e62d7645b91884d7df6202b, type: 3}
 --- !u!1001 &8634712083870695507

@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 7847580036965381437}
   m_Layer: 0
   m_Name: OverworldCam
-  m_TagString: Untagged
+  m_TagString: OverWorldCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
