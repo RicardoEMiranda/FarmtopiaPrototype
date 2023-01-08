@@ -7,6 +7,7 @@ using UnityEngine;
 public interface IDialogueL1 {
     string[,] BigHost { get; }
     string[,] NPC { get; }
+    string[,] NPC1 { get; }
     string[,] NPC2 { get; }
     string[,] Sacagawea { get; }
     string ReturnDialogue(string[,] character, int line);

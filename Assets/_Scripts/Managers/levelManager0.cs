@@ -375,7 +375,7 @@ public class levelManager0 : MonoBehaviour {
                 npc2DialogueTMP.text = "";
                 //string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, 0);
                 //npcDialogueTMP.text = output;
-                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC2, .5f, npc2DialogueTMP));
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC1, .5f, npc2DialogueTMP));
                 npcIntroDialogueStarted = true;
             }
 
@@ -384,14 +384,22 @@ public class levelManager0 : MonoBehaviour {
                 npc2OnNextClicked.clicked = false;
                 count += 1;
               
-                if (count >= hostDialogueL1.NPC2.Length)  {
-                    //Once finished with the intro, turn off panel and set Step = 2;
+                if (count >= hostDialogueL1.NPC1.Length)  {
+                    //Once finished with the intro, turn off panel and...
                     
                     count = 0;
-                    npc2DialogueCanvasGO.SetActive(false);
-                    npc2Canvas.SetActive(false);
-                    npcActivated = false;
-                    barnIsClickable = true;
+
+                    //Introduce player to the field and that it needs to be tilled
+                    //Turn off Dialogue canvas but leave NPC canvas on to implement loitering
+                    npc2DialogueCanvasGO.SetActive(false); 
+
+                    //Start Loitering until fields are tilled
+
+                    //npc2Canvas.SetActive(false);
+                    //npcActivated = false;
+                    
+                    
+                    //barnIsClickable = true;
                     //fieldController.canPlant = true;
                     foreach (GameObject field in fieldObjects)   {
                         FieldController fieldController = field.GetComponent<FieldController>();
@@ -400,7 +408,7 @@ public class levelManager0 : MonoBehaviour {
                 }
                 else  {
              
-                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, count);
+                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC1, count);
                     characterIndex = 0;
                     StartCoroutine(Type(output, npc2DialogueTMP));
                     npc2AudioSource.Play();

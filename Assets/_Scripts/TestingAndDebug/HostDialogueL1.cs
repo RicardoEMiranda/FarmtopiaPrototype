@@ -17,12 +17,19 @@ public class HostDialogueL1 : MonoBehaviour, IDialogueL1 {
             }
     };
 
+    public string[,] NPC1 { get; } = new string[1, 2]  {
+        {"Now that you have the hemp seed, we should prep the planting fields.",
+         "Click on the field to select the plot you want to till.",
+        }
+    };
+
     public string[,] NPC2 { get; } = new string[1, 3]  {
         {"Now that you have the hemp seed, let's plant our first hemp crop.",
          "Click on the field to select the plot you want to plant in.",
          "Once you select the plot, you can pick from the seed varieties available."
         }
     };
+
 
     public string[,] Sacagawea { get; } = new string[1, 3]  {
         {"Hello. I'm Sacagawea. You just earned 100 hemp seed! You can start planting the field with the new seed.",
@@ -39,6 +46,8 @@ public class HostDialogueL1 : MonoBehaviour, IDialogueL1 {
             return NPC[0, line];
         } else if(character == Sacagawea) {
             return Sacagawea[0, line];
+        } else if (character == NPC1)  {
+            return NPC1[0, line];
         } else if (character == NPC2)  {
             return NPC2[0, line];
         }

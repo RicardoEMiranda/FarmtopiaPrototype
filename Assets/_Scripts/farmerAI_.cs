@@ -75,6 +75,18 @@ public class farmerAI_ : MonoBehaviour {
         endPos = destinationTransform.position;
     }
 
+    public void Loiter()  {
+        //Take in an array of waypoint Transforms
+        //Take character to first waypoint, loiter for set amount of time at this first waypoint
+
+
+        //When delay time is completed, take to second loiter waypoint.
+
+        //Repeat with each loiter waypoint repeatedly. 
+        //The way out of this Loiter loop is to call the SetDestination() Method. This will take the
+        //character to the final destination wayoint where character will stop.
+    }
+
 
 }
 
