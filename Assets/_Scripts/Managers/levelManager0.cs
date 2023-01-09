@@ -82,6 +82,9 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private GameObject fieldGO;
     private FieldController fieldController;
     public List<GameObject> fieldObjects;
+    [SerializeField] public GameObject[] largeCrops;
+    private OnCropClicked[] onCropClicked;
+    
 
 
     [SerializeField] private GameObject functionsGO;
@@ -102,9 +105,15 @@ public class levelManager0 : MonoBehaviour {
     private bool npcIntroDialogueStarted;
     private bool hostStarted;
     private bool hostFinished;
+    private bool harvestDialogueStarted = false;
+    private bool canHarvest = false;
+    private bool gotCropComponents = false;
 
     // Start is called before the first frame update
     void Start()  {
+        CameraRig.GetComponent<CameraController>().enabled = false; 
+        //Don't want the player panning around in the scene yet during this instructional heavy part of Level 0
+        
         selectFarmerHostPanel.SetActive(false);
         farmerHostSelected = false;
         onClickEvents = functionsGO.GetComponent<OnClickEvents>();
@@ -130,6 +139,14 @@ public class levelManager0 : MonoBehaviour {
         barnRepaired = false;
 
         fieldObjects = FindObjectsOfType<FieldController>().Select(f => f.gameObject).ToList();
+
+        //Debug.Log(largeCrops.Length);
+        onCropClicked = new OnCropClicked[largeCrops.Length];
+        for(int i = 0; i<largeCrops.Length; i++) {
+            onCropClicked[i] = largeCrops[i].GetComponent<OnCropClicked>();
+            largeCrops[i].SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
@@ -352,8 +369,11 @@ public class levelManager0 : MonoBehaviour {
             //Deactivate FarmerAI and activate farmerAI_
             npc2Canvas.GetComponent<FarmerAI>().enabled = false;
             npc2Canvas.GetComponent<farmerAI_>().enabled = true;
-            //npcCanvas.SetActive(true);
-            //npcDialogueBinGO.SetActive(true);
+            
+            //check if Field is ready to harvest, set Step = 7
+            if(fieldController.readyToHarvest)  {
+                Step = 7;
+            }
             
             
             //set activeHost to NPC. Note that Step 3 uses a tempHost for Sacagawea
@@ -391,15 +411,13 @@ public class levelManager0 : MonoBehaviour {
 
                     //Introduce player to the field and that it needs to be tilled
                     //Turn off Dialogue canvas but leave NPC canvas on to implement loitering
-                    npc2DialogueCanvasGO.SetActive(false); 
-
+                    npc2DialogueCanvasGO.SetActive(false);
+                    npcIntroDialogueStarted = false;
                     //Start Loitering until fields are tilled
 
                     //npc2Canvas.SetActive(false);
                     //npcActivated = false;
                     
-                    
-                    //barnIsClickable = true;
                     //fieldController.canPlant = true;
                     foreach (GameObject field in fieldObjects)   {
                         FieldController fieldController = field.GetComponent<FieldController>();
@@ -416,6 +434,55 @@ public class levelManager0 : MonoBehaviour {
                 }
             }
 
+
+        }
+
+        if (Step == 7)  {
+            //Debug.Log(harvestDialogueStarted);
+            if (((npc2Canvas.transform.position - waypoint2.position).magnitude <= .05f) && !harvestDialogueStarted) {
+       
+                //activate npcDialogue bubble and initiate dialogue text
+                npc2DialogueBinGO.SetActive(true);
+                npc2DialogueCanvasGO.SetActive(true);
+                npc2DialogueTMP.text = "";
+                string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, 0);
+                npcDialogueTMP.text = output;
+                StartCoroutine(InitializeDialogueParameters(hostDialogueL1.NPC2, .5f, npc2DialogueTMP));
+                harvestDialogueStarted = true;
+            }
+
+            //Continue Dialogue through next button clicks
+            if (npc2OnNextClicked.clicked && npc2Canvas.activeInHierarchy)  {
+                npc2OnNextClicked.clicked = false;
+                count += 1;
+
+                if (count >= hostDialogueL1.NPC2.Length)  {
+                    //Once finished with the intro, turn off panel and...
+
+                    count = 0;
+
+                    //Turn off Dialogue canvas but leave NPC canvas on to implement loitering
+                    npc2DialogueCanvasGO.SetActive(false);
+                    
+                    //Start Loitering
+
+                }
+                else   {
+                    string output = hostDialogueL1.ReturnDialogue(hostDialogueL1.NPC2, count);
+                    characterIndex = 0;
+                    StartCoroutine(Type(output, npc2DialogueTMP));
+                    npc2AudioSource.Play();
+
+                }
+            }
+
+            for(int i = 0; i<largeCrops.Length; i++)  {
+                if(onCropClicked[i].cropClicked)  {
+                    onCropClicked[i].cropClicked = false;
+                    Debug.Log("Large crop clicked");
+                    
+                }
+            }
 
         }
 

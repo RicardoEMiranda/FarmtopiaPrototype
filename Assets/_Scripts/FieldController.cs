@@ -11,6 +11,7 @@ public class FieldController : MonoBehaviour {
     public GameObject large;
     [SerializeField] public float cycleTimer = 5f;
     [SerializeField] public GameObject plantSeedCanvas;
+    [SerializeField] public GameObject harvesterCanvas;
     [SerializeField] public AudioSource audioSource1;
     [SerializeField] public AudioSource audioSource2;
     [SerializeField] public AudioClip clipShoveling;
@@ -27,6 +28,7 @@ public class FieldController : MonoBehaviour {
     public bool startMediumTimer = false;
     private bool seedlingTimerAudioStarted = false;
     private bool mediumTimerAudioStarted = false;
+    public bool readyToHarvest = false;
 
     //NOTE: Need to add the routine where the first time player clicks the field, it actually tills the soil
     //currently it goes right into picking the seed and harvesting
@@ -49,6 +51,11 @@ public class FieldController : MonoBehaviour {
             audioSource2.Play();
         }
 
+        if (readyToHarvest)  {
+            //Debug.Log("Ready to Harvest: Field Controller");
+           
+        }
+
     }
 
     private void OnMouseDown() {
@@ -62,6 +69,11 @@ public class FieldController : MonoBehaviour {
         if(canPlant && fieldTilled)  {
             fieldSelected = true;
             plantSeedCanvas.SetActive(true);
+        }
+
+        if(readyToHarvest)  {
+            //Debug.Log("Clicked after Ready to Harvest");
+           
         }
         
         
@@ -91,10 +103,15 @@ public class FieldController : MonoBehaviour {
 
     }
 
+
+    public void HarvesterClicked() {
+        Debug.Log("Harvester Clicked");
+        
+    }
+
     IEnumerator StartSeedTimer(float delay) {
         startedSeedTimer = true;
         yield return new WaitForSeconds(delay);
-        Debug.Log("Timer done");
         seed.SetActive(false);
         seedling.SetActive(true);
         startSeedlingTimer = true;
@@ -114,6 +131,7 @@ public class FieldController : MonoBehaviour {
         large.SetActive(true);
         audioSource2.Play();
         startMediumTimer = false;
+        readyToHarvest = true;
     }
 
 }

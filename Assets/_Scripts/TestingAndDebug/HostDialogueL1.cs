@@ -17,16 +17,16 @@ public class HostDialogueL1 : MonoBehaviour, IDialogueL1 {
             }
     };
 
-    public string[,] NPC1 { get; } = new string[1, 2]  {
+    public string[,] NPC1 { get; } = new string[1, 3]  {
         {"Now that you have the hemp seed, we should prep the planting fields.",
          "Click on the field to select the plot you want to till.",
+         "After the soil is finished tilling, select the field again to plant the seed."
         }
     };
 
-    public string[,] NPC2 { get; } = new string[1, 3]  {
-        {"Now that you have the hemp seed, let's plant our first hemp crop.",
-         "Click on the field to select the plot you want to plant in.",
-         "Once you select the plot, you can pick from the seed varieties available."
+    public string[,] NPC2 { get; } = new string[1, 2]  {
+        {"The crops are fully grown, now. Click on the crop to harvest them.",
+         "Once you've harvested the crops, check the Barn Inventory for your updated harvested materials inventory."
         }
     };
 
@@ -50,8 +50,7 @@ public class HostDialogueL1 : MonoBehaviour, IDialogueL1 {
             return NPC1[0, line];
         } else if (character == NPC2)  {
             return NPC2[0, line];
-        }
-        else  {
+        } else  {
             return null;
         }
        
