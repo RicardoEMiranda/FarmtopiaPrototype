@@ -9,6 +9,7 @@ public class FieldController : MonoBehaviour {
     public GameObject seedling;
     public GameObject medium;
     public GameObject large;
+
     [SerializeField] public float cycleTimer = 5f;
     [SerializeField] public GameObject plantSeedCanvas;
     [SerializeField] public GameObject harvesterCanvas;
@@ -16,6 +17,7 @@ public class FieldController : MonoBehaviour {
     [SerializeField] public AudioSource audioSource2;
     [SerializeField] public AudioClip clipShoveling;
     [SerializeField] public AudioClip clipCropPop;
+    [SerializeField] public AudioClip clipDingPop;
     [SerializeField] public GameObject largeCropGO;
     private OnCropClicked onCropClicked;
 
@@ -31,6 +33,7 @@ public class FieldController : MonoBehaviour {
     private bool seedlingTimerAudioStarted = false;
     private bool mediumTimerAudioStarted = false;
     public bool readyToHarvest = false;
+    public bool cropHarvested = false;
 
     //NOTE: Need to add the routine where the first time player clicks the field, it actually tills the soil
     //currently it goes right into picking the seed and harvesting
@@ -75,7 +78,7 @@ public class FieldController : MonoBehaviour {
         }
 
         if(readyToHarvest && onCropClicked.cropClicked)  {
-            Debug.Log("Clicked after Ready to Harvest");
+            //Debug.Log("Clicked after Ready to Harvest");
             harvesterCanvas.SetActive(true);
         }
         
@@ -108,9 +111,16 @@ public class FieldController : MonoBehaviour {
 
 
     public void HarvesterClicked() {
-        //Debug.Log("Harvester Clicked");
-      
+        Debug.Log("Harvester Clicked");
+        large.SetActive(false);
+        harvesterCanvas.SetActive(false);
+        tilledSoil.SetActive(false);
+        audioSource1.clip = clipDingPop;
+        audioSource1.Play();
+        cropHarvested = true;
     }
+
+    
 
     IEnumerator StartSeedTimer(float delay) {
         startedSeedTimer = true;

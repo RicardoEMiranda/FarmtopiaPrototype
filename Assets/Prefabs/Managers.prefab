@@ -347,10 +347,25 @@ MonoBehaviour:
   barnInventoryButton: {fileID: 0}
   barnIsClickable: 0
   hempSeedTMP: {fileID: 0}
+  hempStalksTMP: {fileID: 0}
   inventoryManagerGO: {fileID: 3361924231659922598}
+  levelTMP: {fileID: 0}
   fieldGO: {fileID: 0}
-  fieldObjects: []
+  fieldObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   largeCrops:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fields:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

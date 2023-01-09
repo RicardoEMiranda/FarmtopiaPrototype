@@ -75,8 +75,13 @@ public class levelManager0 : MonoBehaviour {
 
     [Header("Barn Inventory Properties")]
     [SerializeField] private TextMeshProUGUI hempSeedTMP;
+    [SerializeField] private TextMeshProUGUI hempStalksTMP;
     [SerializeField] private GameObject inventoryManagerGO;
     private int hempSeedCount;
+    private int hempStalksCount;
+
+    [Header("Level, Currency & NFT UI")]
+    [SerializeField] private TextMeshProUGUI levelTMP;
 
     [Header("Field & Crop Properties")]
     [SerializeField] private GameObject fieldGO;
@@ -84,6 +89,8 @@ public class levelManager0 : MonoBehaviour {
     public List<GameObject> fieldObjects;
     [SerializeField] public GameObject[] largeCrops;
     private OnCropClicked[] onCropClicked;
+    [SerializeField] public GameObject[] fields;
+    private FieldController[] fieldControllerScr;
     
 
 
@@ -94,6 +101,7 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private Transform waypoint1;
     [SerializeField] private Transform waypoint2;
     [SerializeField] private Transform waypointStart;
+
 
     private int Step = 1;
     private int characterIndex;
@@ -108,9 +116,14 @@ public class levelManager0 : MonoBehaviour {
     private bool harvestDialogueStarted = false;
     private bool canHarvest = false;
     private bool gotCropComponents = false;
+    private int countHarvest = 0;
+    private int level = 0;
+    private bool updateLevel = false;
+
 
     // Start is called before the first frame update
     void Start()  {
+        hempStalksCount = 0;
         CameraRig.GetComponent<CameraController>().enabled = false; 
         //Don't want the player panning around in the scene yet during this instructional heavy part of Level 0
         
@@ -147,6 +160,11 @@ public class levelManager0 : MonoBehaviour {
             largeCrops[i].SetActive(false);
         }
 
+        fieldControllerScr = new FieldController[fields.Length];
+        for (int i = 0; i < fields.Length; i++)  {
+            fieldControllerScr[i] = fields[i].GetComponent<FieldController>();
+        }
+
     }
 
     // Update is called once per frame
@@ -159,6 +177,9 @@ public class levelManager0 : MonoBehaviour {
             npcAudioSource = npc2AudioSource;
             Step = 6;
             fieldController.canPlant = false;
+            barnInventoryButton.SetActive(true);
+            hempSeedCount = 100;
+            hempSeedTMP.text = hempSeedCount.ToString();
 
             foreach (GameObject field in fieldObjects) {
                 FieldController fieldController = field.GetComponent<FieldController>();
@@ -472,19 +493,52 @@ public class levelManager0 : MonoBehaviour {
                     characterIndex = 0;
                     StartCoroutine(Type(output, npc2DialogueTMP));
                     npc2AudioSource.Play();
-
+                    
                 }
             }
 
             for(int i = 0; i<largeCrops.Length; i++)  {
                 if(onCropClicked[i].cropClicked)  {
                     onCropClicked[i].cropClicked = false;
-                    Debug.Log("Large crop clicked");
+                    //Debug.Log("Large crop clicked");
                     
                 }
             }
 
+
+            for (int i = 0; i < fields.Length; i++)  {
+                fieldControllerScr[i] = fields[i].GetComponent<FieldController>();
+                if(fieldControllerScr[i].cropHarvested) {
+                    fieldControllerScr[i].cropHarvested = false;
+                    //Debug.Log("Crop Harvested...");
+                    hempStalksCount += 25;
+                    //Debug.Log(hempStalksCount);
+                }
+            }
+
+            //Set hempStalksCount in Barn Inventory
+            if (hempSeedCount > 0) {
+                hempStalksTMP.text = hempStalksCount.ToString();
+                if (hempStalksCount == 150)  {
+                    //Use whatever measure indicates that all of level 0 objectives are met, then, set Level==1
+                    //update Level number on top left of screen icon and bring up the Level 1 panel & fanfare
+                    level = 1;
+                    updateLevel = true;
+                }
+            }
+
+            if(updateLevel)  {
+                levelTMP.text = level.ToString();
+                updateLevel = false;
+
+                //bring up Level 1 Level up celebration panel
+
+            }
+            
+
         }
+
+        
 
         
     }
