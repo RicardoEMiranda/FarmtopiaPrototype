@@ -16,6 +16,8 @@ public class FieldController : MonoBehaviour {
     [SerializeField] public AudioSource audioSource2;
     [SerializeField] public AudioClip clipShoveling;
     [SerializeField] public AudioClip clipCropPop;
+    [SerializeField] public GameObject largeCropGO;
+    private OnCropClicked onCropClicked;
 
 
 
@@ -36,6 +38,7 @@ public class FieldController : MonoBehaviour {
     private void Start()  {
         audioSource1.clip = clipShoveling;
         audioSource2.clip = clipCropPop;
+        onCropClicked = largeCropGO.GetComponent<OnCropClicked>();
     }
     private void Update() {
 
@@ -51,9 +54,9 @@ public class FieldController : MonoBehaviour {
             audioSource2.Play();
         }
 
-        if (readyToHarvest)  {
-            //Debug.Log("Ready to Harvest: Field Controller");
-           
+        if (onCropClicked.cropClicked)  {
+            //Debug.Log("Crop Clicked...");
+            harvesterCanvas.SetActive(true);
         }
 
     }
@@ -71,9 +74,9 @@ public class FieldController : MonoBehaviour {
             plantSeedCanvas.SetActive(true);
         }
 
-        if(readyToHarvest)  {
-            //Debug.Log("Clicked after Ready to Harvest");
-           
+        if(readyToHarvest && onCropClicked.cropClicked)  {
+            Debug.Log("Clicked after Ready to Harvest");
+            harvesterCanvas.SetActive(true);
         }
         
         
@@ -105,8 +108,8 @@ public class FieldController : MonoBehaviour {
 
 
     public void HarvesterClicked() {
-        Debug.Log("Harvester Clicked");
-        
+        //Debug.Log("Harvester Clicked");
+      
     }
 
     IEnumerator StartSeedTimer(float delay) {

@@ -12,12 +12,12 @@ public class OnCropClicked : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update()  {
+        //Debug.Log(cropClicked);
     }
 
     public void OnMouseDown()  {
         cropClicked = true;
+        //Debug.Log("Crop Clicked: " + cropClicked);
     }
 }
