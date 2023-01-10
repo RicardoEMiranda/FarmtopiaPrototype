@@ -58,7 +58,7 @@ public class FieldController : MonoBehaviour {
         }
 
         if (onCropClicked.cropClicked)  {
-            //Debug.Log("Crop Clicked...");
+            Debug.Log("Crop Clicked...");
             harvesterCanvas.SetActive(true);
         }
 
