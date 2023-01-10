@@ -658,8 +658,8 @@ public class levelManager0 : MonoBehaviour {
         float startVolume = .542f;
 
         while (audioSourceMainTheme.volume > 0)   {
-            Debug.Log(audioSourceMainTheme.volume);
-            audioSourceMainTheme.volume = audioSourceMainTheme.volume - startVolume / (time*10000);
+            //Debug.Log(audioSourceMainTheme.volume);
+            audioSourceMainTheme.volume = audioSourceMainTheme.volume - startVolume / (time*10000000);
             audioSourceSprinkler.volume = audioSourceSprinkler.volume - sprinklerStartVolume / (time * 1000);
             yield return null;
         }

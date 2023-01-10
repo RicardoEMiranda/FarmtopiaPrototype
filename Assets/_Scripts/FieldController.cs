@@ -18,7 +18,7 @@ public class FieldController : MonoBehaviour {
     [SerializeField] public AudioClip clipShoveling;
     [SerializeField] public AudioClip clipCropPop;
     [SerializeField] public AudioClip clipDingPop;
-    [SerializeField] public GameObject largeCropGO;
+    //[SerializeField] public GameObject largeCropGO;
     private OnCropClicked onCropClicked;
 
 
@@ -41,7 +41,7 @@ public class FieldController : MonoBehaviour {
     private void Start()  {
         audioSource1.clip = clipShoveling;
         audioSource2.clip = clipCropPop;
-        onCropClicked = largeCropGO.GetComponent<OnCropClicked>();
+        onCropClicked = large.GetComponent<OnCropClicked>();
     }
     private void Update() {
 
