@@ -8,7 +8,10 @@ public class OnClickEvents : MonoBehaviour {
     public int noOfClicks;
     public string hostClickedString;
     public bool dialogueNextButtonClicked;
+    public bool doneWithDemo;
     [SerializeField] private AudioSource audioPanelPop;
+    [SerializeField] private AudioClip clip_click;
+    [SerializeField] private GameObject levelUpPanel;
     public bool resetClicks;
 
     private void Start()  {
@@ -38,7 +41,17 @@ public class OnClickEvents : MonoBehaviour {
         Debug.Log(noOfClicks);
     }
 
+    public void OnPanelExit()  {
+        //Debug.Log("Exit");
+        audioPanelPop.clip = clip_click;
+        audioPanelPop.Play();
+        levelUpPanel.SetActive(false);
+        doneWithDemo = true; //used for demo purposes only
+    }
 
+   
+
+   
     
 }
 

@@ -4,8 +4,11 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class levelManager0 : MonoBehaviour {
+
+    [SerializeField] public bool skipToStep7;
 
     [Header("Big Host Dialogue Bin Properties")]
     [SerializeField] private GameObject dialogueBinGO;
@@ -13,7 +16,6 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI dialogueTMP;
     [SerializeField] public int fontSize = 28;
     private HostDialogueL1 hostDialogueL1;
-    private AudioSource audioSource;
     private OnNextClicked onNextClicked;
     private OnNextClicked npcOnNextClicked;
     private OnNextClicked npc2OnNextClicked;
@@ -82,6 +84,10 @@ public class levelManager0 : MonoBehaviour {
 
     [Header("Level, Currency & NFT UI")]
     [SerializeField] private TextMeshProUGUI levelTMP;
+    [SerializeField] private GameObject levelUpPanel;
+    [SerializeField] private GameObject panelSupportHemptopia;
+    [SerializeField] private TextMeshProUGUI supportHemptopiaTMP;
+    private Image panelImage;
 
     [Header("Field & Crop Properties")]
     [SerializeField] private GameObject fieldGO;
@@ -92,16 +98,23 @@ public class levelManager0 : MonoBehaviour {
     [SerializeField] public GameObject[] fields;
     private FieldController[] fieldControllerScr;
     
+    [Header ("Audio")]
+    private AudioSource audioSource;
+    private AudioSource[] gameManagerAudioSources;
+    private AudioSource audioSourceUIClick;
+    private AudioSource audioSourceMainTheme;
+    private AudioSource audioSourceSprinkler;
 
-
+    [Header ("Managers")]
     [SerializeField] private GameObject functionsGO;
+    [SerializeField] private GameObject gameManagerGO;
+
     private OnClickEvents onClickEvents;
 
     [Header ("Waypoints")]
     [SerializeField] private Transform waypoint1;
     [SerializeField] private Transform waypoint2;
     [SerializeField] private Transform waypointStart;
-
 
     private int Step = 1;
     private int characterIndex;
@@ -119,6 +132,8 @@ public class levelManager0 : MonoBehaviour {
     private int countHarvest = 0;
     private int level = 0;
     private bool updateLevel = false;
+    private bool levelUpPanelActivated = false;
+    private bool startOutro = false;
 
 
     // Start is called before the first frame update
@@ -150,6 +165,7 @@ public class levelManager0 : MonoBehaviour {
         //Set Barn Inventory to inactive. This will activate later after the barn has been repaired
         barnInventoryButton.SetActive(false);
         barnRepaired = false;
+        panelImage = panelSupportHemptopia.GetComponent<Image>();
 
         fieldObjects = FindObjectsOfType<FieldController>().Select(f => f.gameObject).ToList();
 
@@ -165,12 +181,18 @@ public class levelManager0 : MonoBehaviour {
             fieldControllerScr[i] = fields[i].GetComponent<FieldController>();
         }
 
+        audioSourceUIClick = gameManagerGO.GetComponent<AudioSource>();
+        AudioSource[] audioSources = gameManagerGO.GetComponents<AudioSource>();
+        audioSourceMainTheme = audioSources[1];
+        audioSourceSprinkler = audioSources[2];
+        
+
     }
 
     // Update is called once per frame
     void Update() {
         //Step Overrides for testing
-        if(Input.GetKeyDown(KeyCode.Space))  {
+        if(Input.GetKeyDown(KeyCode.Space) && skipToStep7)  {
             selectFarmerHostPanel.SetActive(false);
             activeHost2 = bigHostMan2;
             hostSelected = true;
@@ -532,15 +554,25 @@ public class levelManager0 : MonoBehaviour {
                 updateLevel = false;
 
                 //bring up Level 1 Level up celebration panel
-
+                if(!levelUpPanelActivated)  {
+                    levelUpPanelActivated = true;
+                    levelUpPanel.SetActive(true);
+                }
             }
             
-
         }
 
-        
+        //This outro is just for demonstration purposes and can be deleted later.
+        //Using this to transition into a "Support Hemptopia Page" after the demo on the web GL build
+        if(onClickEvents.doneWithDemo) {
+            panelSupportHemptopia.SetActive(true);
+            float fadeInTime = 1.5f;
+            float alpha = Mathf.Lerp(panelImage.color.a, 1f, Time.deltaTime / fadeInTime);
+            panelImage.color = new Color(0f, 0f, 0f, alpha);
+            StartCoroutine(FadeOut(3f));
+            
+        }
 
-        
     }
 
     IEnumerator ActivateWithDelay(GameObject obj, float delay) {
@@ -618,6 +650,21 @@ public class levelManager0 : MonoBehaviour {
             npc2Canvas.SetActive(false);
         }
 
+    }
+
+    public IEnumerator FadeOut(float time)  {
+        float sprinklerStartVolume = audioSourceSprinkler.volume;
+        float startVolume = .542f;
+
+        while (audioSourceMainTheme.volume > 0)   {
+            Debug.Log(audioSourceMainTheme.volume);
+            audioSourceMainTheme.volume = audioSourceMainTheme.volume - startVolume / (time*10000);
+            audioSourceSprinkler.volume = audioSourceSprinkler.volume - sprinklerStartVolume / (time * 1000);
+            yield return null;
+        }
+        supportHemptopiaTMP.gameObject.SetActive(true);
+        //audioSourceMainTheme.Stop();
+        //audioSource.volume = startVolume;
     }
 
     IEnumerator InitializeDialogueParameters(string[,] character, float delay, TextMeshProUGUI tmp)  {

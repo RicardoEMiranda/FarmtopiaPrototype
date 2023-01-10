@@ -702,6 +702,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+--- !u!1 &1108362696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5687059524692351893, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+  m_PrefabInstance: {fileID: 1738669233983974144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1115484119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1738669232695727508, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+  m_PrefabInstance: {fileID: 1738669233983974144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127345110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4636886931278676154, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
@@ -811,6 +827,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4449583485532016697, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
   m_PrefabInstance: {fileID: 6355690048718597987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1574242208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2907570150537462117, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+  m_PrefabInstance: {fileID: 1738669233983974144}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1636265619 stripped
 GameObject:
@@ -1037,6 +1058,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1433484212}
+    - target: {fileID: 3496022221043588529, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1439292167}
     - target: {fileID: 3930138892102863144, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1095,6 +1120,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+--- !u!114 &1738669233983974145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8112006653994149559, guid: 414cb3e5d347b4040ad2cb41ed9a2910, type: 3}
+  m_PrefabInstance: {fileID: 1738669233983974144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1868754931791011054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1294,6 +1330,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 788162729}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: levelTMP
+      value: 
+      objectReference: {fileID: 1115484119}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: npc2Girl
       value: 
       objectReference: {fileID: 390358225}
@@ -1341,6 +1381,10 @@ PrefabInstance:
       propertyPath: bigHostGirl2
       value: 
       objectReference: {fileID: 390358225}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: levelUpPanel
+      value: 
+      objectReference: {fileID: 1574242208}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: npcSacagawea
       value: 
@@ -1418,6 +1462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 878483629}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: supportHemptopiaTMP
+      value: 
+      objectReference: {fileID: 1738669233983974145}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: fields.Array.data[0]
       value: 
       objectReference: {fileID: 154089232}
@@ -1445,6 +1493,10 @@ PrefabInstance:
       propertyPath: npc2DialogueCanvasGO
       value: 
       objectReference: {fileID: 1889151424}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: panelSupportHemptopia
+      value: 
+      objectReference: {fileID: 1108362696}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: selectFarmerHostPanel
       value: 
@@ -1497,6 +1549,10 @@ PrefabInstance:
       propertyPath: fieldObjects.Array.data[5]
       value: 
       objectReference: {fileID: 198795395}
+    - target: {fileID: 1439292167, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: levelUpPanel
+      value: 
+      objectReference: {fileID: 1574242208}
     - target: {fileID: 1903661507, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: barn
       value: 
