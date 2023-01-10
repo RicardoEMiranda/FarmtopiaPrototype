@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf44291009e3454c9bd5fa91b6b1408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipToStep7: 1
+  skipToStep7: 0
   dialogueBinGO: {fileID: 0}
   clickManagerGO: {fileID: 0}
   dialogueTMP: {fileID: 0}
@@ -384,6 +384,7 @@ MonoBehaviour:
   waypoint1: {fileID: 0}
   waypoint2: {fileID: 0}
   waypointStart: {fileID: 0}
+  stoppedTyping: 1
 --- !u!1001 &6928535180508365774
 PrefabInstance:
   m_ObjectHideFlags: 0

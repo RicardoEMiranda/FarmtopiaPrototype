@@ -1751,6 +1751,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: -----FARMER_HOSTS-----
       objectReference: {fileID: 0}
+    - target: {fileID: 2630820371100813482, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: levelManagerGO
+      value: 
+      objectReference: {fileID: 629363939}
+    - target: {fileID: 2630820371289080556, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: levelManagerGO
+      value: 
+      objectReference: {fileID: 629363939}
+    - target: {fileID: 2630820371293141214, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
+      propertyPath: levelManagerGO
+      value: 
+      objectReference: {fileID: 629363939}
     - target: {fileID: 4509021067694217531, guid: 1a86eca1c0ce9504c9bf70818da0d322, type: 3}
       propertyPath: m_RootOrder
       value: 13

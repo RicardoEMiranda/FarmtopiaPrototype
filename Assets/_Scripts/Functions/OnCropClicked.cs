@@ -18,6 +18,6 @@ public class OnCropClicked : MonoBehaviour {
 
     public void OnMouseDown()  {
         cropClicked = true;
-        //Debug.Log("Crop Clicked: " + cropClicked);
+        Debug.Log("Crop Clicked: " + cropClicked);
     }
 }

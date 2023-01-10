@@ -134,6 +134,7 @@ public class levelManager0 : MonoBehaviour {
     private bool updateLevel = false;
     private bool levelUpPanelActivated = false;
     private bool startOutro = false;
+    public bool stoppedTyping = true;
 
 
     // Start is called before the first frame update
@@ -700,11 +701,15 @@ public class levelManager0 : MonoBehaviour {
             TMP.text += c;
             characterIndex++;
             yield return new WaitForSeconds(typeDelay);
+            stoppedTyping = false;
+            //Debug.Log(stoppedTyping);
         }
         audioSource.Stop();
 
         if(characterIndex == str.Length) {
             audioSource.Stop();
+            stoppedTyping = true;
+            //Debug.Log(stoppedTyping);
         }
     }
 
