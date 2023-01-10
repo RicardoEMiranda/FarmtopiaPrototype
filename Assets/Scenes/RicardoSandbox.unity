@@ -1378,6 +1378,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1932811720}
     - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
+      propertyPath: skipToStep7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 629363942, guid: f8db6be06ad5872408e4a63c3b8e219d, type: 3}
       propertyPath: bigHostGirl2
       value: 
       objectReference: {fileID: 390358225}
