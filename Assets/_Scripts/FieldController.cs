@@ -8,7 +8,7 @@ public class FieldController : MonoBehaviour {
     public GameObject seed;
     public GameObject seedling;
     public GameObject medium;
-    public GameObject large;
+    [SerializeField] public GameObject large;
 
     [SerializeField] public float cycleTimer = 5f;
     [SerializeField] public GameObject plantSeedCanvas;
@@ -58,7 +58,7 @@ public class FieldController : MonoBehaviour {
         }
 
         if (onCropClicked.cropClicked)  {
-            Debug.Log("Crop Clicked...");
+            Debug.Log("Crop Clicked: " + onCropClicked.largeCropGO.name);
             harvesterCanvas.SetActive(true);
         }
 

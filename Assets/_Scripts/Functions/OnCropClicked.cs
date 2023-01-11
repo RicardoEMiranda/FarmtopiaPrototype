@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class OnCropClicked : MonoBehaviour {
 
+    public GameObject largeCropGO;
     public bool cropClicked;
 
     // Start is called before the first frame update
     void Start() {
+        largeCropGO = gameObject;
         cropClicked = false;
     }
 
@@ -18,6 +20,6 @@ public class OnCropClicked : MonoBehaviour {
 
     public void OnMouseDown()  {
         cropClicked = true;
-        Debug.Log("Crop Clicked: " + cropClicked);
+        //Debug.Log("Crop Clicked: " + gameObject.name);
     }
 }

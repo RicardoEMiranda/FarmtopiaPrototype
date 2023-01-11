@@ -97,6 +97,7 @@ public class levelManager0 : MonoBehaviour {
     private OnCropClicked[] onCropClicked;
     [SerializeField] public GameObject[] fields;
     private FieldController[] fieldControllerScr;
+
     
     [Header ("Audio")]
     private AudioSource audioSource;
@@ -135,6 +136,7 @@ public class levelManager0 : MonoBehaviour {
     private bool levelUpPanelActivated = false;
     private bool startOutro = false;
     public bool stoppedTyping = true;
+    private bool fieldControllersInitialized;
 
 
     // Start is called before the first frame update
@@ -170,7 +172,7 @@ public class levelManager0 : MonoBehaviour {
 
         fieldObjects = FindObjectsOfType<FieldController>().Select(f => f.gameObject).ToList();
 
-        //Debug.Log(largeCrops.Length);
+        Debug.Log(largeCrops.Length);
         onCropClicked = new OnCropClicked[largeCrops.Length];
         for(int i = 0; i<largeCrops.Length; i++) {
             onCropClicked[i] = largeCrops[i].GetComponent<OnCropClicked>();
@@ -482,6 +484,16 @@ public class levelManager0 : MonoBehaviour {
         }
 
         if (Step == 7)  {
+
+            //Initialize FieldController Scripts
+            if(!fieldControllersInitialized)  {
+                foreach (GameObject field in fieldObjects)  {
+                    FieldController fieldController = field.GetComponent<FieldController>();
+                    fieldController.canPlant = false;
+                }
+                fieldControllersInitialized = true;
+            }
+
             //Debug.Log(harvestDialogueStarted);
             if (((npc2Canvas.transform.position - waypoint2.position).magnitude <= .05f) && !harvestDialogueStarted) {
        
@@ -535,7 +547,7 @@ public class levelManager0 : MonoBehaviour {
                     fieldControllerScr[i].cropHarvested = false;
                     //Debug.Log("Crop Harvested...");
                     hempStalksCount += 25;
-                    //Debug.Log(hempStalksCount);
+                    Debug.Log(hempStalksCount);
                 }
             }
 
