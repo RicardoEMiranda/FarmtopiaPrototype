@@ -12,7 +12,7 @@ public class DetectBarnClicked : MonoBehaviour {
     [SerializeField] private GameObject vfxGO;
     [SerializeField] private GameObject managersGO;
     private levelManager0 levelManager0;
-    private GameObject fireworks;
+    private GameObject vortex;
     public bool barnClicked;
 
 
@@ -20,9 +20,8 @@ public class DetectBarnClicked : MonoBehaviour {
         //audioMagicWand = GetComponent<AudioSource>();
         //audioPoof = GetComponent<AudioSource>();
         audioSource = GetComponent<AudioSource>();
-        fireworks = vfxGO.transform.GetChild(0).gameObject;
+        vortex = vfxGO.transform.GetChild(0).gameObject;
         levelManager0 = managersGO.GetComponent<levelManager0>();
-
     }
 
     private void OnMouseDown() {
@@ -32,7 +31,7 @@ public class DetectBarnClicked : MonoBehaviour {
 
         audioSource.PlayOneShot(clipMagicWand);
         audioSource.PlayOneShot(clipPoof);
-        fireworks.SetActive(true);
+        vortex.SetActive(true);
 
         StartCoroutine(StopFireworks());
         barnClicked = true;
@@ -42,7 +41,7 @@ public class DetectBarnClicked : MonoBehaviour {
 
     IEnumerator StopFireworks()  {
         yield return new WaitForSeconds(2.5f);
-        fireworks.SetActive(false);
+        vortex.SetActive(false);
     }
 
 }
