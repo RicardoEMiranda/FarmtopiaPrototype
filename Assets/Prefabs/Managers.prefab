@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1996036682091114473
+--- !u!1 &1080463283053562421
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,56 +8,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6056763491965428744}
-  - component: {fileID: 2729861013107778941}
+  - component: {fileID: 5249498555650635778}
   m_Layer: 0
-  m_Name: MissionManager
+  m_Name: DialogueBin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6056763491965428744
+--- !u!4 &5249498555650635778
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996036682091114473}
+  m_GameObject: {fileID: 1080463283053562421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3361924231332516423}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2729861013107778941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996036682091114473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea21dcc74fff314f9d15273207aa3e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wayPoint01: {fileID: 0}
-  field:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  level: 0
-  currentMission: 1
-  dialogueQueue: 0
-  playMissionDialogue: 0
-  noFieldsSelected: 1
-  dialogueBubble: {fileID: 0}
 --- !u!1 &3361924231332516422
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,10 +61,330 @@ Transform:
   m_Children:
   - {fileID: 3361924231659922617}
   - {fileID: 3361924232271601840}
-  - {fileID: 6056763491965428744}
+  - {fileID: 2782004793664300912}
+  - {fileID: 5249498555650635778}
+  - {fileID: 6682427309810324538}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4052629135361157799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6682427309810324538}
+  - component: {fileID: 3855182874754381258}
+  - component: {fileID: 1439292167}
+  - component: {fileID: 8718164824637643584}
+  m_Layer: 0
+  m_Name: Functions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6682427309810324538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052629135361157799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3361924231332516423}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3855182874754381258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052629135361157799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd7499b65f81c44c95cbe04735c5f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerGO: {fileID: 3361924231659922598}
+--- !u!114 &1439292167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052629135361157799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06145ad5eeed54dbc09f32d8e84814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hostNextClicked: 0
+  noOfClicks: 0
+  hostClickedString: 
+  dialogueNextButtonClicked: 0
+  doneWithDemo: 0
+  audioPanelPop: {fileID: 8718164824637643584}
+  clip_click: {fileID: 0}
+  levelUpPanel: {fileID: 0}
+  resetClicks: 0
+--- !u!82 &8718164824637643584
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052629135361157799}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e4fec182c7e51724ba0c7a20d6b7d280, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &7522623287938580171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2782004793664300912}
+  - component: {fileID: 1903661507}
+  - component: {fileID: 629363942}
+  m_Layer: 0
+  m_Name: LevelManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2782004793664300912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522623287938580171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3361924231332516423}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1903661507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522623287938580171}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315b3f0dca467084fa27c4f49659c20e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectFarmerHostPanel: {fileID: 0}
+  hostOverlay: {fileID: 0}
+  hostOverlayText: {fileID: 0}
+  functionsGO: {fileID: 4052629135361157799}
+  hostSelected: 
+  farmerHostOverlay: {fileID: 0}
+  farmerHostBoy: {fileID: 0}
+  farmerHostGirl: {fileID: 0}
+  sacagawea: {fileID: 0}
+  farmerNPC: {fileID: 0}
+  farmerNPCBoy: {fileID: 0}
+  farmerNPCGirl: {fileID: 0}
+  managers: {fileID: 0}
+  dialogueGO: {fileID: 0}
+  CameraRig: {fileID: 0}
+  npcCanvasGO: {fileID: 0}
+  npcDialogueTMP: {fileID: 0}
+  barnWaypoint: {fileID: 0}
+  hostDialogueGroup: {fileID: 0}
+  NPCManagersGO: {fileID: 0}
+  barnIsClickable: 0
+  barn: {fileID: 0}
+  barnInventoryButton: {fileID: 0}
+  dialogueCanvasGO: {fileID: 0}
+  onClickManagerGO: {fileID: 0}
+  dialogueTMP: {fileID: 0}
+  fontSize: 28
+--- !u!114 &629363942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522623287938580171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf44291009e3454c9bd5fa91b6b1408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipToStep7: 1
+  dialogueBinGO: {fileID: 0}
+  clickManagerGO: {fileID: 0}
+  dialogueTMP: {fileID: 0}
+  fontSize: 28
+  npcCanvas: {fileID: 0}
+  npcMan: {fileID: 0}
+  npcGirl: {fileID: 0}
+  npcSacagawea: {fileID: 0}
+  npcDialogueBinGO: {fileID: 0}
+  npcDialogueCanvasGO: {fileID: 0}
+  npcClickManagerGO: {fileID: 0}
+  npcDialogueTMP: {fileID: 0}
+  npc2Canvas: {fileID: 0}
+  npc2Man: {fileID: 0}
+  npc2Girl: {fileID: 0}
+  npc2Sacagawea: {fileID: 0}
+  npc2DialogueBinGO: {fileID: 0}
+  npc2DialogueCanvasGO: {fileID: 0}
+  npc2ClickManagerGO: {fileID: 0}
+  npc2DialogueTMP: {fileID: 0}
+  selectFarmerHostPanel: {fileID: 0}
+  manFarmerButton: {fileID: 0}
+  girlFarmerButton: {fileID: 0}
+  bigHostCanvas: {fileID: 0}
+  bigHostMan: {fileID: 0}
+  bigHostGirl: {fileID: 0}
+  bigHostSacagawea: {fileID: 0}
+  bigHostMan2: {fileID: 0}
+  bigHostGirl2: {fileID: 0}
+  bigHostSacagawea2: {fileID: 0}
+  CameraRig: {fileID: 0}
+  barn: {fileID: 0}
+  barnInventoryButton: {fileID: 0}
+  barnIsClickable: 0
+  hempSeedTMP: {fileID: 0}
+  hempStalksTMP: {fileID: 0}
+  inventoryManagerGO: {fileID: 3361924231659922598}
+  levelTMP: {fileID: 0}
+  levelUpPanel: {fileID: 0}
+  panelSupportHemptopia: {fileID: 0}
+  supportHemptopiaTMP: {fileID: 0}
+  fieldGO: {fileID: 0}
+  fieldObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  largeCrops:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fields:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  functionsGO: {fileID: 4052629135361157799}
+  gameManagerGO: {fileID: 3361924231659922598}
+  waypoint1: {fileID: 0}
+  waypoint2: {fileID: 0}
+  waypointStart: {fileID: 0}
+  stoppedTyping: 1
 --- !u!1001 &6928535180508365774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,6 +454,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3361924231332516423}
     m_Modifications:
+    - target: {fileID: 1605536226470609473, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
+      propertyPath: levelContainer
+      value: 
+      objectReference: {fileID: 7522623287938580171}
     - target: {fileID: 5332983439648488544, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -225,8 +522,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1605536226470609473, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
+    - {fileID: 1181825830055971720, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
+--- !u!1 &3361924231659922598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5332983439648488575, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
+  m_PrefabInstance: {fileID: 7252313173269141721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3361924231659922617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5332983439648488544, guid: 7a3395f53a425a14e956f1fa7f24394a, type: 3}
