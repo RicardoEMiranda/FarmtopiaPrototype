@@ -23,22 +23,20 @@ public class DialogueManager : MonoBehaviour {
     {
         if(dialogueBox.TryGetComponent(out SpriteRenderer dialogueBoxSpriteRenderer))
         spriteRenderer = dialogueBox.GetComponent<SpriteRenderer>();
-        else
-        {
-            Debug.LogError("Dialogue Box does not have a Sprite Renderer");
+        else  {
+            //Debug.LogError("Dialogue Box does not have a Sprite Renderer");
         }
     }
     void Start()  {
 
         dialogueCount = dialogue.Length; 
-        Debug.Log("Started");
+        //Debug.Log("Started");
         textComponent.text = "";
         StartDialogue();
     }
 
     // Update is called once per frame
     void Update()  {
-       
         
         if(Input.GetMouseButtonDown(0))  {
             if(index <= dialogueCount-2)   {
